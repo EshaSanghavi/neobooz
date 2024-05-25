@@ -213,8 +213,8 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Web'], functi
     Route::get('remove-all', 'CartController@remove_all_cart')->name('remove-all');//theme fashion
     Route::post('nav-cart-items', 'CartController@updateNavCart')->name('nav-cart');
     Route::post('floating-nav-cart-items', 'CartController@update_floating_nav')->name('floating-nav-cart-items');// theme fashion floating nav
-    // Route::post('updateQuantity', 'CartController@updateQuantity')->name('updateQuantity');
-    Route::post('updateResell', 'CartController@updateResell')->name('updateResell');
+    Route::post('updateQuantity', 'CartController@updateQuantity')->name('updateQuantity');
+    // Route::post('updateResell', 'CartController@updateResell')->name('updateResell');
     Route::post('updateQuantity-guest', 'CartController@updateQuantity_guest')->name('updateQuantity.guest');
     Route::post('order-again', 'CartController@order_again')->name('order-again')->middleware('customer');
 });
