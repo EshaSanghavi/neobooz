@@ -107,7 +107,7 @@ class BlogCategoryController extends Controller
         $category = BlogCategory::find($id);
         $category->delete();
 
-        $notification= trans('admin_validation.Delete Successfully');
+        $notification= translate('Delete Successfully');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
         return redirect()->back()->with($notification);
     }

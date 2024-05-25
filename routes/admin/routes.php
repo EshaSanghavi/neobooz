@@ -336,11 +336,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     // Blog
     Route::resource('blog-category', BlogCategoryController::class);
     Route::put('blog-category-status/{id}', [BlogCategoryController::class,'changeStatus'])->name('blog-category.status');
+    Route::put('blog-category-destroy/{id}', [BlogCategoryController::class,'destroy'])->name('blog-category-destroy');
     Route::post('blog-category-store', [BlogCategoryController::class,'store'])->name('blog-category-store');
-
 
     Route::resource('blog', BlogController::class);
     Route::post('blog-store', [BlogController::class,'store'])->name('blog-store');
+    Route::put('blog-destroy/{id}', [BlogController::class,'destroy'])->name('blog-destroy');
     Route::put('blog-status/{id}', [BlogController::class,'changeStatus'])->name('blog.status');
 
     Route::resource('blog-comment', BlogCommentController::class);

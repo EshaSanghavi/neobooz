@@ -135,7 +135,7 @@ class BlogController extends Controller
             $blog->image = $image_name;
             $blog->save();
             if($old_image){
-                if(File::exists(public_path().'/'.$old_image))unlink(public_path().'/'.$old_image);
+                if(File::exists('public_path().'/''.$old_image))unlink(public_path().'/'.$old_image);
             }
         }
 
@@ -160,12 +160,11 @@ class BlogController extends Controller
         $old_image = $blog->image;
         $blog->delete();
         if($old_image){
-            if(File::exists(public_path().'/'.$old_image))unlink(public_path().'/'.$old_image);
+            if(File::exists('storage/app/public/blog/'.$old_image))unlink('storage/app/public/blog/'.$old_image);
         }
-
         BlogComment::where('blog_id',$id)->delete();
 
-        $notification=  trans('admin_validation.Delete Successfully');
+        $notification= translate('Delete Successfully');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
         return redirect()->back()->with($notification);
     }

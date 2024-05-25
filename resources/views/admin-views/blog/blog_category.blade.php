@@ -87,7 +87,7 @@
 
                                                 <a class="btn btn-outline-info btn-sm square-btn"
                                                     title="{{ translate('delete') }}"
-                                                    href="{{ route('admin.blog-category.destroy',$category->id) }}">
+                                                    href="{{ route('admin.blog-category-destroy',$category->id) }}">
                                                     <i class="tio-delete"></i>
                                                 </a>
                                             </div>
