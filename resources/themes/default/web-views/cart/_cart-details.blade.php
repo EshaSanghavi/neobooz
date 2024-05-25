@@ -330,13 +330,13 @@
                                 <td class="__w-45 ">
                                     <div>
                                         <label>Is this a resell product?</label>
-                                        <input type="checkbox"  class="form-control" name="resell" onchange="resellInput(this)">
+                                        <input type="checkbox"  class="form-control" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onchange="resellInput({{ $cartItem['id'] }})">
                                     </div>
                                 </td>
                                 <td class="__w-45">
-                                    <div hidden>
-                                        <label class="title-color" for="resell_price">{{ translate('Resell Price') }}</label>
-                                        <input type="text" name="resell_price" id="resell_price" class="form-control">
+                                    <div id="resell_price_{{ $cartItem['id'] }}" style="none;">
+                                        <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Resell Price') }}</label>
+                                        <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control">
                                     </div>
                                 </td>
                             </tr>
@@ -765,4 +765,16 @@
 
 @push('script')
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/cart-details.js') }}"></script>
+    <script>
+        resellInput(cart_id)
+        {
+            var id="resell_price_"+cart_id;
+            var targetDiv = document.getElementById(id); // Replace "yourDivId" with the actual ID of your div
+            if (checkbox.checked) {
+                targetDiv.style.display = "block";
+            } else {
+                targetDiv.style.display = "none";
+            }
+        }
+    </script>
 @endpush
