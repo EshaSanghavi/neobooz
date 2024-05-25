@@ -15,6 +15,8 @@ function resellInput(cart)
         is_resell = 0;
     }
 
+    let key = cart;
+
     $.post($('#route-cart-updateResell').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
