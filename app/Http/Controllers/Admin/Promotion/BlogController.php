@@ -62,9 +62,9 @@ class BlogController extends Controller
         if($request->image){
             $extention=$request->image->getClientOriginalExtension();
             $image_name = 'blog-'.date('-Y-m-d-h-i-s-').rand(999,9999).'.'.$extention;
-            $image_name ='uploads/custom-images/'.$image_name;
+            $image_path ='storage/app/public/blog/'.$image_name;
             Image::make($request->image)
-                ->save($image_name);
+                ->save($image_path);
             $blog->image = $image_name;
         }
 
@@ -79,9 +79,13 @@ class BlogController extends Controller
         $blog->seo_description = $request->seo_description ? $request->seo_description : $request->title;
         $blog->save();
 
-        $notification= trans('admin_validation.Created Successfully');
-        $notification = array('messege'=>$notification,'alert-type'=>'success');
-        return redirect()->back()->with($notification);
+        
+        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->get();
+        $languages = getWebConfig(name: 'pnc_language') ?? null;
+        Toastr::success(translate('blog_added_successfully'));
+        return view('admin-views.blog.blog', compact('blogs', 'languages'));
     }
 
     public function edit($id)

@@ -1,6 +1,6 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('product_Add'))
+@section('title', translate('blog_category_Add'))
 
 @push('css_or_js')
     <link href="{{ dynamicAsset(path: 'public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
@@ -13,12 +13,11 @@
         <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <h2 class="h1 mb-0 d-flex gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
-                {{ translate('add_New_Product') }}
+                {{ translate('add_New_Blog') }}
             </h2>
         </div>
 
-        <form class="product-form text-start" action="{{ route('admin.blog-category.store') }}" method="POST"
-              enctype="multipart/form-data" id="product_form">
+        <form class="blog-form text-start" action="{{ route('admin.blog-store') }}" method="POST" enctype="multipart/form-data" id="blog_form">
             @csrf
             <div class="card">
                 <div class="px-4 pt-3">
@@ -38,11 +37,11 @@
                              id="{{ $lang }}-form">
                             <div class="form-group">
                                 <label class="title-color"
-                                       for="{{ $lang }}_name">{{ translate('product_name') }}
+                                       for="{{ $lang }}_name">{{ translate('Title') }}
                                     ({{ strtoupper($lang) }})
                                 </label>
-                                <input type="text" {{ $lang == $defaultLanguage ? 'required' : '' }} name="name"
-                                       id="{{ $lang }}_name" class="form-control" placeholder="New Category">
+                                <input type="text" {{ $lang == $defaultLanguage ? 'required' : '' }} name="title"
+                                       id="{{ $lang }}_name" class="form-control">
                             </div>
                             <input type="hidden" name="lang[]" value="{{ $lang }}">
                             
@@ -50,16 +49,31 @@
                                 <label class="title-color"
                                        for="{{ $lang }}_slug">{{ translate('slug') }}
                                     ({{ strtoupper($lang) }})</label>
-                                <textarea class="summernote" name="slug">{{ old('details') }}</textarea>
+                                    <input type="text" {{ $lang == $defaultLanguage ? 'required' : '' }} name="slug"
+                                       id="{{ $lang }}_slug" class="form-control" >
                             </div>
 
+                            <div class="form-group pt-2">
+                                <label class="title-color"
+                                       for="{{ $lang }}_category">{{ translate('Category') }}
+                                    ({{ strtoupper($lang) }})</label>
+                                <select id="{{ $lang }}_category" class="js-select2-custom form-control action-get-request-onchange" name="status"
+                                        data-element-id="select"
+                                        data-element-type="select"
+                                        required>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                </select>
+                            </div>
+                            
                             <div class="form-group pt-2">
                                 <label class="title-color"
                                        for="{{ $lang }}_status">{{ translate('status') }}
                                     ({{ strtoupper($lang) }})</label>
                                 <select name="status" class="form-control">
-                                    <option value="1">{{__('admin.Active')}}</option>
-                                    <option value="0">{{__('admin.Inactive')}}</option>
+                                    <option value="1">{{translate('Active')}}</option>
+                                    <option value="0">{{translate('Inactive')}}</option>
                                 </select>                            
                             </div>
 

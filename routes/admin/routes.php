@@ -340,6 +340,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
 
 
     Route::resource('blog', BlogController::class);
+    Route::post('blog-store', [BlogController::class,'store'])->name('blog-store');
     Route::put('blog-status/{id}', [BlogController::class,'changeStatus'])->name('blog.status');
 
     Route::resource('blog-comment', BlogCommentController::class);
