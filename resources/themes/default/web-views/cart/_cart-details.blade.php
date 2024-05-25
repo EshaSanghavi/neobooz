@@ -334,7 +334,7 @@
                                     </div>
                                 </td>
                                 <td class="__w-45">
-                                    <div id="resell_price_{{ $cartItem['id'] }}" style="none;">
+                                    <div id="resell_price_{{ $cartItem['id'] }}" style="display: none;">
                                         <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Resell Price') }}</label>
                                         <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control">
                                     </div>
