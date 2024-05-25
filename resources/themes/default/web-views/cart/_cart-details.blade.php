@@ -330,7 +330,7 @@
                                 <td class="__w-45 ">
                                     <div>
                                         <label class="title-color" for="resell_{{ $cartItem['id'] }}" >Is this a resell product?</label>
-                                        <input type="checkbox"  class="form-control" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})">
+                                        <input type="checkbox"  class="form-control" style="height: 20px; width: 20px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})">
                                     </div>
                                 </td>
                                 <td class="__w-45">
@@ -767,7 +767,6 @@
         function resellInput(cart)
         {
             var id="resell_price_"+cart;
-            alert(id);
             var check_id = "resell_"+cart
             var ele = document.getElementById(check_id);
             var targetDiv = document.getElementById(id); 
