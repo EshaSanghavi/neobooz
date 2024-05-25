@@ -449,8 +449,8 @@ class CartManager
 
     public static function update_is_resell($request)
     {
-                $cart = Cart::where(['id' => $request->key])->first();
-        $cart['is_resell'] = $request->is_resell;
+        $cart = Cart::where(['id' => $request->key])->first();
+        $cart->is_resell = $request->is_resell;
         $cart->save();
 
         if(!$cart->save()){
