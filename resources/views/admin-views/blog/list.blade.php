@@ -63,7 +63,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            
+                            @foreach($blogs as $index => $blog)
+                                <tr>
+                                    <td>{{ ++$index }}</td>
+                                    
+                                    </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
