@@ -1,5 +1,45 @@
 "use strict";
 
+function resellInput(cart)
+{
+    let is_resell = 0;
+    var id="resell_price_"+cart;
+    var check_id = "resell_"+cart
+    var ele = document.getElementById(check_id);
+    var targetDiv = document.getElementById(id); 
+    if(ele.checked) {
+        targetDiv.style.display = "block";
+        is_resell = 1;
+    } else {
+        targetDiv.style.display = "none";
+        is_resell = 0;
+    }
+
+    $.post($('#route-cart-updateResell').data('url'), {
+        _token: $('meta[name="_token"]').attr('content'),
+        key,
+        is_resell
+    }, function (response) {
+        if (response.status == 0) {
+            toastr.error(response.message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+        } else {
+            updateNavCart();
+            $('#cart-summary').empty().html(response);
+            $('[data-toggle="tooltip"]').tooltip()
+            actionCheckoutFunctionInit()
+            couponCode()
+        }
+    });
+}
+
+function resellValue()
+{
+    
+}
+
 function updateCartQuantityList(minimum_order_qty, key, incr, e) {
     let quantity_id = 'cart_quantity_web';
     updateCartCommon(minimum_order_qty, key, incr, e, quantity_id);

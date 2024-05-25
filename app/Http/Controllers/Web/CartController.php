@@ -154,6 +154,23 @@ class CartController extends Controller
         return response()->json(['data' => view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render(), 'message'=>translate('Item_has_been_removed_from_cart')]);
     }
 
+    //updated the resell for a cart item
+    public function updateResell(Request $request)
+    {
+        $response = CartManager::update_is_resell($request);
+
+        session()->forget('coupon_code');
+        session()->forget('coupon_type');
+        session()->forget('coupon_bearer');
+        session()->forget('coupon_discount');
+        session()->forget('coupon_seller_id');
+
+        if ($response['status'] == 0) {
+            return response()->json($response);
+        }
+        return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
+    }
+
     //updated the quantity for a cart item
     public function updateQuantity(Request $request)
     {

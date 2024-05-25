@@ -58,6 +58,8 @@ class Cart extends Model
         'updated_at' => 'datetime',
         'shipping_cost' => 'float',
         'is_guest' => 'integer',
+        'is_resell' => 'boolean',
+        'resell_price' => 'float',
     ];
 
     protected $fillable = [
@@ -84,6 +86,8 @@ class Cart extends Model
         'shipping_cost',
         'shipping_type',
         'is_guest',
+        'is_resell',
+        'resell_price',
     ];
 
     public function cartShipping(): HasOne

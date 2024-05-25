@@ -330,10 +330,16 @@
                                 <td class="__w-45 ">
                                     <div>
                                         <label class="title-color" for="resell_{{ $cartItem['id'] }}" >Is this a resell product?</label>
-                                        <input type="checkbox"  class="form-control" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})">
+                                        <input type="checkbox"  class="form-control action-resell-input" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})">
                                     </div>
                                 </td>
                                 <td class="__w-45">
+                                    <div id="resell_price_{{ $cartItem['id'] }}" style="display: none;">
+                                        <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Resell Price') }}</label>
+                                        <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control" onchange="totalresell()">
+                                    </div>
+                                </td>
+                                <td class="__w-15 text-end">
                                     <div id="resell_price_{{ $cartItem['id'] }}" style="display: none;">
                                         <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Resell Price') }}</label>
                                         <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control">
@@ -763,20 +769,6 @@
     <span id="route-action-checkout-function" data-route="shop-cart"></span>
 </div>
 
-<script>
-        function resellInput(cart)
-        {
-            var id="resell_price_"+cart;
-            var check_id = "resell_"+cart
-            var ele = document.getElementById(check_id);
-            var targetDiv = document.getElementById(id); 
-            if(ele.checked) {
-                targetDiv.style.display = "block";
-            } else {
-                targetDiv.style.display = "none";
-            }
-        }
-</script>
 @push('script')
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/cart-details.js') }}"></script>
 @endpush

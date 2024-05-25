@@ -447,6 +447,30 @@ class CartManager
         ];
     }
 
+    public static function update_is_resell($request)
+    {
+        $user = Helpers::get_customer($request);
+        $guest_id = session('guest_id') ?? ($request->guest_id ?? 0);
+        $status = 1;
+        $cart = Cart::where(['id' => $request->key, 'customer_id' => ($user=='offline' ? $guest_id : $user->id)])->first();
+
+        if ($status) {
+            $cart['is_resell'] = $request->is_resell;
+        }
+
+        $cart->save();
+
+        if(!$cart->save())
+        {
+            $status = 0;
+        }
+
+        return [
+            'status' => $status,
+            'message' => $status == 1 ? translate('successfully_updated!') : translate('could_not_update')
+        ];
+    }
+
     public static function get_shipping_cost_for_product_category_wise($product,$qty)
     {
         $shippingMethod = Helpers::get_business_settings('shipping_method');
