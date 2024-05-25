@@ -327,19 +327,18 @@
                                 </td>
                             </tr>
                             <tr>
-                                <form class="blog-form text-start" action="" method="POST" enctype="multipart/form-data" id="blog_form">
-                                    @csrf
-                                    
-                                    <td class="__w-45 ">
+                                <td class="__w-45 ">
+                                    <div>
                                         <label>Is this a resell product?</label>
-                                        <input type="checkbox"  class="form-control" name="resell">
-                                    </td>
-                                    <td class="__w-15p text-end {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
-                                        <div>
-                                            {{ webCurrencyConverter(amount: ($cartItem['price']-$cartItem['discount'])*$cartItem['quantity']) }}
-                                        </div>
-                                    </td>
-                                </form>
+                                        <input type="checkbox"  class="form-control" name="resell" onchange="resellInput(this)">
+                                    </div>
+                                </td>
+                                <td class="__w-45">
+                                    <div hidden>
+                                        <label class="title-color" for="resell_price">{{ translate('Resell Price') }}</label>
+                                        <input type="text" name="resell_price" id="resell_price" class="form-control">
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
