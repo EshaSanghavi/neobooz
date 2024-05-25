@@ -479,26 +479,15 @@
                                 </a>
                             </li>
 
-                            <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/blogs/*') ? 'active' : ''}}">
-                                  <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                     href="javascript:" title="{{ translate('Blogs') }}">
-                                    <i class="tio-book nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                      <span class="text-truncate">{{ translate('Blogs') }}</span>
-                                    </span>
-                                  </a>
-                                  <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                      style="display: {{(Request::is('admin/blogs/*') ? 'block' : ''}}">
-                                    <li class="nav-item {{ Request::is('admin/blogs/*') ? 'active' : '' }}">
-                                      <a class="nav-link" href="{{ route('admin.blogs.list') }}"
-                                         title="{{ translate('Blog_List') }}">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{ translate('Blog_List') }}</span>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </li>
-
+                            
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/blog*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{route('admin.blog.list')}}" title="{{translate('blog')}}">
+                                    <i class="tio-photo-square-outlined nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('blog')}}</span>
+                                </a>
+                            </li>
 
 
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/coupon*') || Request::is('admin/deal*')) ?'active':''}}">
