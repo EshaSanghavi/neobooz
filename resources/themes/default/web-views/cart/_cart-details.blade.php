@@ -330,7 +330,7 @@
                                 <td class="__w-45 ">
                                     <div>
                                         <label class="title-color" for="resell_{{ $cartItem['id'] }}" >Is this a resell product?</label>
-                                        <input type="checkbox"  class="form-control" style="height: 22px; width: 22px; margin: 10px 0px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})">
+                                        <input type="checkbox"  class="form-control" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})">
                                     </div>
                                 </td>
                                 <td class="__w-45">
