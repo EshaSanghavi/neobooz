@@ -63,7 +63,7 @@
                                     </div>
 
                                     <div>
-                                        <div class="custom_upload_input" style="height:150px; width:auto;">
+                                        <div class="custom_upload_input" style="height:150px; width:150px;">
                                             <input type="file" name="image" class="custom-upload-input-file action-upload-color-image" id=""
                                                    data-imgpreview="pre_img_viewer"
                                                    accept=".jpg, .webp, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
