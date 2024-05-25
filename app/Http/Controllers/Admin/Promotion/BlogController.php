@@ -24,11 +24,10 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::with('category','comments')->get();
-        $setting = Setting::first();
         $frontend_url = $setting->frontend_url;
         $frontend_url = $frontend_url.'/blogs/blog?slug=';
 
-        return view(Blogs::LIST[VIEW], compact('blogs','frontend_url'));
+        return view('admin-views.blog.list', compact('blogs','frontend_url'));
     }
 
 
@@ -62,7 +61,6 @@ class BlogController extends Controller
         ];
         $this->validate($request, $rules,$customMessages);
 
-        $admin = Auth::guard('admin')->user();
         $blog = new Blog();
         if($request->image){
             $extention=$request->image->getClientOriginalExtension();
@@ -165,7 +163,6 @@ class BlogController extends Controller
         }
 
         BlogComment::where('blog_id',$id)->delete();
-        PopularPost::where('blog_id',$id)->delete();
 
         $notification=  trans('admin_validation.Delete Successfully');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
