@@ -57,7 +57,8 @@
                                 <label class="title-color"
                                        for="{{ $lang }}_category">{{ translate('Category') }}
                                     ({{ strtoupper($lang) }})</label>
-                                <select id="{{ $lang }}_category" class="js-select2-custom form-control action-get-request-onchange" name="status"
+                                <select id="{{ $lang }}_category" class="js-select2-custom form-control action-get-request-onchange" 
+                                        name="category"
                                         data-element-id="select"
                                         data-element-type="select"
                                         required>
