@@ -756,6 +756,14 @@
         </div>
     </section>
 
+    
+    @include('web-views.partials._order-summary')
+
+    <span id="route-customer-set-shipping-method" data-url="{{ url('/customer/set-shipping-method') }}"></span>
+    <span id="route-action-checkout-function" data-route="shop-cart"></span>
+</div>
+@push('script')
+    <script src="{{ theme_asset(path: 'public/assets/front-end/js/cart-details.js') }}"></script>
     <script>
         resellInput(cart)
         {
@@ -771,11 +779,4 @@
             }
         }
     </script>
-    @include('web-views.partials._order-summary')
-
-    <span id="route-customer-set-shipping-method" data-url="{{ url('/customer/set-shipping-method') }}"></span>
-    <span id="route-action-checkout-function" data-route="shop-cart"></span>
-</div>
-@push('script')
-    <script src="{{ theme_asset(path: 'public/assets/front-end/js/cart-details.js') }}"></script>
 @endpush
