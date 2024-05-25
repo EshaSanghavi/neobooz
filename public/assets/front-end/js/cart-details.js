@@ -5,30 +5,30 @@ $('.route-cart-updateResell').on('click', function () {
     var is_resell = $(this).is(':checked'); // Get checkbox checked state
     alert(key+" "+is_resell);
     $.post($('#route-cart-updateResell').data('url'), {
-    _token: $('meta[name="_token"]').attr('content'),
-    key,
-    is_resell
-}, function (response) {
-    if (response.status == 0) {
-        toastr.error(response.message, {
-            CloseButton: true,
-            ProgressBar: true
-        });
-    } else {
-        updateNavCart();
-        $('#cart-summary').empty().html(response);
-        $('[data-toggle="tooltip"]').tooltip()
-        actionCheckoutFunctionInit()
-        couponCode()
-        var id="resell_price_"+key;
-        var targetDiv = document.getElementById(id); 
-        if(is_resell) {
-            targetDiv.style.display = "block";
+        _token: $('meta[name="_token"]').attr('content'),
+        key,
+        is_resell
+    }, function (response) {
+        if (response.status == 0) {
+            toastr.error(response.message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
         } else {
-            targetDiv.style.display = "none";
+            updateNavCart();
+            $('#cart-summary').empty().html(response);
+            $('[data-toggle="tooltip"]').tooltip()
+            actionCheckoutFunctionInit()
+            couponCode()
+            var id="resell_price_"+key;
+            var targetDiv = document.getElementById(id); 
+            if(is_resell) {
+                targetDiv.style.display = "block";
+            } else {
+                targetDiv.style.display = "none";
+            }
         }
-    }
-});
+    });
 });
 
 
