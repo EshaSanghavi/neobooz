@@ -465,7 +465,7 @@
                         @endif
 
                         @if(Helpers::module_permission_check('promotion_management'))
-                            <li class="nav-item {{(Request::is('admin/banner*') || (Request::is('admin/coupon*')) || (Request::is('admin/notification*')) || (Request::is('admin/deal*')))?'scroll-here':''}}">
+                            <li class="nav-item {{(Request::is('admin/banner*') || Request::is('admin/blogs/*') || (Request::is('admin/coupon*')) || (Request::is('admin/notification*')) || (Request::is('admin/deal*')))?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">{{translate('promotion_management')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
