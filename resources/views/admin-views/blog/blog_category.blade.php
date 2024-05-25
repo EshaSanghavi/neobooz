@@ -1,114 +1,111 @@
-@extends('admin.master_layout')
-@section('title')
-<title>{{__('admin.Blog Category')}}</title>
-@endsection
-@section('admin-content')
-      <!-- Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>{{__('admin.Blog Category')}}</h1>
-            <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{__('admin.Dashboard')}}</a></div>
-              <div class="breadcrumb-item active"><a href="{{ route('admin.blog.index') }}">{{__('admin.Blog')}}</a></div>
-              <div class="breadcrumb-item">{{__('admin.Blog Category')}}</div>
-            </div>
-          </div>
+@extends('layouts.back-end.app')
 
-          <div class="section-body">
-            <a href="{{ route('admin.blog-category.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> {{__('admin.Add New')}}</a>
-            <div class="row mt-4">
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="table-responsive table-invoice">
-                        <table class="table table-striped" id="dataTable">
-                            <thead>
-                                <tr>
-                                    <th>{{__('admin.SN')}}</th>
-                                    <th>{{__('admin.Name')}}</th>
-                                    <th>{{__('admin.Slug')}}</th>
-                                    <th>{{__('admin.Status')}}</th>
-                                    <th>{{__('admin.Action')}}</th>
-                                  </tr>
+@section('title', translate('blog_Category'))
+
+@section('content')
+    <div class="content container-fluid">
+
+        <div class="mb-3">
+            <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
+                {{ translate('blog_categories') }}
+            </h2>
+        </div>
+
+       
+        <div class="row mt-20">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="px-3 py-4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4">
+
+                                <form action="{{ url()->current() }}" method="GET">
+                                    <div class="input-group input-group-custom input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="tio-search"></i>
+                                            </div>
+                                        </div>
+                                        <input id="datatableSearch_" type="search" name="searchValue"
+                                               class="form-control"
+                                               placeholder="{{ translate('search_Blog_Name') }}"
+                                               aria-label="Search orders"
+                                               value="{{ request('searchValue') }}">
+                                        <input type="hidden" value="{{ request('status') }}" name="status">
+                                        <button type="submit" class="btn btn--primary">{{ translate('search') }}</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
+
+                                
+                                <a href="{{ route('admin.blog-category.create') }}" class="btn btn--primary">
+                                    <i class="tio-add"></i>
+                                    <span class="text">{{ translate('add_new_blog_category') }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="datatable"
+                               class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
+                            <thead class="thead-light thead-50 text-capitalize">
+                            <tr>
+                                <th>{{__('admin.SN')}}</th>
+                                <th>{{__('admin.Name')}}</th>
+                                <th>{{__('admin.Slug')}}</th>
+                                <th>{{__('admin.Status')}}</th>
+                                <th>{{__('admin.Action')}}</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $index => $category)
+                            @foreach ($categories as $index => $category)
                                     <tr>
                                         <td>{{ ++$index }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>
                                             @if($category->status == 1)
-                                            <a href="javascript:;" onclick="changeBlogCategoryStatus({{ $category->id }})">
-                                                <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                            <a href="javascript:;" >
+                                                <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
                                             </a>
 
                                             @else
-                                            <a href="javascript:;" onclick="changeBlogCategoryStatus({{ $category->id }})">
-                                                <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                            <a href="javascript:;" >
+                                                <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
                                             </a>
 
                                             @endif
                                         </td>
                                         <td>
-                                        <a href="{{ route('admin.blog-category.edit',$category->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                        @if ($category->blogs()->count() == 0)
-                                            <a href="javascript:;" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm" onclick="deleteData({{ $category->id }})"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        @else
-                                            <a href="javascript:;" data-toggle="modal" data-target="#canNotDeleteModal" class="btn btn-danger btn-sm" disabled><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        @endif
-                                    </td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a class="btn btn-outline-info btn-sm square-btn"
+                                                title="{{ translate('edit') }}"
+                                                href="{{ route('admin.blog-category.edit',$category->id) }}">
+                                                <i class="tio-edit"></i>
+                                            </a>
+
+                                            <a class="btn btn-outline-info btn-sm square-btn"
+                                                title="{{ translate('delete') }}"
+                                                href="{{ route('admin.blog-category.destroy',$category->id) }}">
+                                                <i class="tio-delete"></i>
+                                            </a>
+                                        </div>
+                                        </td>
 
                                     </tr>
                                   @endforeach
                             </tbody>
                         </table>
-                      </div>
                     </div>
-                  </div>
-                </div>
-          </div>
-        </section>
-      </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="canNotDeleteModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                      <div class="modal-body">
-                          {{__('admin.You can not delete this category. Because there are one or more blogs has been created in this category.')}}
-                      </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">{{__('admin.Close')}}</button>
+                   
                 </div>
             </div>
         </div>
     </div>
 
-<script>
-    function deleteData(id){
-        $("#deleteForm").attr("action",'{{ url("admin/blog-category/") }}'+"/"+id)
-    }
-    function changeBlogCategoryStatus(id){
-        var isDemo = "{{ env('APP_VERSION') }}"
-        if(isDemo == 0){
-            toastr.error('This Is Demo Version. You Can Not Change Anything');
-            return;
-        }
-        $.ajax({
-            type:"put",
-            data: { _token : '{{ csrf_token() }}' },
-            url:"{{url('/admin/blog-category-status/')}}"+"/"+id,
-            success:function(response){
-                toastr.success(response)
-            },
-            error:function(err){
-                console.log(err);
-
-            }
-        })
-    }
-</script>
+    <span id="message-select-word" data-text="{{ translate('select') }}"></span>
 @endsection
