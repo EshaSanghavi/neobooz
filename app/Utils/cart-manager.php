@@ -453,11 +453,7 @@ class CartManager
         $guest_id = session('guest_id') ?? ($request->guest_id ?? 0);
         $status = 1;
         $cart = Cart::where(['id' => $request->key, 'customer_id' => ($user=='offline' ? $guest_id : $user->id)])->first();
-
-        if ($status) {
-            $cart['is_resell'] = $request->is_resell;
-        }
-
+        $cart['is_resell'] = $request->is_resell;
         $cart->save();
 
         if(!$cart->save())
