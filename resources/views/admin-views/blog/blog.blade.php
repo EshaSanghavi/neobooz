@@ -70,7 +70,7 @@
                                     <td>{{ $blog->blog_category }}</td>
                                     <td>
                                         <img class="ratio-4:1" width="80" alt=""
-                                             src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog['photo'] , type: 'backend-banner') }}">
+                                             src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image , type: 'backend-banner') }}">
                                     </td>                                   
                                     <td>
                                         @if ($blog->show_homepage)
