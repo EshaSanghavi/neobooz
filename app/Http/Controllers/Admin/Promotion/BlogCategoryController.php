@@ -10,6 +10,8 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Enums\WebConfigKey;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 use Image;
 use File;
@@ -57,7 +59,7 @@ class BlogCategoryController extends Controller
         $category->status = $request->status;
         $category->save();
 
-        
+
         $categories=BlogCategory::all();
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         Toastr::success(translate('blog_category_added_successfully'));
