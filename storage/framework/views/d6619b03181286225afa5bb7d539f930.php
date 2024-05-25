@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', translate('Esha')); ?>
+<?php $__env->startSection('title', translate('My_Shopping_Cart')); ?>
 
 <?php $__env->startPush('css_or_js'); ?>
     <meta property="og:image" content="<?php echo e(dynamicStorage(path: 'storage/app/public/company')); ?>/<?php echo e($web_config['web_logo']->value); ?>"/>
