@@ -130,7 +130,7 @@
                                        for="{{ $lang }}_showhomepage">{{ translate('show_homepage_?') }}
                                     ({{ strtoupper($lang) }})</label>
                                 <select id="{{ $lang }}_showhomepage" class="js-select2-custom form-control action-get-request-onchange" 
-                                        name="showhomepage"
+                                        name="show_homepage"
                                         data-element-id="select"
                                         data-element-type="select"
                                         required>
