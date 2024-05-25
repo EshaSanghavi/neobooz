@@ -56,7 +56,6 @@ class BlogController extends Controller
             'image.required' => trans('admin_validation.Image is required'),
             'description.required' => trans('admin_validation.Description is required'),
             'category.required' => trans('admin_validation.Category is required'),
-            'show_homepage.required' => trans('admin_validation.Show homepage is required'),
         ];
         $this->validate($request, $rules,$customMessages);
 
