@@ -1,6 +1,6 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('blog_List'))
+@section('title', translate('blog_Category'))
 
 @section('content')
     <div class="content container-fluid">
@@ -8,7 +8,7 @@
         <div class="mb-3">
             <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
-                {{ translate('blog_List') }}
+                {{ translate('blog_categories') }}
             </h2>
         </div>
 
@@ -40,9 +40,9 @@
                             <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
 
                                 
-                                <a href="{{ route('admin.blog.create') }}" class="btn btn--primary">
+                                <a href="{{ route('admin.blog-category.create') }}" class="btn btn--primary">
                                     <i class="tio-add"></i>
-                                    <span class="text">{{ translate('add_new_blog') }}</span>
+                                    <span class="text">{{ translate('add_new_blog_category') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -53,62 +53,50 @@
                                class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
                             <thead class="thead-light thead-50 text-capitalize">
                             <tr>
-                                <th>{{ translate('SL') }}</th>
-                                <th>{{ translate('Title') }}</th>
-                                <th class="text-center">{{ translate('Category') }}</th>
-                                <th class="text-center">{{ translate('Image') }}</th>
-                                <th class="text-center">{{ translate('Show homepage') }}</th>
-                                <th class="text-center">{{ translate('status') }}</th>
-                                <th class="text-center">{{ translate('action') }}</th>
+                                <th>{{__('admin.SN')}}</th>
+                                <th>{{__('admin.Name')}}</th>
+                                <th>{{__('admin.Slug')}}</th>
+                                <th>{{__('admin.Status')}}</th>
+                                <th>{{__('admin.Action')}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($blogs as $index => $blog)
-                                <tr>
-                                    <td>{{ ++$index }}</td>
-                                    <td>{{ $blog->title }}</a></td>
-                                    <td>{{ $blog->blog_category }}</td>
-                                    <td>
-                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png')  }}" width="80px" height="80px" class="rounded-circle" alt="">
-                                    </td>
-                                    <td>
-                                        @if ($blog->show_homepage)
-                                            <span class="badge badge-success">{{__('admin.Yes')}}</span>
-                                        @else
-                                            <span class="badge badge-danger">{{__('admin.No')}}</span>
-                                        @endif
-                                    </td>
+                            @foreach ($categories as $index => $category)
+                                    <tr>
+                                        <td>{{ ++$index }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
+                                        <td>
+                                            @if($category->status == 1)
+                                            <a href="javascript:;" onclick="changeBlogCategoryStatus({{ $category->id }})">
+                                                <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                            </a>
 
-                                    <td>
-                                        @if($blog->status == 1)
-                                        <a href="javascript:;" >
-                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                        </a>
+                                            @else
+                                            <a href="javascript:;" onclick="changeBlogCategoryStatus({{ $category->id }})">
+                                                <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                            </a>
 
-                                        @else
-                                        <a href="javascript:;" >
-                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                        </a>
-
-                                        @endif
-                                    </td>
-                                    <td>
+                                            @endif
+                                        </td>
+                                        <td>
                                         <div class="d-flex justify-content-center gap-2">
                                             <a class="btn btn-outline-info btn-sm square-btn"
                                                 title="{{ translate('edit') }}"
-                                                href="{{ route('admin.blog.edit',$blog->id) }}">
+                                                href="{{ route('admin.blog-category.edit',$category->id) }}">
                                                 <i class="tio-edit"></i>
                                             </a>
 
                                             <a class="btn btn-outline-info btn-sm square-btn"
                                                 title="{{ translate('delete') }}"
-                                                href="{{ route('admin.blog.destroy',$blog->id) }}">
+                                                href="{{ route('admin.blog-category.destroy',$category->id) }}">
                                                 <i class="tio-delete"></i>
                                             </a>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        </td>
+
+                                    </tr>
+                                  @endforeach
                             </tbody>
                         </table>
                     </div>

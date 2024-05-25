@@ -1,104 +1,124 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('blog_list'))
+@section('title', translate('blog_List'))
 
 @section('content')
-      <!-- Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>{{__('admin.Blog')}}</h1>
-            <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{__('admin.Dashboard')}}</a></div>
-              <div class="breadcrumb-item">{{__('admin.Blog')}}</div>
-            </div>
-          </div>
+    <div class="content container-fluid">
 
-          <div class="section-body">
-            <a href="{{ route('admin.blog.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> {{__('admin.Add New')}}</a>
-            <div class="row mt-4">
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="table-responsive table-invoice">
-                        <table class="table table-striped" id="dataTable">
-                            <thead>
-                                <tr>
-                                    <th width="5%">{{__('admin.SN')}}</th>
-                                    <th width="30%">{{__('admin.Title')}}</th>
-                                    <th width="15%">{{__('admin.Category')}}</th>
-                                    <th width="10%">{{__('admin.Image')}}</th>
-                                    <th width="10%">{{__('admin.Show Homepage')}}</th>
-                                    <th width="15%">{{__('admin.Status')}}</th>
-                                    <th width="15%">{{__('admin.Action')}}</th>
-                                  </tr>
+        <div class="mb-3">
+            <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
+                {{ translate('blog_List') }}
+            </h2>
+        </div>
+
+       
+        <div class="row mt-20">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="px-3 py-4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4">
+
+                                <form action="{{ url()->current() }}" method="GET">
+                                    <div class="input-group input-group-custom input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="tio-search"></i>
+                                            </div>
+                                        </div>
+                                        <input id="datatableSearch_" type="search" name="searchValue"
+                                               class="form-control"
+                                               placeholder="{{ translate('search_Blog_Name') }}"
+                                               aria-label="Search orders"
+                                               value="{{ request('searchValue') }}">
+                                        <input type="hidden" value="{{ request('status') }}" name="status">
+                                        <button type="submit" class="btn btn--primary">{{ translate('search') }}</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
+
+                                
+                                <a href="{{ route('admin.blog.create') }}" class="btn btn--primary">
+                                    <i class="tio-add"></i>
+                                    <span class="text">{{ translate('add_new_blog') }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="datatable"
+                               class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
+                            <thead class="thead-light thead-50 text-capitalize">
+                            <tr>
+                                <th>{{ translate('SL') }}</th>
+                                <th>{{ translate('Title') }}</th>
+                                <th class="text-center">{{ translate('Category') }}</th>
+                                <th class="text-center">{{ translate('Image') }}</th>
+                                <th class="text-center">{{ translate('Show homepage') }}</th>
+                                <th class="text-center">{{ translate('status') }}</th>
+                                <th class="text-center">{{ translate('action') }}</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach ($blogs as $index => $blog)
-                                    <tr>
-                                        <td>{{ ++$index }}</td>
-                                        <td><a target="_blank" href="{{ $frontend_url.$blog->slug }}">{{ $blog->title }}</a></td>
-                                        <td>{{ $blog->category->name }}</td>
-                                        <td><img src="{{ asset($blog->image) }}" width="80px" height="80px" class="rounded-circle" alt=""></td>
-                                        <td>
-                                            @if ($blog->show_homepage)
-                                                <span class="badge badge-success">{{__('admin.Yes')}}</span>
-                                            @else
-                                            <span class="badge badge-danger">{{__('admin.No')}}</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($blog->status == 1)
-                                            <a href="javascript:;" onclick="changeBlogStatus({{ $blog->id }})">
-                                                <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @else
-                                            <a href="javascript:;" onclick="changeBlogStatus({{ $blog->id }})">
-                                                <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @endif
-                                        </td>
-                                        <td>
-                                        <a href="{{ route('admin.blog.edit',$blog->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                        <a href="javascript:;" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm" onclick="deleteData({{ $blog->id }})"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            @foreach($blogs as $index => $blog)
+                                <tr>
+                                    <td>{{ ++$index }}</td>
+                                    <td>{{ $blog->title }}</a></td>
+                                    <td>{{ $blog->blog_category }}</td>
+                                    <td>
+                                        <img class="ratio-4:1" width="80" alt=""
+                                             src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog['photo'] , type: 'backend-banner') }}">
+                                    </td>                                   
+                                    <td>
+                                        @if ($blog->show_homepage)
+                                            <span class="badge badge-success">{{translate('Yes')}}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{translate('No')}}</span>
+                                        @endif
                                     </td>
 
-                                    </tr>
-                                  @endforeach
+                                    <td>
+                                        @if($blog->status == 1)
+                                        <a href="javascript:;" >
+                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                        </a>
+
+                                        @else
+                                        <a href="javascript:;" >
+                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                        </a>
+
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a class="btn btn-outline-info btn-sm square-btn"
+                                                title="{{ translate('edit') }}"
+                                                href="{{ route('admin.blog.edit',$blog->id) }}">
+                                                <i class="tio-edit"></i>
+                                            </a>
+
+                                            <a class="btn btn-outline-info btn-sm square-btn"
+                                                title="{{ translate('delete') }}"
+                                                href="{{ route('admin.blog.destroy',$blog->id) }}">
+                                                <i class="tio-delete"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
-                      </div>
                     </div>
-                  </div>
+
+                   
                 </div>
-          </div>
-        </section>
-      </div>
+            </div>
+        </div>
+    </div>
 
-<script>
-    function deleteData(id){
-        $("#deleteForm").attr("action",'{{ url("admin/blog/") }}'+"/"+id)
-    }
-    function changeBlogStatus(id){
-        var isDemo = "{{ env('APP_VERSION') }}"
-        if(isDemo == 0){
-            toastr.error('This Is Demo Version. You Can Not Change Anything');
-            return;
-        }
-        $.ajax({
-            type:"put",
-            data: { _token : '{{ csrf_token() }}' },
-            url:"{{url('/admin/blog-status/')}}"+"/"+id,
-            success:function(response){
-                toastr.success(response)
-            },
-            error:function(err){
-                console.log(err);
-
-            }
-        })
-    }
-</script>
+    <span id="message-select-word" data-text="{{ translate('select') }}"></span>
 @endsection

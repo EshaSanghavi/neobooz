@@ -3,9 +3,17 @@
 namespace App\Http\Controllers\Admin\Promotion;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\BlogComment;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Enums\WebConfigKey;
 
+use Image;
+use File;
+use Auth;
 class BlogCategoryController extends Controller
 {
     public function __construct()
@@ -15,7 +23,7 @@ class BlogCategoryController extends Controller
     public function index()
     {
         $categories=BlogCategory::with('blogs')->get();
-        return view('admin.promotion.blog_category',compact('categories'));
+        return view('admin-views.blog.blog_category',compact('categories'));
 
     }
 

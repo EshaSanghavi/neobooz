@@ -24,7 +24,7 @@ class BlogController extends Controller
             ->get();
         $languages = getWebConfig(name: 'pnc_language') ?? null;
 
-        return view('admin-views.blog.list', compact('blogs', 'languages'));
+        return view('admin-views.blog.blog', compact('blogs', 'languages'));
     }
 
 
