@@ -485,7 +485,7 @@
 
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
 
-                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-category.*') ? 'active' : '' }}">
+                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-category/*') ? 'active' : '' }}">
                                         <a class="js-navbar-vertical-aside-menu-link nav-link"
                                             href="{{ route('admin.blog-category.index') }}" 
                                             title="{{translate('Categories')}}">
@@ -495,7 +495,7 @@
                                         </a>
                                     </li>
 
-                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog.*') ? 'active' : '' }}">
+                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog/*') ? 'active' : '' }}">
                                         <a class="js-navbar-vertical-aside-menu-link nav-link"
                                             href="{{ route('admin.blog.index') }}" 
                                             title="{{translate('Blogs')}}">
