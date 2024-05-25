@@ -42,7 +42,7 @@
                                 
                                 <a href="{{ route('admin.blog-category.create') }}" class="btn btn--primary">
                                     <i class="tio-add"></i>
-                                    <span class="text">{{ translate('add_new_blog') }}</span>
+                                    <span class="text">{{ translate('add_new_blog_category') }}</span>
                                 </a>
                             </div>
                         </div>

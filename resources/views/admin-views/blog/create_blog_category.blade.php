@@ -1,6 +1,6 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('product_Add'))
+@section('title', translate('blog_category_Add'))
 
 @push('css_or_js')
     <link href="{{ dynamicAsset(path: 'public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
         <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <h2 class="h1 mb-0 d-flex gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
-                {{ translate('add_New_Product') }}
+                {{ translate('add_New_Blog_Category') }}
             </h2>
         </div>
 
@@ -50,7 +50,8 @@
                                 <label class="title-color"
                                        for="{{ $lang }}_slug">{{ translate('slug') }}
                                     ({{ strtoupper($lang) }})</label>
-                                <textarea class="summernote" name="slug">{{ old('details') }}</textarea>
+                                    <input type="text" {{ $lang == $defaultLanguage ? 'required' : '' }} name="slug"
+                                       id="{{ $lang }}_slug" class="form-control" >
                             </div>
 
                             <div class="form-group pt-2">
@@ -58,8 +59,8 @@
                                        for="{{ $lang }}_status">{{ translate('status') }}
                                     ({{ strtoupper($lang) }})</label>
                                 <select name="status" class="form-control">
-                                    <option value="1">{{__('admin.Active')}}</option>
-                                    <option value="0">{{__('admin.Inactive')}}</option>
+                                    <option value="1">{{translate('.Active')}}</option>
+                                    <option value="0">{{translate('Inactive')}}</option>
                                 </select>                            
                             </div>
 
