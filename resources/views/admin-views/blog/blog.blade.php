@@ -1,8 +1,8 @@
-@extends('admin.master_layout')
-@section('title')
-<title>{{__('admin.Blog')}}</title>
-@endsection
-@section('admin-content')
+@extends('layouts.back-end.app')
+
+@section('title', translate('blog_list'))
+
+@section('content')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
