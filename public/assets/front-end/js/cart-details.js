@@ -27,7 +27,7 @@ $('.route-cart-updateResell').on('click', function () {
         } else {
             targetDiv.style.display = "none";
         }
-
+        alert(status);
     }
 });
 });
