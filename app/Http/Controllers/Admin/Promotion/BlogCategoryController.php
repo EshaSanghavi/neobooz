@@ -23,7 +23,8 @@ class BlogCategoryController extends Controller
     public function index()
     {
         $categories=BlogCategory::all();
-        return view('admin-views.blog.list',compact('categories'));
+        $languages = getWebConfig(name: 'pnc_language') ?? null;
+        return view('admin-views.blog.list',compact('categories', 'languages'));
 
     }
 
