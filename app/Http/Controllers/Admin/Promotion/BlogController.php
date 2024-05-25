@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Promotion;
 
+use App\Enums\ViewPaths\Admin\Blog as Blogs;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
@@ -27,7 +28,7 @@ class BlogController extends Controller
         $frontend_url = $setting->frontend_url;
         $frontend_url = $frontend_url.'/blogs/blog?slug=';
 
-        return view('admin.promotion.list',compact('blogs','frontend_url'));
+        return view(Blogs::LIST[VIEW], compact('blogs','frontend_url'));
     }
 
 

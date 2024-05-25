@@ -6,7 +6,7 @@ enum Blog
 {
     const LIST = [
         URI => 'list',
-        VIEW => 'admin-views.blog.view'
+        VIEW => 'admin-views.blog.list'
     ];
 
     const ADD = [
