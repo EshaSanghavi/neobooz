@@ -67,6 +67,17 @@ class BlogController extends BaseController
         return view(Banner::LIST[VIEW],  compact('banners', 'categories','shops', 'brands', 'products', 'isReactActive', 'bannerTypes'));
     }
 
+    public function getAddView($id): View
+    {
+        $bannerTypes = $this->bannerService->getBannerTypes();
+        $banner = $this->bannerRepo->getFirstWhere(params: ['id'=>$id]);
+        $categories = $this->categoryRepo->getListWhere(filters: ['position'=>0], dataLimit: 'all');
+        $shops = $this->shopRepo->getListWithScope(scope:'active', dataLimit: 'all');
+        $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
+        $products = $this->productRepo->getListWithScope(scope:'active', dataLimit: 'all');
+        return view(Banner::UPDATE[VIEW], compact('banner', 'categories','shops', 'brands', 'products', 'bannerTypes'));
+    }
+
     public function add(BannerAddRequest $request): RedirectResponse
     {
         $data = $this->bannerService->getProcessedData(request: $request);
