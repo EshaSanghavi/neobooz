@@ -117,6 +117,8 @@ use App\Enums\ViewPaths\Admin\SubSubCategory;
 use App\Enums\ViewPaths\Admin\WithdrawalMethod;
 use App\Http\Controllers\Admin\Promotion\BannerController;
 use App\Http\Controllers\Admin\Promotion\BlogController;
+use App\Http\Controllers\WEB\Admin\BlogCategoryController;
+use App\Http\Controllers\WEB\Admin\BlogCommentController;
 use App\Http\Controllers\Admin\Promotion\CouponController;
 use App\Http\Controllers\Admin\Customer\CustomerController;
 use App\Http\Controllers\Admin\Customer\CustomerLoyaltyController;
@@ -148,6 +150,8 @@ use App\Http\Controllers\Admin\OrderReportController;
 use App\Http\Controllers\Admin\ProductWishlistReportController;
 use App\Http\Controllers\Admin\Settings\ReactSettingsController;
 use App\Enums\ViewPaths\Admin\ReactSetup;
+
+
 
 
 Route::post('change-language', [SharedController::class,'changeLanguage'])->name('change-language');
@@ -330,13 +334,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     });
     
     // Blog
-    Route::group(['prefix' => 'blogs', 'as' => 'blogs.', 'middleware' => ['module:promotion_management']], function () {
-        Route::controller(BlogController::class)->group(function () {
-            Route::get(Banner::LIST[URI], 'index')->name('list');
-            Route::get(Banner::ADD[URI], 'getAddView')->name('add');
-            Route::post(Banner::ADD[URI], 'add')->name('store');
-        });
-    });
+    Route::resource('blog-category', BlogCategoryController::class);
+    Route::put('blog-category-status/{id}', [BlogCategoryController::class,'changeStatus'])->name('blog.category.status');
+
+    Route::resource('blog', BlogController::class);
+    Route::put('blog-status/{id}', [BlogController::class,'changeStatus'])->name('blog.status');
+
+    Route::resource('popular-blog', PopularBlogController::class);
+    Route::put('popular-blog-status/{id}', [PopularBlogController::class,'changeStatus'])->name('popular-blog.status');
+
+    Route::resource('blog-comment', BlogCommentController::class);
+    Route::put('blog-comment-status/{id}', [BlogCommentController::class,'changeStatus'])->name('blog-comment.status');
+
 
 
     // Customer Routes, Customer wallet Routes, Customer Loyalty Routes
