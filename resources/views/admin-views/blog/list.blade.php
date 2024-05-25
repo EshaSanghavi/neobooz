@@ -43,72 +43,13 @@
                                 
                                 <a href="{{ route('admin.blog.add') }}" class="btn btn--primary">
                                     <i class="tio-add"></i>
-                                    <span class="text">{{ translate('add_new_product') }}</span>
+                                    <span class="text">{{ translate('add_new_blog') }}</span>
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="table-responsive">
-                        <table id="datatable"
-                               class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
-                            <thead class="thead-light thead-50 text-capitalize">
-                            <tr>
-                                <th>{{ translate('SL') }}</th>
-                                <th>{{ translate('Title') }}</th>
-                                <th class="text-center">{{ translate('Category') }}</th>
-                                <th class="text-center">{{ translate('Image') }}</th>
-                                <th class="text-center">{{ translate('Show homepage') }}</th>
-                                <th class="text-center">{{ translate('status') }}</th>
-                                <th class="text-center">{{ translate('action') }}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($blogs as $index => $blog)
-                                <tr>
-                                    <td>{{ ++$index }}</td>
-                                    <td>{{ $blog->title }}</a></td>
-                                    <td>{{ $blog->category->name }}</td>
-                                    <td><img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png')  }}" width="80px" height="80px" class="rounded-circle" alt=""></td>
-                                        <td>
-                                            @if ($blog->show_homepage)
-                                                <span class="badge badge-success">{{__('admin.Yes')}}</span>
-                                            @else
-                                            <span class="badge badge-danger">{{__('admin.No')}}</span>
-                                            @endif
-                                        </td>
-
-                                        <td>
-                                            @if($blog->status == 1)
-                                            <a href="javascript:;" >
-                                                <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @else
-                                            <a href="javascript:;" >
-                                                <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                               title="{{ translate('edit') }}"
-                                               href="{{ route('admin.blog.edit',$blog->id) }}">
-                                                <i class="tio-edit"></i>
-                                            </a>
-
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                               title="{{ translate('delete') }}"
-                                               href="{{ route('admin.blog.delete',$blog->id) }}">
-                                                <i class="tio-delete"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    
 
                    
                 </div>
