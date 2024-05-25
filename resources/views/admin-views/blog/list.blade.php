@@ -40,7 +40,7 @@
                             <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
 
                                 
-                                <a href="{{ route('admin.blog.add') }}" class="btn btn--primary">
+                                <a href="" class="btn btn--primary">
                                     <i class="tio-add"></i>
                                     <span class="text">{{ translate('add_new_blog') }}</span>
                                 </a>
