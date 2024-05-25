@@ -31,7 +31,9 @@ class BlogController extends Controller
     public function create()
     {
         $categories = BlogCategory::where('status',1)->get();
-        return view('admin-views.blog.list',compact('categories'));
+        $languages = getWebConfig(name: 'pnc_language') ?? null;
+        $defaultLanguage = $languages[0];
+        return view('admin-views.blog.list',compact('categories', 'languages', 'defaultLanguage'));
     }
 
 

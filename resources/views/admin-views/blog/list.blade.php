@@ -1,6 +1,6 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('blog_category_Add'))
+@section('title', translate('blog_Add'))
 
 @push('css_or_js')
     <link href="{{ dynamicAsset(path: 'public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
