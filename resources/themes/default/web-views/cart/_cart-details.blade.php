@@ -329,7 +329,7 @@
                             <tr>
                                 <td class="__w-45 ">
                                     <div>
-                                        <label>Is this a resell product?</label>
+                                        <label class="title-color" for="{{ $cartItem['id] }}" >Is this a resell product?</label>
                                         <input type="checkbox"  class="form-control" name="resell_{{ $cartItem['id'] }}" id="{{ $cartItem['id'] }}" onchange="resellInput(this)">
                                     </div>
                                 </td>
