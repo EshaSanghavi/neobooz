@@ -122,7 +122,7 @@
                                 <label class="title-color"
                                        for="{{ $lang }}_description">{{ translate('description') }}
                                     ({{ strtoupper($lang) }})</label>
-                                <textarea class="summernote" name="description[]">{{ old('details') }}</textarea>
+                                <textarea class="summernote" name="description">{{ old('details') }}</textarea>
                             </div>
                             
                             <div class="form-group pt-2">
