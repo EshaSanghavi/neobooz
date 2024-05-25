@@ -764,7 +764,7 @@
 </div>
 
 <script>
-        resellInput(cart)
+        function resellInput(cart)
         {
             var id="resell_price_"+cart;
             alert(id);
