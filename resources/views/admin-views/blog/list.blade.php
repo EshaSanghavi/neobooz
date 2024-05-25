@@ -45,6 +45,62 @@
                             </div>
                             <input type="hidden" name="lang[]" value="{{ $lang }}">
                             
+                            <div class="mt-3 rest-part">
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+                                        <div>
+                                            <label for="name"
+                                                   class="title-color text-capitalize font-weight-bold mb-0">{{ translate('product_thumbnail') }}</label>
+                                            <span
+                                                class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
+                                            <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
+                                                  title="{{ translate('add_your_product’s_thumbnail_in') }} JPG, PNG or JPEG {{ translate('format_within') }} 2MB">
+                                                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}"
+                                                     alt="">
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="custom_upload_input">
+                                            <input type="file" name="image" class="custom-upload-input-file action-upload-color-image" id=""
+                                                   data-imgpreview="pre_img_viewer"
+                                                   accept=".jpg, .webp, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+
+                                            <span class="delete_file_input btn btn-outline-danger btn-sm square-btn d--none">
+                                                <i class="tio-delete"></i>
+                                            </span>
+
+                                            <div class="img_area_with_preview position-absolute z-index-2">
+                                                <img id="pre_img_viewer" class="h-auto aspect-1 bg-white d-none"
+                                                     src="dummy" alt="">
+                                            </div>
+                                            <div
+                                                class="position-absolute h-100 top-0 w-100 d-flex align-content-center justify-content-center">
+                                                <div
+                                                    class="d-flex flex-column justify-content-center align-items-center">
+                                                    <img alt="" class="w-75"
+                                                         src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/product-upload-icon.svg') }}">
+                                                    <h3 class="text-muted">{{ translate('Upload_Image') }}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <p class="text-muted mt-2">
+                                            {{ translate('image_format') }} : {{ "Jpg, png, jpeg, webp," }}
+                                            <br>
+                                            {{ translate('image_size') }} : {{ translate('max') }} {{ "2 MB" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                             <div class="form-group pt-2">
                                 <label class="title-color"
                                        for="{{ $lang }}_slug">{{ translate('slug') }}
