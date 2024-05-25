@@ -480,7 +480,14 @@
                             </li>
 
                             
-                            
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/blog*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{route('admin.blog.list')}}" title="{{translate('blog')}}">
+                                    <i class="tio-photo-square-outlined nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('blog')}}</span>
+                                </a>
+                            </li>
 
 
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/coupon*') || Request::is('admin/deal*')) ?'active':''}}">
