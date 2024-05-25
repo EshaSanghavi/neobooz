@@ -340,9 +340,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     Route::resource('blog', BlogController::class);
     Route::put('blog-status/{id}', [BlogController::class,'changeStatus'])->name('blog.status');
 
-    Route::resource('popular-blog', PopularBlogController::class);
-    Route::put('popular-blog-status/{id}', [PopularBlogController::class,'changeStatus'])->name('popular-blog.status');
-
     Route::resource('blog-comment', BlogCommentController::class);
     Route::put('blog-comment-status/{id}', [BlogCommentController::class,'changeStatus'])->name('blog-comment.status');
 

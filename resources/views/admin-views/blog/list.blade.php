@@ -40,7 +40,7 @@
                             <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
 
                                 
-                                <a href="" class="btn btn--primary">
+                                <a href="{{ route('admin.blog.create') }}" class="btn btn--primary">
                                     <i class="tio-add"></i>
                                     <span class="text">{{ translate('add_new_blog') }}</span>
                                 </a>
@@ -63,48 +63,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($blogs as $index => $blog)
-                                <tr>
-                                    <td>{{ ++$index }}</td>
-                                    <td>{{ $blog->title }}</a></td>
-                                    <td></td>
-                                    <td><img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png')  }}" width="80px" height="80px" class="rounded-circle" alt=""></td>
-                                        <td>
-                                            @if ($blog->show_homepage)
-                                                <span class="badge badge-success">{{__('admin.Yes')}}</span>
-                                            @else
-                                            <span class="badge badge-danger">{{__('admin.No')}}</span>
-                                            @endif
-                                        </td>
-
-                                        <td>
-                                            @if($blog->status == 1)
-                                            <a href="javascript:;" >
-                                                <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @else
-                                            <a href="javascript:;" >
-                                                <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                               title="{{ translate('edit') }}"
-                                               href="{{ route('admin.blog.edit',$blog->id) }}">
-                                                <i class="tio-edit"></i>
-                                            </a>
-
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                               title="{{ translate('delete') }}"
-                                               href="{{ route('admin.blog.delete',$blog->id) }}">
-                                                <i class="tio-delete"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                            @endforeach
+                            
                             </tbody>
                         </table>
                     </div>
