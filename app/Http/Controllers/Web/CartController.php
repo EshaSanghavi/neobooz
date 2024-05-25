@@ -167,10 +167,7 @@ class CartController extends Controller
 
 
         if ($response['status'] == 0) {
-            return response()->json([
-                'status'=>$response['status'],
-                'message'=>$response['message'],
-            ]);
+            return response()->json($response);
         }
 
         return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
