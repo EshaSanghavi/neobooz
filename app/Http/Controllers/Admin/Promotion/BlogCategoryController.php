@@ -22,14 +22,14 @@ class BlogCategoryController extends Controller
 
     public function index()
     {
-        $categories=BlogCategory::with('blogs')->get();
+        $categories=BlogCategory::all();
         return view('admin-views.blog.blog_category',compact('categories'));
 
     }
 
     public function create()
     {
-        return view('admin-views.create_blog_category');
+        return view('admin-views.blog.create_blog_category');
     }
 
 
