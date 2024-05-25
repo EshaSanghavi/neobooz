@@ -489,15 +489,13 @@
                                   </a>
                                   <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                       style="display: {{(Request::is('admin/blogs/*') ? 'block' : ''}}">
-                                    
-                                    <li class="nav-item {{ Request::is('admin/blogs') ? 'active' : '' }}">
+                                    <li class="nav-item {{ Request::is('admin/blogs/*') ? 'active' : '' }}">
                                       <a class="nav-link" href="{{ route('admin.blogs.list') }}"
                                          title="{{ translate('Blog_List') }}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{ translate('Blog_List') }}</span>
                                       </a>
                                     </li>
-                                   
                                   </ul>
                                 </li>
 
