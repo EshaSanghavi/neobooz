@@ -29,7 +29,7 @@ class BlogCategoryController extends Controller
 
     public function create()
     {
-        return view('admin.promotion.create_blog_category');
+        return view('admin-views.create_blog_category');
     }
 
 
