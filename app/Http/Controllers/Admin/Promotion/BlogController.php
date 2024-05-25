@@ -19,7 +19,10 @@ class BlogController extends Controller
 
     public function index()
     {
-        echo "blog";
+        $blogs = Blog::with('category','comments')->get();
+        $languages = getWebConfig(name: 'pnc_language') ?? null;
+
+        return view('admin-views.blog.list', compact('blogs', 'languages'));
     }
 
 
