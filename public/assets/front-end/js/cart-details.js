@@ -1,38 +1,36 @@
 "use strict";
 
-$(document).ready(function() {
-    $('.route-cart-updateResell').onclick(function() {
-      var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
-      var is_resell = $(this).is(':checked'); // Get checkbox checked state
-  
-      $.post($('#route-cart-updateResell').data('url'), {
-        _token: $('meta[name="_token"]').attr('content'),
-        key,
-        is_resell
-    }, function (response) {
-        if (response.status == 0) {
-            toastr.error(response.message, {
-                CloseButton: true,
-                ProgressBar: true
-            });
-        } else {
-            updateNavCart();
-            $('#cart-summary').empty().html(response);
-            $('[data-toggle="tooltip"]').tooltip()
-            actionCheckoutFunctionInit()
-            couponCode()
-            var id="resell_price_"+key;
-            var targetDiv = document.getElementById(id); 
-            if(is_resell) {
-                targetDiv.style.display = "block";
-            } else {
-                targetDiv.style.display = "none";
-            }
+$('.route-cart-updateResell').on('click', function () {
+    var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
+    var is_resell = $(this).is(':checked'); // Get checkbox checked state
 
+    $.post($('#route-cart-updateResell').data('url'), {
+    _token: $('meta[name="_token"]').attr('content'),
+    key,
+    is_resell
+}, function (response) {
+    if (response.status == 0) {
+        toastr.error(response.message, {
+            CloseButton: true,
+            ProgressBar: true
+        });
+    } else {
+        updateNavCart();
+        $('#cart-summary').empty().html(response);
+        $('[data-toggle="tooltip"]').tooltip()
+        actionCheckoutFunctionInit()
+        couponCode()
+        var id="resell_price_"+key;
+        var targetDiv = document.getElementById(id); 
+        if(is_resell) {
+            targetDiv.style.display = "block";
+        } else {
+            targetDiv.style.display = "none";
         }
-    });
-    });
-  });
+
+    }
+});
+});
 
 
 
