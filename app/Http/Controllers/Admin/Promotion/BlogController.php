@@ -83,9 +83,9 @@ class BlogController extends Controller
         $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
-        $languages = getWebConfig(name: 'pnc_language') ?? null;
-        Toastr::success(translate('blog_added_successfully'));
-        return view('admin-views.blog.blog', compact('blogs', 'languages'));
+        $notification= translate('Created Successfully');
+        $notification = array('messege'=>$notification,'alert-type'=>'success');
+        return view('admin-views.blog.blog', compact('blogs', 'languages'))->with($notification);
     }
 
     public function edit($id)

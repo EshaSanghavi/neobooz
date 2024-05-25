@@ -34,7 +34,9 @@ class BlogCategoryController extends Controller
     {
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
-        return view('admin-views.blog.create_blog_category', compact('languages', 'defaultLanguage'));
+        $notification= translate('Created Successfully');
+        $notification = array('messege'=>$notification,'alert-type'=>'success');
+        return view('admin-views.blog.create_blog_category', compact('languages', 'defaultLanguage'))->with($notification);
     }
 
 
