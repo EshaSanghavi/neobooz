@@ -51,11 +51,11 @@
                                     <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                                         <div>
                                             <label for="name"
-                                                   class="title-color text-capitalize font-weight-bold mb-0">{{ translate('product_thumbnail') }}</label>
+                                                   class="title-color text-capitalize font-weight-bold mb-0">{{ translate('blog_thumbnail') }}</label>
                                             <span
-                                                class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
+                                                class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['vlog Image'] }}</span>
                                             <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
-                                                  title="{{ translate('add_your_product’s_thumbnail_in') }} JPG, PNG or JPEG {{ translate('format_within') }} 2MB">
+                                                  title="{{ translate('add_your_blog’s_thumbnail_in') }} JPG, PNG or JPEG {{ translate('format_within') }} 2MB">
                                                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}"
                                                      alt="">
                                             </span>
@@ -63,7 +63,7 @@
                                     </div>
 
                                     <div>
-                                        <div class="custom_upload_input" style="height:150px; width:150px;">
+                                        <div class="custom_upload_input" style="height:200px; width:200px;">
                                             <input type="file" name="image" class="custom-upload-input-file action-upload-color-image" id=""
                                                    data-imgpreview="pre_img_viewer"
                                                    accept=".jpg, .webp, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
