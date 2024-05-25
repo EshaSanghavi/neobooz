@@ -1,74 +1,89 @@
-@extends('admin.master_layout')
-@section('title')
-<title>{{__('admin.Blog Category')}}</title>
-@endsection
-@section('admin-content')
-      <!-- Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>{{__('admin.Create Blog Category')}}</h1>
-            <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('admin.blog-category.index') }}">{{__('admin.Blog Category')}}</a></div>
-              <div class="breadcrumb-item active"><a href="{{ route('admin.blog.index') }}">{{__('admin.Blogs')}}</a></div>
-              <div class="breadcrumb-item">{{__('admin.Create Blog Category')}}</div>
-            </div>
-          </div>
+@extends('layouts.back-end.app')
 
-          <div class="section-body">
-            <a href="{{ route('admin.blog-category.index') }}" class="btn btn-primary"><i class="fas fa-list"></i> {{__('admin.Blog Category')}}</a>
-            <div class="row mt-4">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                        <form action="{{ route('admin.blog-category.store') }}" method="POST">
-                            @csrf
-                            <div class="row">
-                                <div class="form-group col-12">
-                                    <label>{{__('admin.Name')}} <span class="text-danger">*</span></label>
-                                    <input type="text" id="name" class="form-control"  name="name">
-                                </div>
-                                <div class="form-group col-12">
-                                    <label>{{__('admin.Slug')}} <span class="text-danger">*</span></label>
-                                    <input type="text" id="slug" class="form-control"  name="slug">
-                                </div>
-                                <div class="form-group col-12">
-                                    <label>{{__('admin.Status')}} <span class="text-danger">*</span></label>
-                                    <select name="status" class="form-control">
-                                        <option value="1">{{__('admin.Active')}}</option>
-                                        <option value="0">{{__('admin.Inactive')}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <button class="btn btn-primary">{{__('admin.Save')}}</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                  </div>
+@section('title', translate('product_Add'))
+
+@push('css_or_js')
+    <link href="{{ dynamicAsset(path: 'public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
+    <link href="{{ dynamicAsset(path: 'public/assets/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ dynamicAsset(path: 'public/assets/back-end/plugins/summernote/summernote.min.css') }}" rel="stylesheet">
+@endpush
+
+@section('content')
+    <div class="content container-fluid">
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+            <h2 class="h1 mb-0 d-flex gap-2">
+                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
+                {{ translate('add_New_Product') }}
+            </h2>
+        </div>
+
+        <form class="product-form text-start" action="{{ route('admin.blog-category.store') }}" method="POST"
+              enctype="multipart/form-data" id="product_form">
+            @csrf
+            <div class="card">
+                <div class="px-4 pt-3">
+                    <ul class="nav nav-tabs w-fit-content mb-4">
+                        @foreach ($languages as $lang)
+                            <li class="nav-item">
+                                <span class="nav-link text-capitalize form-system-language-tab {{ $lang == $defaultLanguage ? 'active' : '' }} cursor-pointer"
+                                      id="{{ $lang }}-link">{{ getLanguageName($lang) . '(' . strtoupper($lang) . ')' }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-          </div>
-        </section>
-      </div>
 
-<script>
-    (function($) {
-        "use strict";
-        $(document).ready(function () {
-            $("#name").on("focusout",function(e){
-                $("#slug").val(convertToSlug($(this).val()));
-            })
-        });
-    })(jQuery);
+                <div class="card-body">
+                    @foreach ($languages as $lang)
+                        <div class="{{ $lang != $defaultLanguage ? 'd-none' : '' }} form-system-language-form"
+                             id="{{ $lang }}-form">
+                            <div class="form-group">
+                                <label class="title-color"
+                                       for="{{ $lang }}_name">{{ translate('product_name') }}
+                                    ({{ strtoupper($lang) }})
+                                </label>
+                                <input type="text" {{ $lang == $defaultLanguage ? 'required' : '' }} name="name"
+                                       id="{{ $lang }}_name" class="form-control" placeholder="New Category">
+                            </div>
+                            <input type="hidden" name="lang[]" value="{{ $lang }}">
+                            
+                            <div class="form-group pt-2">
+                                <label class="title-color"
+                                       for="{{ $lang }}_slug">{{ translate('slug') }}
+                                    ({{ strtoupper($lang) }})</label>
+                                <textarea class="summernote" name="slug">{{ old('details') }}</textarea>
+                            </div>
 
-    function convertToSlug(Text)
-        {
-            return Text
-                .toLowerCase()
-                .replace(/[^\w ]+/g,'')
-                .replace(/ +/g,'-');
-        }
-</script>
+                            <div class="form-group pt-2">
+                                <label class="title-color"
+                                       for="{{ $lang }}_status">{{ translate('status') }}
+                                    ({{ strtoupper($lang) }})</label>
+                                <select name="status" class="form-control">
+                                    <option value="1">{{__('admin.Active')}}</option>
+                                    <option value="0">{{__('admin.Inactive')}}</option>
+                                </select>                            
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-end gap-3 mt-3 mx-1">
+                <button type="reset" class="btn btn-secondary px-5">{{ translate('reset') }}</button>
+                <button type="button" class="btn btn--primary px-5 product-add-requirements-check">{{ translate('submit') }}</button>
+            </div>
+        </form>
+    </div>
+
+    
 @endsection
+
+@push('script')
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/tags-input.min.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/spartan-multi-image-picker.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/plugins/summernote/summernote.min.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-update.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script>
+@endpush

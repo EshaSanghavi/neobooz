@@ -24,13 +24,15 @@ class BlogCategoryController extends Controller
     {
         $categories=BlogCategory::all();
         $languages = getWebConfig(name: 'pnc_language') ?? null;
-        return view('admin-views.blog.list',compact('categories', 'languages'));
+        return view('admin-views.blog.blog_category',compact('categories', 'languages'));
 
     }
 
     public function create()
     {
-        return view('admin-views.blog.create_blog_category');
+        $languages = getWebConfig(name: 'pnc_language') ?? null;
+        $defaultLanguage = $languages[0];
+        return view('admin-views.blog.create_blog_category', compact('languages', 'defaultLanguage'));
     }
 
 

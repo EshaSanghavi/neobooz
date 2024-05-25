@@ -1,108 +1,89 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('blog_category'))
+@section('title', translate('product_Add'))
+
+@push('css_or_js')
+    <link href="{{ dynamicAsset(path: 'public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
+    <link href="{{ dynamicAsset(path: 'public/assets/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ dynamicAsset(path: 'public/assets/back-end/plugins/summernote/summernote.min.css') }}" rel="stylesheet">
+@endpush
 
 @section('content')
     <div class="content container-fluid">
-
-        <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+            <h2 class="h1 mb-0 d-flex gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
-                {{ translate('blog_category') }}
+                {{ translate('add_New_Product') }}
             </h2>
         </div>
 
-       
-        <div class="row mt-20">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="px-3 py-4">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4">
+        <form class="product-form text-start" action="{{ route('admin.blog-category.store') }}" method="POST"
+              enctype="multipart/form-data" id="product_form">
+            @csrf
+            <div class="card">
+                <div class="px-4 pt-3">
+                    <ul class="nav nav-tabs w-fit-content mb-4">
+                        @foreach ($languages as $lang)
+                            <li class="nav-item">
+                                <span class="nav-link text-capitalize form-system-language-tab {{ $lang == $defaultLanguage ? 'active' : '' }} cursor-pointer"
+                                      id="{{ $lang }}-link">{{ getLanguageName($lang) . '(' . strtoupper($lang) . ')' }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
 
-                                <form action="{{ url()->current() }}" method="GET">
-                                    <div class="input-group input-group-custom input-group-merge">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="tio-search"></i>
-                                            </div>
-                                        </div>
-                                        <input id="datatableSearch_" type="search" name="searchValue"
-                                               class="form-control"
-                                               placeholder="{{ translate('search_Blog_Name') }}"
-                                               aria-label="Search orders"
-                                               value="{{ request('searchValue') }}">
-                                        <input type="hidden" value="{{ request('status') }}" name="status">
-                                        <button type="submit" class="btn btn--primary">{{ translate('search') }}</button>
-                                    </div>
-                                </form>
+                <div class="card-body">
+                    @foreach ($languages as $lang)
+                        <div class="{{ $lang != $defaultLanguage ? 'd-none' : '' }} form-system-language-form"
+                             id="{{ $lang }}-form">
+                            <div class="form-group">
+                                <label class="title-color"
+                                       for="{{ $lang }}_name">{{ translate('product_name') }}
+                                    ({{ strtoupper($lang) }})
+                                </label>
+                                <input type="text" {{ $lang == $defaultLanguage ? 'required' : '' }} name="name"
+                                       id="{{ $lang }}_name" class="form-control" placeholder="New Category">
                             </div>
-                            <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
+                            <input type="hidden" name="lang[]" value="{{ $lang }}">
+                            
+                            <div class="form-group pt-2">
+                                <label class="title-color"
+                                       for="{{ $lang }}_slug">{{ translate('slug') }}
+                                    ({{ strtoupper($lang) }})</label>
+                                <textarea class="summernote" name="slug">{{ old('details') }}</textarea>
+                            </div>
 
-                                
-                                <a href="{{ route('admin.blog-category.create') }}" class="btn btn--primary">
-                                    <i class="tio-add"></i>
-                                    <span class="text">{{ translate('add_new_blog') }}</span>
-                                </a>
+                            <div class="form-group pt-2">
+                                <label class="title-color"
+                                       for="{{ $lang }}_status">{{ translate('status') }}
+                                    ({{ strtoupper($lang) }})</label>
+                                <select name="status" class="form-control">
+                                    <option value="1">{{__('admin.Active')}}</option>
+                                    <option value="0">{{__('admin.Inactive')}}</option>
+                                </select>                            
                             </div>
+
                         </div>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table id="datatable"
-                               class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
-                            <thead class="thead-light thead-50 text-capitalize">
-                            <tr>
-                                <th>{{ translate('SL') }}</th>
-                                <th>{{ translate('Name') }}</th>
-                                <th>{{ translate('Slug') }}</th>
-                                <th>{{ translate('status') }}</th>
-                                <th>{{ translate('action') }}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($categories as $index => $category)
-                                <tr>
-                                    <td>{{ ++$index }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
-                                        <td>
-                                            @if($category->status == 1)
-                                                <a href="javascript:;" >
-                                                    <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                                </a>
-                                            @else
-                                            <a href="javascript:;" >
-                                                <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="d-flex justify-content-center gap-2">
-                                                <a class="btn btn-outline-info btn-sm square-btn"
-                                                    title="{{ translate('edit') }}"
-                                                    href="{{ route('admin.blog-category.edit',$category->id) }}">
-                                                    <i class="tio-edit"></i>
-                                                </a>
-
-                                                <a class="btn btn-outline-info btn-sm square-btn"
-                                                    title="{{ translate('delete') }}"
-                                                    href="{{ route('admin.blog-category.destroy',$category->id) }}">
-                                                    <i class="tio-delete"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-
-                   
+                    @endforeach
                 </div>
             </div>
-        </div>
+
+
+
+            <div class="row justify-content-end gap-3 mt-3 mx-1">
+                <button type="reset" class="btn btn-secondary px-5">{{ translate('reset') }}</button>
+                <button type="button" class="btn btn--primary px-5 product-add-requirements-check">{{ translate('submit') }}</button>
+            </div>
+        </form>
     </div>
 
-    <span id="message-select-word" data-text="{{ translate('select') }}"></span>
+    
 @endsection
+
+@push('script')
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/tags-input.min.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/spartan-multi-image-picker.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/plugins/summernote/summernote.min.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-update.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script>
+@endpush
