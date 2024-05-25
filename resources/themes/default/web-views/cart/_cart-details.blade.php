@@ -338,7 +338,11 @@
                                     </div>
                                 </td>
                                 <td class="__w-45">
-                                    <div id="resell_price_{{ $cartItem['id'] }}" style="display: none;">
+                                    @if($cartItem['is_resell'] == 1)
+                                        <div id="resell_price_{{ $cartItem['id'] }}">
+                                    @else   
+                                        <div id="resell_price_{{ $cartItem['id'] }}" style="display: none;">
+                                    @endif
                                         <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Resell Price') }}</label>
                                         <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control" onchange="totalresell()">
                                     </div>

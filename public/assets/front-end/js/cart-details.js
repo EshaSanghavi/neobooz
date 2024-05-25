@@ -19,21 +19,10 @@ $('.route-cart-updateResell').on('click', function () {
             $('#cart-summary').empty().html(response);
             $('[data-toggle="tooltip"]').tooltip()
             actionCheckoutFunctionInit()
-            couponCode()
-            var id="resell_price_"+key;
-            var targetDiv = document.getElementById(id); 
-            if(is_resell) {
-                targetDiv.style.display = "block";
-            } else {
-                targetDiv.style.display = "none";
-            }
+            couponCode();
         }
     });
 });
-
-
-
-
 
 
 function updateCartQuantityList(minimum_order_qty, key, incr, e) {
