@@ -63,11 +63,10 @@
                                     </div>
 
                                     <div>
-                                        <div class="custom_upload_input">
+                                        <div class="custom_upload_input" style="height:150px; width:auto;">
                                             <input type="file" name="image" class="custom-upload-input-file action-upload-color-image" id=""
                                                    data-imgpreview="pre_img_viewer"
-                                                   accept=".jpg, .webp, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
-                                                   style="height:150px; width:auto;">
+                                                   accept=".jpg, .webp, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
 
                                             <span class="delete_file_input btn btn-outline-danger btn-sm square-btn d--none">
                                                 <i class="tio-delete"></i>
