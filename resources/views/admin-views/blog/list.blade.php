@@ -80,12 +80,12 @@
 
                                         <td>
                                             @if($blog->status == 1)
-                                            <a href="javascript:;" onclick="changeBlogStatus({{ $blog->id }})">
+                                            <a href="javascript:;" >
                                                 <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
                                             </a>
 
                                             @else
-                                            <a href="javascript:;" onclick="changeBlogStatus({{ $blog->id }})">
+                                            <a href="javascript:;" >
                                                 <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
                                             </a>
 
