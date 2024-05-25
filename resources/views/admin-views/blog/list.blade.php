@@ -53,7 +53,7 @@
                                             <label for="name"
                                                    class="title-color text-capitalize font-weight-bold mb-0">{{ translate('blog_thumbnail') }}</label>
                                             <span
-                                                class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['vlog Image'] }}</span>
+                                                class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
                                             <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                                   title="{{ translate('add_your_blog’s_thumbnail_in') }} JPG, PNG or JPEG {{ translate('format_within') }} 2MB">
                                                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}"
