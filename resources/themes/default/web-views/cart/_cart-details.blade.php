@@ -331,7 +331,7 @@
                                     <div>
                                         <label class="title-color" for="resell_{{ $cartItem['id'] }}" >Is this a resell product?</label>
                                         @if($cartItem['is_resell'] == 1)
-                                            <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart-updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})" checked>
+                                            <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart-updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})" checked>
                                         @else   
                                             <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart-updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" onclick="resellInput({{ $cartItem['id'] }})">
                                         @endif

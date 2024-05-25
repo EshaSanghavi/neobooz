@@ -1,26 +1,11 @@
 "use strict";
 
-function resellInput(cart)
-{
-    let is_resell = 0;
-    var id="resell_price_"+cart;
-    var check_id = "resell_"+cart
-    var ele = document.getElementById(check_id);
-    var targetDiv = document.getElementById(id); 
-    if(ele.checked) {
-        targetDiv.style.display = "block";
-        is_resell = 1;
-    } else {
-        targetDiv.style.display = "none";
-        is_resell = 0;
-    }
-
-    setIsResell(cart, is_resell);
-}
-
-function setIsResell(key, is_resell)
-{
-    $.post($('#route-cart-updateResell').data('url'), {
+$(document).ready(function() {
+    $('.route-cart-updateResell').onclick(function() {
+      var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
+      var is_resell = $(this).is(':checked'); // Get checkbox checked state
+  
+      $.post($('#route-cart-updateResell').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
         is_resell
@@ -36,9 +21,21 @@ function setIsResell(key, is_resell)
             $('[data-toggle="tooltip"]').tooltip()
             actionCheckoutFunctionInit()
             couponCode()
+            var id="resell_price_"+key;
+            var targetDiv = document.getElementById(id); 
+            if(is_resell) {
+                targetDiv.style.display = "block";
+            } else {
+                targetDiv.style.display = "none";
+            }
+
         }
     });
-}
+    });
+  });
+
+
+
 
 
 
