@@ -67,7 +67,7 @@
                                 <tr>
                                     <td>{{ ++$index }}</td>
                                     <td>{{ $blog->title }}</a></td>
-                                    <td>{{ $blog->category->name }}</td>
+                                    <td></td>
                                     <td><img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png')  }}" width="80px" height="80px" class="rounded-circle" alt=""></td>
                                         <td>
                                             @if ($blog->show_homepage)
