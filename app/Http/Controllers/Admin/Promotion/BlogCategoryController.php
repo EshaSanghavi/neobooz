@@ -63,7 +63,7 @@ class BlogCategoryController extends Controller
         $categories=BlogCategory::all();
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         Toastr::success(translate('blog_category_added_successfully'));
-        return view('admin-views.blog.blog_category',compact('categories', 'languages'))->with($notification);
+        return view('admin-views.blog.blog_category',compact('categories', 'languages'));
     }
 
 
