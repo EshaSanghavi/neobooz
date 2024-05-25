@@ -495,10 +495,27 @@
                                         </a>
                                     </li>
 
+                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog.*') ? 'active' : '' }}">
+                                        <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                            href="{{ route('admin.blog.index') }}" 
+                                            title="{{translate('Blogs')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span
+                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Blogs')}}</span>
+                                        </a>
+                                    </li>
 
-                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.blog.index') }}">{{translate('Blogs')}}</a></li>
+                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-comment.*') ? 'active' : '' }}">
+                                        <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                            href="{{ route('admin.blog-comment.index') }}" 
+                                            title="{{translate('Comments')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span
+                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Comments')}}</span>
+                                        </a>
+                                    </li>
 
-                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-comment.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.blog-comment.index') }}">{{translate('Comments')}}</a></li>
+
                                 </ul>
                             </li>
 
