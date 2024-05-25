@@ -27,7 +27,7 @@ class BlogController extends Controller
         $frontend_url = $setting->frontend_url;
         $frontend_url = $frontend_url.'/blogs/blog?slug=';
 
-        return view('admin.promotion.blog',compact('blogs','frontend_url'));
+        return view('admin.promotion.list',compact('blogs','frontend_url'));
     }
 
 
