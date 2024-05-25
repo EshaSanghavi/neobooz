@@ -336,7 +336,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     // Blog
     Route::resource('blog-category', BlogCategoryController::class);
     Route::put('blog-category-status/{id}', [BlogCategoryController::class,'changeStatus'])->name('blog-category.status');
-    Route::post('blog-category-store', [BlogCategoryController::class,'store'])->name('blog-category.store');
+    Route::post('blog-category-store', [BlogCategoryController::class,'store'])->name('blog-category-store');
 
 
     Route::resource('blog', BlogController::class);
