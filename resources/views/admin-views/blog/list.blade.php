@@ -1,6 +1,6 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('blog_Category'))
+@section('title', translate('blog_category'))
 
 @section('content')
     <div class="content container-fluid">
@@ -8,7 +8,7 @@
         <div class="mb-3">
             <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
-                {{ translate('blog_categories') }}
+                {{ translate('blog_category') }}
             </h2>
         </div>
 
@@ -42,7 +42,7 @@
                                 
                                 <a href="{{ route('admin.blog-category.create') }}" class="btn btn--primary">
                                     <i class="tio-add"></i>
-                                    <span class="text">{{ translate('add_new_blog_category') }}</span>
+                                    <span class="text">{{ translate('add_new_blog') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -53,50 +53,49 @@
                                class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
                             <thead class="thead-light thead-50 text-capitalize">
                             <tr>
-                                <th>{{__('admin.SN')}}</th>
-                                <th>{{__('admin.Name')}}</th>
-                                <th>{{__('admin.Slug')}}</th>
-                                <th>{{__('admin.Status')}}</th>
-                                <th>{{__('admin.Action')}}</th>
+                                <th>{{ translate('SL') }}</th>
+                                <th>{{ translate('Title') }}</th>
+                                <th class="text-center">{{ translate('Category') }}</th>
+                                <th class="text-center">{{ translate('Image') }}</th>
+                                <th class="text-center">{{ translate('Show homepage') }}</th>
+                                <th class="text-center">{{ translate('status') }}</th>
+                                <th class="text-center">{{ translate('action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($categories as $index => $category)
-                                    <tr>
-                                        <td>{{ ++$index }}</td>
+                            @foreach($categories as $index => $category)
+                                <tr>
+                                    <td>{{ ++$index }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>
                                             @if($category->status == 1)
-                                            <a href="javascript:;" onclick="changeBlogCategoryStatus({{ $category->id }})">
-                                                <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
+                                                <a href="javascript:;" >
+                                                    <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                                </a>
                                             @else
-                                            <a href="javascript:;" onclick="changeBlogCategoryStatus({{ $category->id }})">
-                                                <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                            <a href="javascript:;" >
+                                                <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
                                             </a>
-
                                             @endif
                                         </td>
                                         <td>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                                title="{{ translate('edit') }}"
-                                                href="{{ route('admin.blog-category.edit',$category->id) }}">
-                                                <i class="tio-edit"></i>
-                                            </a>
+                                            <div class="d-flex justify-content-center gap-2">
+                                                <a class="btn btn-outline-info btn-sm square-btn"
+                                                    title="{{ translate('edit') }}"
+                                                    href="{{ route('admin.blog-category.edit',$category->id) }}">
+                                                    <i class="tio-edit"></i>
+                                                </a>
 
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                                title="{{ translate('delete') }}"
-                                                href="{{ route('admin.blog-category.destroy',$category->id) }}">
-                                                <i class="tio-delete"></i>
-                                            </a>
-                                        </div>
+                                                <a class="btn btn-outline-info btn-sm square-btn"
+                                                    title="{{ translate('delete') }}"
+                                                    href="{{ route('admin.blog-category.destroy',$category->id) }}">
+                                                    <i class="tio-delete"></i>
+                                                </a>
+                                            </div>
                                         </td>
-
                                     </tr>
-                                  @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
