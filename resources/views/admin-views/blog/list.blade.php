@@ -82,17 +82,29 @@
                                     <td>
                                         @if($blog->status == 1)
                                         <a href="javascript:;" >
-                                            <input class="switcher_input" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
                                         </a>
 
                                         @else
                                         <a href="javascript:;" >
-                                            <input class="switcher_input" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
                                         </a>
 
                                         @endif
                                     </td>
-                                    
+                                    <td>
+                                        <a class="btn btn-outline-info btn-sm square-btn"
+                                            title="{{ translate('edit') }}"
+                                            href="{{ route('admin.blog.edit',$blog->id) }}">
+                                            <i class="tio-edit"></i>
+                                        </a>
+
+                                        <a class="btn btn-outline-info btn-sm square-btn"
+                                            title="{{ translate('delete') }}"
+                                            href="{{ route('admin.blog.destroy',$blog->id) }}">
+                                            <i class="tio-delete"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
