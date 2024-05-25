@@ -67,8 +67,20 @@
                                 <tr>
                                     <td>{{ ++$index }}</td>
                                     <td>{{ $blog->title }}</a></td>
+                                    <td>{{ $blog->blog_category }}</td>
+                                    <td>
+                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png')  }}" width="80px" height="80px" class="rounded-circle" alt="">
+                                    </td>
+                                    <td>
+                                        @if ($blog->show_homepage)
+                                            <span class="badge badge-success">{{__('admin.Yes')}}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{__('admin.No')}}</span>
+                                        @endif
+                                    </td>
+
                                     
-                                    </tr>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
