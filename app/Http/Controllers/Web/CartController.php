@@ -165,10 +165,15 @@ class CartController extends Controller
         session()->forget('coupon_discount');
         session()->forget('coupon_seller_id');
 
-        return response()->json([
-            'status'=>$response['status'],
-            'message'=>$response['message'],
-        ]);
+
+        if ($response['status'] == 0) {
+            return response()->json([
+                'status'=>$response['status'],
+                'message'=>$response['message'],
+            ]);
+        }
+
+        return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
     }
 
     //updated the quantity for a cart item
