@@ -27,14 +27,14 @@ class BlogController extends Controller
         $frontend_url = $setting->frontend_url;
         $frontend_url = $frontend_url.'/blogs/blog?slug=';
 
-        return view('admin.blog',compact('blogs','frontend_url'));
+        return view('admin.promotion.blog',compact('blogs','frontend_url'));
     }
 
 
     public function create()
     {
         $categories = BlogCategory::where('status',1)->get();
-        return view('admin.create_blog',compact('categories'));
+        return view('admin.promotion.create_blog',compact('categories'));
     }
 
 
@@ -92,7 +92,7 @@ class BlogController extends Controller
     {
         $categories = BlogCategory::where('status',1)->get();
         $blog = Blog::find($id);
-        return view('admin.edit_blog',compact('categories','blog'));
+        return view('admin.promotion.edit_blog',compact('categories','blog'));
     }
 
 
@@ -151,7 +151,7 @@ class BlogController extends Controller
 
         $notification= trans('admin_validation.Updated Successfully');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
-        return redirect()->route('admin.blog.index')->with($notification);
+        return redirect()->route('admin.promotion.blog.index')->with($notification);
     }
 
     public function destroy($id)

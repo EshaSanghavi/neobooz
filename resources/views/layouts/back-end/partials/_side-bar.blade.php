@@ -480,15 +480,13 @@
                             </li>
 
                             
-                            <li class="navbar-vertical-aside-has-menu {{ Route::is('admin.blog-category.*') || Route::is('admin.blog.*') || Route::is('admin.popular-blog.*') || Route::is('admin.blog-comment.*') ? 'active' : '' }}">
+                            <li class="navbar-vertical-aside-has-menu {{ Route::is('admin.blog-category.*') || Route::is('admin.blog.*') || Route::is('admin.blog-comment.*') ? 'active' : '' }}">
                                 <a href="#" class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"><i class="fas fa-th-large"></i><span>{{__('admin.Blogs')}}</span></a>
 
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
                                     <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-category.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.blog-category.index') }}">{{__('admin.Categories')}}</a></li>
 
                                     <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.blog.index') }}">{{__('admin.Blogs')}}</a></li>
-
-                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.popular-blog.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.popular-blog.index') }}">{{__('admin.Popular Blogs')}}</a></li>
 
                                     <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-comment.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.blog-comment.index') }}">{{__('admin.Comments')}}</a></li>
                                 </ul>

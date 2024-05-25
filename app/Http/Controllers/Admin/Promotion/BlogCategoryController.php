@@ -15,13 +15,13 @@ class BlogCategoryController extends Controller
     public function index()
     {
         $categories=BlogCategory::with('blogs')->get();
-        return view('admin.blog_category',compact('categories'));
+        return view('admin.promotion.blog_category',compact('categories'));
 
     }
 
     public function create()
     {
-        return view('admin.create_blog_category');
+        return view('admin.promotion.create_blog_category');
     }
 
 
@@ -55,7 +55,7 @@ class BlogCategoryController extends Controller
     public function edit($id)
     {
         $category = BlogCategory::find($id);
-        return view('admin.edit_blog_category',compact('category'));
+        return view('admin.promotion.edit_blog_category',compact('category'));
     }
 
     public function update(Request $request,$id)
@@ -82,7 +82,7 @@ class BlogCategoryController extends Controller
 
         $notification= trans('admin_validation.Update Successfully');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
-        return redirect()->route('admin.blog-category.index')->with($notification);
+        return redirect()->route('admin.promotion.blog-category.index')->with($notification);
     }
 
     public function destroy($id)
