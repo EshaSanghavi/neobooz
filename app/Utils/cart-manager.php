@@ -449,16 +449,15 @@ class CartManager
 
     public static function update_is_resell($request)
     {
-        $user = Helpers::get_customer($request);
-        $guest_id = session('guest_id') ?? ($request->guest_id ?? 0);
-        $status = 1;
-        $cart = Cart::where(['id' => $request->key, 'customer_id' => ($user=='offline' ? $guest_id : $user->id)])->first();
+                $cart = Cart::where(['id' => $request->key])->first();
         $cart['is_resell'] = $request->is_resell;
         $cart->save();
 
-        if(!$cart->save())
-        {
+        if(!$cart->save()){
             $status = 0;
+        }
+        else{
+            $status = 1;
         }
 
         return [
