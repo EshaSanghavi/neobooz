@@ -330,7 +330,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     });
     
     // Blog
-    
+    Route::group(['prefix' => 'products', 'as' => 'products.', 'middleware' => ['module:product_management']], function () {
+        Route::controller(BlogController::class)->group(function () {
+            Route::get(Blog::LIST[URI], 'index')->name('list');
+            Route::get(Blog::ADD[URI], 'getAddView')->name('add');
+            Route::post(Blog::ADD[URI], 'add')->name('store');
+        });
+    });
 
 
     // Customer Routes, Customer wallet Routes, Customer Loyalty Routes
