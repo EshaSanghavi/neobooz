@@ -54,12 +54,10 @@
                             <thead class="thead-light thead-50 text-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
-                                <th>{{ translate('Title') }}</th>
-                                <th class="text-center">{{ translate('Category') }}</th>
-                                <th class="text-center">{{ translate('Image') }}</th>
-                                <th class="text-center">{{ translate('Show homepage') }}</th>
-                                <th class="text-center">{{ translate('status') }}</th>
-                                <th class="text-center">{{ translate('action') }}</th>
+                                <th>{{ translate('Name') }}</th>
+                                <th>{{ translate('Slug') }}</th>
+                                <th>{{ translate('status') }}</th>
+                                <th>{{ translate('action') }}</th>
                             </tr>
                             </thead>
                             <tbody>

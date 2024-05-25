@@ -23,7 +23,7 @@ class BlogCategoryController extends Controller
     public function index()
     {
         $categories=BlogCategory::all();
-        return view('admin-views.blog.blog_category',compact('categories'));
+        return view('admin-views.blog.list',compact('categories'));
 
     }
 
