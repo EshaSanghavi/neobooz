@@ -50,8 +50,7 @@
                             <div class="form-group">
                                     <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                                         <div>
-                                            <label for="name"
-                                                   class="title-color text-capitalize font-weight-bold mb-0">{{ translate('blog_thumbnail') }}</label>
+                                            <label for="image" class="title-color">{{ translate('blog_thumbnail') }}</label>
                                             <span
                                                 class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
                                             <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"

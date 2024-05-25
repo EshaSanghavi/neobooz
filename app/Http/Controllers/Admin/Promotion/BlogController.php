@@ -33,7 +33,7 @@ class BlogController extends Controller
         $categories = BlogCategory::where('status',1)->get();
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
-        return view('admin-views.blog.list',compact('categories', 'languages', 'defaultLanguage'));
+        return view('admin-views.blog.create_blog',compact('categories', 'languages', 'defaultLanguage'));
     }
 
 
@@ -70,7 +70,6 @@ class BlogController extends Controller
             $blog->image = $image_name;
         }
 
-        $blog->admin_id = $admin->id;
         $blog->title = $request->title;
         $blog->slug = $request->slug;
         $blog->description = $request->description;
