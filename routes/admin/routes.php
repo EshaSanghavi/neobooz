@@ -332,9 +332,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     // Blog
     Route::group(['prefix' => 'blogs', 'as' => 'blogs.', 'middleware' => ['module:promotion_management']], function () {
         Route::controller(BlogController::class)->group(function () {
-            Route::get(Blog::LIST[URI], 'index')->name('list');
-            Route::get(Blog::ADD[URI], 'getAddView')->name('add');
-            Route::post(Blog::ADD[URI], 'add')->name('store');
+            Route::get(Banner::LIST[URI], 'index')->name('list');
+            Route::get(Banner::ADD[URI], 'getAddView')->name('add');
+            Route::post(Banner::ADD[URI], 'add')->name('store');
         });
     });
 
