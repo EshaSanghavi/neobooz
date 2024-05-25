@@ -37,9 +37,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
-
-                                
+                            <div class="col-lg-8 mt-3 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end"> 
                                 <a href="{{ route('admin.blog-category.create') }}" class="btn btn--primary">
                                     <i class="tio-add"></i>
                                     <span class="text">{{ translate('add_new_blog_category') }}</span>
@@ -61,42 +59,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($categories as $index => $category)
-                                    <tr>
-                                        <td>{{ ++$index }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
-                                        <td>
-                                            @if($category->status == 1)
-                                            <a href="javascript:;" >
-                                                <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @else
-                                            <a href="javascript:;" >
-                                                <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-
-                                            @endif
-                                        </td>
-                                        <td>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                                title="{{ translate('edit') }}"
-                                                href="{{ route('admin.blog-category.edit',$category->id) }}">
-                                                <i class="tio-edit"></i>
-                                            </a>
-
-                                            <a class="btn btn-outline-info btn-sm square-btn"
-                                                title="{{ translate('delete') }}"
-                                                href="{{ route('admin.blog-category.destroy',$category->id) }}">
-                                                <i class="tio-delete"></i>
-                                            </a>
-                                        </div>
-                                        </td>
-
-                                    </tr>
-                                  @endforeach
+                            
                             </tbody>
                         </table>
                     </div>
