@@ -67,15 +67,40 @@
                                         @endforeach
                                 </select>
                             </div>
+
+                            <div class="form-group pt-2">
+                                <label class="title-color"
+                                       for="{{ $lang }}_description">{{ translate('description') }}
+                                    ({{ strtoupper($lang) }})</label>
+                                <textarea class="summernote" name="description[]">{{ old('details') }}</textarea>
+                            </div>
                             
+                            <div class="form-group pt-2">
+                                <label class="title-color"
+                                       for="{{ $lang }}_showhomepage">{{ translate('show_homepage_?') }}
+                                    ({{ strtoupper($lang) }})</label>
+                                <select id="{{ $lang }}_showhomepage" class="js-select2-custom form-control action-get-request-onchange" 
+                                        name="showhomepage"
+                                        data-element-id="select"
+                                        data-element-type="select"
+                                        required>
+                                        <option value="1">{{translate('Yes')}}</option>
+                                        <option value="0">{{translate('No')}}</option>
+                                </select>
+                            </div>
+
                             <div class="form-group pt-2">
                                 <label class="title-color"
                                        for="{{ $lang }}_status">{{ translate('status') }}
                                     ({{ strtoupper($lang) }})</label>
-                                <select name="status" class="form-control">
-                                    <option value="1">{{translate('Active')}}</option>
-                                    <option value="0">{{translate('Inactive')}}</option>
-                                </select>                            
+                                <select id="{{ $lang }}_status" class="js-select2-custom form-control action-get-request-onchange" 
+                                        name="status"
+                                        data-element-id="select"
+                                        data-element-type="select"
+                                        required>
+                                        <option value="1">{{translate('Active')}}</option>
+                                        <option value="0">{{translate('Inactive')}}</option>
+                                </select>
                             </div>
 
                         </div>
