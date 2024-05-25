@@ -330,23 +330,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     });
     
     // Blog
-    Route::group(['prefix' => 'blog', 'as' => 'blog.','middleware'=>['module:promotion_management']], function () {
-        Route::controller(BlogController::class)->group(function () {
-            // Route for listing blogs
-            Route::get(Blog::LIST[URI], 'index')->name('list');
     
-            // Route for creating a new blog
-            Route::get(Blog::ADD[URI], 'add')->name('add');
-            Route::post(Blog::ADD[URI], 'store')->name('store');
-    
-            // Route for editing a blog
-            Route::get(Blog::UPDATE[URI] . '/{id}', 'edit')->name('edit');
-            Route::post(Blog::UPDATE[URI] . '/{id}', 'update')->name('update');
-    
-            // Route for deleting a blog (assuming a POST request for security)
-            Route::post(Blog::DELETE[URI] . '/{id}', 'destroy')->name('delete');
-        });
-    });
 
 
     // Customer Routes, Customer wallet Routes, Customer Loyalty Routes

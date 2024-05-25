@@ -479,39 +479,7 @@
                                 </a>
                             </li>
 
-                            <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/blogs/*') || Request::is('admin/comments/*')) ? 'active' : ''}}">
-                                  <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                     href="javascript:" title="{{ translate('Blogs') }}">
-                                    <i class="tio-book nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                      <span class="text-truncate">{{ translate('Blogs') }}</span>
-                                    </span>
-                                  </a>
-                                  <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                      style="display: {{(Request::is('admin/blogs/*') || Request::is('admin/comments/*')) ? 'block' : ''}}">
-                                    <li class="nav-item {{ Request::is('admin/blogs/category') ? 'active' : '' }}">
-                                      <a class="nav-link" href="{{ route('admin.blogs.categories') }}"
-                                         title="{{ translate('Categories') }}">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{ translate('Categories') }}</span>
-                                      </a>
-                                    </li>
-                                    <li class="nav-item {{ Request::is('admin/blogs') ? 'active' : '' }}">
-                                      <a class="nav-link" href="{{ route('admin.blogs.list') }}"
-                                         title="{{ translate('Blog_List') }}">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{ translate('Blog_List') }}</span>
-                                      </a>
-                                    </li>
-                                    <li class="nav-item {{ Request::is('admin/comments/*') ? 'active' : '' }}">
-                                      <a class="nav-link" href="{{ route('admin.comments.list') }}"
-                                         title="{{ translate('Comments') }}">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{ translate('Comments') }}</span>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </li>
+                            
 
 
 
