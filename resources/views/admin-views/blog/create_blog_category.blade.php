@@ -38,7 +38,7 @@
                              id="{{ $lang }}-form">
                             <div class="form-group">
                                 <label class="title-color"
-                                       for="{{ $lang }}_name">{{ translate('product_name') }}
+                                       for="{{ $lang }}_name">{{ translate('category_name') }}
                                     ({{ strtoupper($lang) }})
                                 </label>
                                 <input type="text" {{ $lang == $defaultLanguage ? 'required' : '' }} name="name"
