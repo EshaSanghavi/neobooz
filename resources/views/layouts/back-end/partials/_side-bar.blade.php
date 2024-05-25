@@ -484,7 +484,17 @@
                                 <a href="#" class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle">                                    <i class="tio-photo-square-outlined nav-icon"></i><span>{{translate('Blogs')}}</span></a>
 
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
-                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-category.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.blog-category.index') }}">{{translate('Categories')}}</a></li>
+
+                                    <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog-category.*') ? 'active' : '' }}">
+                                        <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                            href="{{ route('admin.blog-category.index') }}" 
+                                            title="{{translate('Categories')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span
+                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Categories')}}</span>
+                                        </a>
+                                    </li>
+
 
                                     <li class="navbar-vertical-aside-has-menu  {{ Route::is('admin.blog.*') ? 'active' : '' }}"><a class="js-navbar-vertical-aside-menu-link nav-link" href="{{ route('admin.blog.index') }}">{{translate('Blogs')}}</a></li>
 
