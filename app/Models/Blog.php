@@ -2,14 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Support\Facades\App;
 
 class Blog extends Model
 {
-    
+    use HasFactory;
+
+    public function category(){
+        return $this->belongsTo(BlogCategory::class,'blog_category_id');
+    }
+
+    public function admin(){
+        return $this->belongsTo(Admin::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(BlogComment::class);
+    }
+
+    public function activeComments(){
+        return $this->hasMany(BlogComment::class)->where('status',1);
+    }
+
+
+
 }

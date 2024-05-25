@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogComment;
-use App\Models\PopularPost;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Enums\WebConfigKey;
+
 use Image;
 use File;
 use Auth;
@@ -19,8 +20,9 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::with('category','comments')->get();
+        $languages = getWebConfig(name: 'pnc_language') ?? null;
 
-        return view('admin-views.blog.list', compact('blogs'));
+        return view('admin-views.blog.list', compact('blogs', 'languages'));
     }
 
 
