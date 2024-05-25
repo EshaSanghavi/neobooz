@@ -168,7 +168,7 @@
                             <label class="title-color"
                                     for="{{ $lang }}_seodescription">{{ translate('SEO_Description') }}
                                 ({{ strtoupper($lang) }})</label>
-                                <input type="textare" {{ $lang == $defaultLanguage ? 'required' : '' }} name="seo_description"
+                                <input type="textarea" {{ $lang == $defaultLanguage ? 'required' : '' }} name="seo_description"
                                     id="{{ $lang }}_seodescription" cols="30" rows="10" class="form-control text-area-5">
                         </div>
 
