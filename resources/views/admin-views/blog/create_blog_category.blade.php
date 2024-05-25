@@ -59,7 +59,7 @@
                                        for="{{ $lang }}_status">{{ translate('status') }}
                                     ({{ strtoupper($lang) }})</label>
                                 <select name="status" class="form-control">
-                                    <option value="1">{{translate('.Active')}}</option>
+                                    <option value="1">{{translate('Active')}}</option>
                                     <option value="0">{{translate('Inactive')}}</option>
                                 </select>                            
                             </div>
