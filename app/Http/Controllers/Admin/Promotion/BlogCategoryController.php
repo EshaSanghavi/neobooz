@@ -51,7 +51,7 @@ class BlogCategoryController extends Controller
             'slug.required' => trans('admin_validation.Slug is required'),
             'slug.unique' => trans('admin_validation.Slug already exist'),
         ];
-        $this->validate($request, $rules,$customMessages);
+        $this->validate($request, $rules, $customMessages);
 
         $category = new BlogCategory();
         $category->name = $request->name;

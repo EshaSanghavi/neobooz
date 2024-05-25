@@ -67,15 +67,28 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>
-                                            @if($category->status == 1)
-                                                <a href="javascript:;" >
-                                                    <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                                </a>
-                                            @else
-                                            <a href="javascript:;" >
-                                                <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{translate('Active')}}" data-off="{{translate('Inactive')}}" data-onstyle="success" data-offstyle="danger">
-                                            </a>
-                                            @endif
+                                        <td class="text-center">
+                                        <form action="" method="post" data-from="product-status"
+                                              id="product-status{{ $product['id']}}-form" class="admin-product-status-form">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $product['id']}}">
+                                            <label class="switcher mx-auto">
+                                                <input type="checkbox" class="switcher_input toggle-switch-message"
+                                                       name="status"
+                                                       id="product-status{{ $product['id'] }}" value="1"
+                                                       {{ $category['status'] == 1 ? 'checked' : '' }}
+                                                       data-modal-id="toggle-status-modal"
+                                                       data-toggle-id="product-status{{ $product['id'] }}"
+                                                       data-on-image="product-status-on.png"
+                                                       data-off-image="product-status-off.png"
+                                                       data-on-title="{{ translate('Want_to_Turn_ON').' '.$productName.' '.translate('status') }}"
+                                                       data-off-title="{{ translate('Want_to_Turn_OFF').' '.$productName.' '.translate('status') }}"
+                                                       data-on-message="<p>{{ translate('if_enabled_this_product_will_be_available_on_the_website_and_customer_app') }}</p>"
+                                                       data-off-message="<p>{{ translate('if_disabled_this_product_will_be_hidden_from_the_website_and_customer_app') }}</p>">
+                                                <span class="switcher_control"></span>
+                                            </label>
+                                        </form>
+                                    </td>
                                         </td>
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">
