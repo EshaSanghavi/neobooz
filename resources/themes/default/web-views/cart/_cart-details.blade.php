@@ -333,7 +333,7 @@
                                         @if($cartItem['is_resell'] == 1)
                                             <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" checked>
                                         @else   
-                                            <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" id="resell_{{ $cartItem['id'] }}" >
+                                            <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" >
                                         @endif
                                     </div>
                                 </td>

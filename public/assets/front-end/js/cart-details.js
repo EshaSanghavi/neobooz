@@ -3,7 +3,7 @@
 $('.route-cart-updateResell').on('click', function () {
     var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
     var is_resell = $(this).is(':checked'); // Get checkbox checked state
-
+    alert(key+" "+is_resell);
     $.post($('#route-cart-updateResell').data('url'), {
     _token: $('meta[name="_token"]').attr('content'),
     key,
@@ -28,7 +28,6 @@ $('.route-cart-updateResell').on('click', function () {
             targetDiv.style.display = "none";
         }
     }
-    alert(response.status);
 });
 });
 
