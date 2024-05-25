@@ -755,21 +755,6 @@
             </form>
         </div>
     </section>
-    <script>
-        resellInput(cart)
-        {
-            var id="resell_price_"+cart;
-            alert(id);
-            var check_id = "resell_"+cart
-            var checkbox = document.getElementById(check_id);
-            var targetDiv = document.getElementById(id); // Replace "yourDivId" with the actual ID of your div
-            if(checkbox.checked) {
-                targetDiv.style.display = "block";
-            } else {
-                targetDiv.style.display = "none";
-            }
-        }
-    </script>
 
     @include('web-views.partials._order-summary')
 
@@ -777,6 +762,21 @@
     <span id="route-action-checkout-function" data-route="shop-cart"></span>
 </div>
 
+<script>
+        resellInput(cart)
+        {
+            var id="resell_price_"+cart;
+            alert(id);
+            var check_id = "resell_"+cart
+            var ele = document.getElementById(check_id);
+            var targetDiv = document.getElementById(id); 
+            if(ele.checked) {
+                targetDiv.style.display = "block";
+            } else {
+                targetDiv.style.display = "none";
+            }
+        }
+    </script>
 @push('script')
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/cart-details.js') }}"></script>
 @endpush
