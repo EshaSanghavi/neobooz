@@ -93,17 +93,19 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-info btn-sm square-btn"
-                                            title="{{ translate('edit') }}"
-                                            href="{{ route('admin.blog.edit',$blog->id) }}">
-                                            <i class="tio-edit"></i>
-                                        </a>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a class="btn btn-outline-info btn-sm square-btn"
+                                                title="{{ translate('edit') }}"
+                                                href="{{ route('admin.blog.edit',$blog->id) }}">
+                                                <i class="tio-edit"></i>
+                                            </a>
 
-                                        <a class="btn btn-outline-info btn-sm square-btn"
-                                            title="{{ translate('delete') }}"
-                                            href="{{ route('admin.blog.destroy',$blog->id) }}">
-                                            <i class="tio-delete"></i>
-                                        </a>
+                                            <a class="btn btn-outline-info btn-sm square-btn"
+                                                title="{{ translate('delete') }}"
+                                                href="{{ route('admin.blog.destroy',$blog->id) }}">
+                                                <i class="tio-delete"></i>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
