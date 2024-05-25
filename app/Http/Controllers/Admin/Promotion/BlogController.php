@@ -16,10 +16,6 @@ use File;
 use Auth;
 class BlogController extends Controller
 {
-    public function __construct()
-    {
-        
-    }
 
     public function index()
     {
@@ -27,7 +23,7 @@ class BlogController extends Controller
         $frontend_url = $setting->frontend_url;
         $frontend_url = $frontend_url.'/blogs/blog?slug=';
 
-        return view('admin-views.blog.list', compact('blogs','frontend_url'));
+        return view('admin-views.blog.list', compact('blogs'));
     }
 
 
