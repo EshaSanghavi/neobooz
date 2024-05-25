@@ -79,6 +79,19 @@
                                         @endif
                                     </td>
 
+                                    <td>
+                                        @if($blog->status == 1)
+                                        <a href="javascript:;" >
+                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                        </a>
+
+                                        @else
+                                        <a href="javascript:;" >
+                                            <input class="switcher_input toggle-switch-message" id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inactive')}}" data-onstyle="success" data-offstyle="danger">
+                                        </a>
+
+                                        @endif
+                                    </td>
                                     
                                 </tr>
                             @endforeach
