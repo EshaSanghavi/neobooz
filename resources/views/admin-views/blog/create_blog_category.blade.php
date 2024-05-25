@@ -57,12 +57,15 @@
                                 <label class="title-color"
                                        for="{{ $lang }}_status">{{ translate('status') }}
                                     ({{ strtoupper($lang) }})</label>
-                                <select name="status" class="form-control">
-                                    <option value="1">{{translate('Active')}}</option>
-                                    <option value="0">{{translate('Inactive')}}</option>
-                                </select>                            
+                                <select class="js-select2-custom form-control action-get-request-onchange" name="status"
+                                        data-element-id="select"
+                                        data-element-type="select"
+                                        required>
+                                        <option value="1">{{translate('Active')}}</option>
+                                        <option value="0">{{translate('Inactive')}}</option>
+                                </select>
                             </div>
-
+                            
                         </div>
                     @endforeach
                 </div>
