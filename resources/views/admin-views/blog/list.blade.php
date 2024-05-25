@@ -66,6 +66,7 @@
                             @foreach($blogs as $index => $blog)
                                 <tr>
                                     <td>{{ ++$index }}</td>
+                                    <td>{{ $blog->title }}</a></td>
                                     
                                     </tr>
                             @endforeach
