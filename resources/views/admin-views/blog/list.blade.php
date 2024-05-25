@@ -29,7 +29,7 @@
                                         </div>
                                         <input id="datatableSearch_" type="search" name="searchValue"
                                                class="form-control"
-                                               placeholder="{{ translate('search_Product_Name') }}"
+                                               placeholder="{{ translate('search_Blog_Name') }}"
                                                aria-label="Search orders"
                                                value="{{ request('searchValue') }}">
                                         <input type="hidden" value="{{ request('status') }}" name="status">
