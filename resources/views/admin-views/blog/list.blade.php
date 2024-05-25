@@ -35,7 +35,10 @@
                     @foreach ($languages as $lang)
                         <div class="{{ $lang != $defaultLanguage ? 'd-none' : '' }} form-system-language-form"
                              id="{{ $lang }}-form">
-                            <div class="form-group">
+                            
+                             <div class="mt-3 rest-part">
+                            <div class="row g-2">
+                             <div class="form-group">
                                 <label class="title-color"
                                        for="{{ $lang }}_name">{{ translate('Title') }}
                                     ({{ strtoupper($lang) }})
@@ -44,9 +47,12 @@
                                        id="{{ $lang }}_name" class="form-control">
                             </div>
                             <input type="hidden" name="lang[]" value="{{ $lang }}">
-                            
+                            </div>
+                            </div>
+
                             <div class="mt-3 rest-part">
-                <div class="row g-2">
+                
+                            <div class="row g-2">
                     <div class="col-md-3">
                         <div class="card h-100">
                             <div class="card-body">
@@ -100,7 +106,8 @@
                         </div>
                     </div>
 
-
+                    <div class="mt-3 rest-part">
+                <div class="row g-2">
                             <div class="form-group pt-2">
                                 <label class="title-color"
                                        for="{{ $lang }}_slug">{{ translate('slug') }}
@@ -163,7 +170,8 @@
                     @endforeach
                 </div>
             </div>
-
+</div>
+</div>
 
 
             <div class="row justify-content-end gap-3 mt-3 mx-1">
