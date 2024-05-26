@@ -10,7 +10,6 @@ $('.route-cart-updateResell').on('click', function () {
     {
         var is_resell = 0;
     }
-    alert(key);
     $.post($('#route-cart-updateResell').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
