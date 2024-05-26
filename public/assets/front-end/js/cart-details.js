@@ -41,11 +41,12 @@ $('.route-cart-updateResell').on('click', function () {
 
 $('.route-cart-resellPrice').on('change', function () {
     var key = $(this).attr('name').split('_')[2]; // Extract item ID from checkbox name
+    is_resell = 1;
     var resell_price = this.value;
     $.post($('#route-cart-updateResell').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
-        is_resell: 1,
+        is_resell,
         resell_price,
     }, function (response) {
         if (response.status == 0) {
@@ -59,9 +60,14 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            document.getElementById("resell_price_"+key).style.display = 'block';
-            document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            
+            if(is_resell == 1){
+                document.getElementById("resell_price_"+key).style.display = 'block';
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
+            }
+            else{
+                document.getElementById("resell_price_"+key).style.display = 'none';
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
+            }
         }
     });
 });
