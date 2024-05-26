@@ -7,7 +7,7 @@
             @php($totalShippingCost=0)
             @php($orderWiseShippingDiscount=\App\Utils\CartManager::order_wise_shipping_discount())
             @php($totalDiscountOnProduct=0)
-            @php(totalResellerProfit=0)
+            @php($totalResellerProfit=0)
             @php($cart=\App\Utils\CartManager::get_cart())
             @php($cartGroupIds=\App\Utils\CartManager::get_cart_group_ids())
             @php($getShippingCost=\App\Utils\CartManager::get_shipping_cost())
