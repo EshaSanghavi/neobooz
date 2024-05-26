@@ -42,9 +42,9 @@ $('.route-cart-updateResell').on('click', function () {
                     if (element)
                         element.style.display = 'none';
                 });
-                
-                $('#cart-summary').empty().html(response.data);
             }
+
+            $('#cart-summary').empty().html(response.data);
         }
     });
 });
@@ -84,9 +84,10 @@ $('.route-cart-resellPrice').on('change', function () {
                     if (element)
                         element.style.display = 'none';
                 });
-                                
-                $('#cart-summary').empty().html(response.data);
             }
+
+                
+            $('#cart-summary').empty().html(response.data);
         }
     });
 });
