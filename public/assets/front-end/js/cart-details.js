@@ -21,32 +21,27 @@ $('.route-cart-updateResell').on('click', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-
-            if(is_resell == 1){
-                var elements = document.getElementsByName("resell_price_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.display = 'block';
-                });
-
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            }
-            else{
-                var elements = document.getElementsByName("resell_price_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.display = 'none';
-                });
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-               
-            }
-
+            document.getElementById("resell_total_"+key).innerText = response.resell_total;
         } else {
             var message = "successfully_updated!";
             toastr.success(message, {
                 CloseButton: true,
                 ProgressBar: true
             });
+            if(is_resell == 1){
+                var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'block';
+                });               
+            }
+            else{
+                var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'none';
+                });               
+            }
         }
     });
 });
@@ -66,32 +61,27 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-
-            if(is_resell == 1){
-                var elements = document.getElementsByName("resell_price_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.display = 'block';
-                });
-
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            }
-            else{
-                var elements = document.getElementsByName("resell_price_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.display = 'none';
-                });
-                
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            }
-            
+            document.getElementById("resell_total_"+key).innerText = response.resell_total;
         } else {
             var message = "successfully_updated!";
             toastr.success(message, {
                 CloseButton: true,
                 ProgressBar: true
             });
+            if(is_resell == 1){
+                var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'block';
+                });
+            }
+            else{
+                var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'none';
+                });                
+            }
         }
     });
 });
