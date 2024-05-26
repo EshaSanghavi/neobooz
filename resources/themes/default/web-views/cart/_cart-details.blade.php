@@ -346,11 +346,7 @@
 
                                     @endif
                                         <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
-                                        @if($cartItem['resell_price'])
-                                            <input type="text" value="$cartItem['resell_price']" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
-                                        @else
-                                            <input type="text" value="$cartItem['resell_price']" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
-                                        @endif
+                                        <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
                                     </div>
                                 </td>
                                 <td class="__w-15p text-end {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
