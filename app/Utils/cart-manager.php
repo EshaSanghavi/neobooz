@@ -460,9 +460,8 @@ class CartManager
         }
         
         $cart->save();
-
-        $resell_total = $cart->resell_price * $cart->quantity;
-
+        $resell_total = 0;
+        
         if(!$cart->save()){
             $status = 0;
             $resell_total = 0;
