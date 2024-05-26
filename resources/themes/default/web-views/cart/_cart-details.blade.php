@@ -337,7 +337,7 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="__w-30">
+                                <td class="__w-30p">
                                     @if($cartItem['is_resell'] == 1)
                                         <div id="resell_price_{{ $cartItem['id'] }}">
                                     @else   
@@ -352,7 +352,7 @@
                                 <td class="__w-15p text-end {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
                                     <div>
                                         <label class="title-color">{{ translate('Total Resell Price') }}</label>
-                                        {{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}
+                                        <span  style="height: 32px; width: 32px; margin: 5px 0px;">{{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}</span>
                                     </div>
                                 </td>
                             </tr>
