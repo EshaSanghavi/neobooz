@@ -353,7 +353,7 @@
                                     <div>
                                         <label class="title-color">{{ translate('Total Resell Price') }}</label>
                                         <br>
-                                        <a  style="height: 32px; width: auto; margin: 5px 0px;">{{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}</a>
+                                        <a id="resell_total_{{ $cartItem['id'] }}" style="height: 32px; width: auto; margin: 5px 0px;">{{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}</a>
                                     </div>
                                 </td>
                             </tr>

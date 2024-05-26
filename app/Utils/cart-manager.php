@@ -458,6 +458,7 @@ class CartManager
             $cart->is_resell = 0;
             $cart->resell_price = 0.0;
         }
+        $resell_total = ($cart->resell_price - $cart->discount ) * $cart->quantity;
         $cart->save();
 
         if(!$cart->save()){
@@ -469,7 +470,8 @@ class CartManager
 
         return [
             'status' => $status,
-            'message' => $status == 1 ? translate('successfully_updated!') : translate('could_not_update')
+            'message' => $status == 1 ? translate('successfully_updated!') : translate('could_not_update'),
+            'resell_total' => $resell_total
         ];
     }
 

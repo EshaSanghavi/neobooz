@@ -28,10 +28,12 @@ $('.route-cart-updateResell').on('click', function () {
                 ProgressBar: true
             });
             if(is_resell == 1){
-                document.getElementById("resell_price_"+key).style.display = 'block';
+                document.getElementByName("resell_price_"+key).style.display = 'block';
+                document.getElementById("resell_total_"+key).innerHTML = $response.resell_total;
             }
             else{
-                document.getElementById("resell_price_"+key).style.display = 'none';
+                document.getElementByName("resell_price_"+key).style.display = 'none';
+                document.getElementById("resell_total_"+key).innerHTML = $response.resell_total;
             }
         }
     });
@@ -59,9 +61,11 @@ $('.route-cart-resellPrice').on('change', function () {
             });
             if(is_resell == 1){
                 document.getElementById("resell_price_"+key).style.display = 'block';
+                document.getElementById("resell_total_"+key).innerHTML = $response.resell_total;
             }
             else{
                 document.getElementById("resell_price_"+key).style.display = 'none';
+                document.getElementById("resell_total_"+key).innerHTML = $response.resell_total;
             }
         }
     });
