@@ -157,7 +157,7 @@ class CartController extends Controller
     //updated the resell for a cart item
     public function updateResell(Request $request)
     {
-        $response = CartManager::update_is_resell($request);
+        $response = CartManager::update_resell_price($request);
 
         session()->forget('coupon_code');
         session()->forget('coupon_type');

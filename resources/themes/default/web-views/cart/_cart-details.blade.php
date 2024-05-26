@@ -342,15 +342,21 @@
                                         <div id="resell_price_{{ $cartItem['id'] }}">
                                     @else   
                                         <div id="resell_price_{{ $cartItem['id'] }}" style="display: none;">
+                                        <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
+
                                     @endif
-                                        <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Resell Price') }}</label>
-                                        <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control" onchange="totalresell()">
+                                        <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
+                                        @if($cartItem['resell_price'])
+                                            <input type="text" value="$cartItem['resell_price']" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
+                                        @else
+                                            <input type="text" value="$cartItem['resell_price']" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
+                                        @endif
                                     </div>
                                 </td>
-                                <td class="__w-15 text-end">
-                                    <div id="resell_price_{{ $cartItem['id'] }}" style="display: none;">
-                                        <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Resell Price') }}</label>
-                                        <input type="text" name="resell_price_{{ $cartItem['id'] }}" class="form-control">
+                                <td class="__w-15p text-end {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
+                                    <div>
+                                        <label class="title-color">{{ translate('Total Resell Price') }}</label>
+                                        {{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}
                                     </div>
                                 </td>
                             </tr>

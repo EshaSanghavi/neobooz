@@ -447,10 +447,17 @@ class CartManager
         ];
     }
 
-    public static function update_is_resell($request)
+    public static function update_resell_price($request)
     {
         $cart = Cart::where(['id' => $request->key])->first();
-        $cart->is_resell = $request->is_resell ? 1 : 0;
+        if($request->is_resell == 1){
+            $cart->is_resell = 1;
+            $cart->resell_price = $request->resell_price ? $request->resell_price : $cart->price;
+        }
+        else{
+            $cart->is_resell = 0;
+            $cart->resell_price = 0.0;
+        }
         $cart->save();
 
         if(!$cart->save()){
