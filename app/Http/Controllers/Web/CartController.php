@@ -166,7 +166,9 @@ class CartController extends Controller
         session()->forget('coupon_seller_id');
 
 
+        if ($response['status'] == 0) {
             return response()->json($response);
+        }
 
         return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
     }
