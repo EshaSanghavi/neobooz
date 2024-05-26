@@ -33,7 +33,8 @@ $('.route-cart-updateResell').on('click', function () {
                 elements.forEach(function(element) {
                     if (element)
                         element.style.display = 'block';
-                });               
+                }); 
+                document.getElementById("resell_total_"+key).innerText = (resell_price*(document.getElementByName("quantity"+key).value));              
             }
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
@@ -74,6 +75,8 @@ $('.route-cart-resellPrice').on('change', function () {
                     if (element)
                         element.style.display = 'block';
                 });
+                
+                document.getElementById("resell_total_"+key).innerText = (resell_price*(document.getElementByName("quantity"+key).value));
             }
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
