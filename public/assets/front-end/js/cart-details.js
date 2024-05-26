@@ -14,7 +14,6 @@ $('.route-cart-updateResell').on('click', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            alert("error");
         } else {
             updateNavCart();
             $('#cart-summary').empty().html(response);
