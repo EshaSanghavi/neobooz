@@ -28,11 +28,18 @@ $('.route-cart-updateResell').on('click', function () {
                 ProgressBar: true
             });
             if(is_resell == 1){
-                document.getElementsByName("resell_price_"+key).style.display = 'block';
+                var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    element.style.display = 'block';
+                });
+
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
             else{
-                document.getElementsByName("resell_price_"+key).style.display = 'none';
+                var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    element.style.display = 'none';
+                });
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
         }
@@ -60,14 +67,10 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            if(is_resell == 1){
-                document.getElementsByName("resell_price_"+key).style.display = 'block';
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            }
-            else{
-                document.getElementsByName("resell_price_"+key).style.display = 'none';
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            }
+            var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    element.style.display = 'block';
+            });
         }
     });
 });
