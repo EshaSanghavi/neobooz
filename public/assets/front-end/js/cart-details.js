@@ -44,7 +44,6 @@ $('.route-cart-updateResell').on('click', function () {
                 });
             }
 
-            updateCartQuantityList(1, key, 0, 'undefined');
         }
     });
 });
@@ -86,8 +85,6 @@ $('.route-cart-resellPrice').on('change', function () {
                         element.style.display = 'none';
                 });
             }
-
-            updateCartQuantityList(1, key, 0, 'undefined');
         }
     });
 });
