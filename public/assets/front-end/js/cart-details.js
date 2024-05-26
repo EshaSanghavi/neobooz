@@ -2,7 +2,15 @@
 
 $('.route-cart-updateResell').on('click', function () {
     var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
-    var is_resell = $(this).is(':checked'); // Get checkbox checked state
+    if($(this).is(':checked') == true) // Get checkbox checked state
+    {
+        var is_resell = 1;
+    }
+    else
+    {
+        var is_resell = 0;
+    }
+    
     alert(key+" "+is_resell);
     $.post($('#route-cart-updateResell').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
