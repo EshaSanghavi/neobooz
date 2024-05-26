@@ -21,7 +21,6 @@ $('.route-cart-updateResell').on('click', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            document.getElementById("resell_total_"+key).innerText = response.resell_total;
         } else {
             var message = "successfully_updated!";
             toastr.success(message, {
@@ -33,15 +32,18 @@ $('.route-cart-updateResell').on('click', function () {
                 elements.forEach(function(element) {
                     if (element)
                         element.style.display = 'block';
-                }); 
-                document.getElementById("resell_total_"+key).innerText = (resell_price*(document.getElementByName("quantity"+key).value));              
+                });
+
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
                 elements.forEach(function(element) {
                     if (element)
                         element.style.display = 'none';
-                });               
+                });
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
+               
             }
         }
     });
@@ -62,7 +64,6 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            document.getElementById("resell_total_"+key).innerText = response.resell_total;
         } else {
             var message = "successfully_updated!";
             toastr.success(message, {
@@ -75,15 +76,18 @@ $('.route-cart-resellPrice').on('change', function () {
                     if (element)
                         element.style.display = 'block';
                 });
-                
-                document.getElementById("resell_total_"+key).innerText = (resell_price*(document.getElementByName("quantity"+key).value));
+
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
                 elements.forEach(function(element) {
                     if (element)
                         element.style.display = 'none';
-                });                
+                });
+                
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
+
             }
         }
     });
