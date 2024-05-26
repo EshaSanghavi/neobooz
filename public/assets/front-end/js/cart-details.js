@@ -90,6 +90,7 @@ $('.route-cart-resellPrice').on('change', function () {
 });
 
 function updateCartQuantityList(minimum_order_qty, key, incr, e) {
+    alert(minimum_order_qty+", "+key+", "+incr+", "+e);
     let quantity_id = 'cart_quantity_web';
     updateCartCommon(minimum_order_qty, key, incr, e, quantity_id);
 }
