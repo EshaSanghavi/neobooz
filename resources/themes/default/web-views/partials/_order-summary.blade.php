@@ -72,7 +72,7 @@
             <div class="d-flex justify-content-between">
                 <span class="cart_title">{{translate('reseller_profit')}}</span>
                 <span class="cart_value">
-                    - {{ webCurrencyConverter(amount: $totalResellerProfit) }}
+                    + {{ webCurrencyConverter(amount: $totalResellerProfit) }}
                 </span>
             </div>
             @php($coupon_dis=0)
