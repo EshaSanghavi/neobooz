@@ -337,7 +337,7 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="__w-45">
+                                <td class="__w-30">
                                     @if($cartItem['is_resell'] == 1)
                                         <div id="resell_price_{{ $cartItem['id'] }}">
                                     @else   
