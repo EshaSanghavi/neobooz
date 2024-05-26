@@ -17,7 +17,7 @@
                     @php($subTotal+=$cartItem['price']*$cartItem['quantity'])
                     @php($totalTax+=$cartItem['tax_model']=='exclude' ? ($cartItem['tax']*$cartItem['quantity']):0)
                     @php($totalDiscountOnProduct+=$cartItem['discount']*$cartItem['quantity'])
-                    @php($totalResellerProfit+=($cartItem['price'] - $cartItem['resell_price'])*$cartItem['quantity'])
+                    @php($totalResellerProfit+=($cartItem['resell_price'] - $cartItem['price'])*$cartItem['quantity'])
                 @endforeach
 
                 @if(session()->missing('coupon_type') || session('coupon_type') !='free_delivery')
