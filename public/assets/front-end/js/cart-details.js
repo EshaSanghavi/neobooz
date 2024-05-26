@@ -16,11 +16,11 @@ $('.route-cart-updateResell').on('click', function () {
             });
         this.checked = is_resell;
         } else {
-            updateNavCart();
-            $('#cart-summary').empty().html(response);
-            $('[data-toggle="tooltip"]').tooltip()
-            actionCheckoutFunctionInit()
-            couponCode();
+            var message = "successfully_updated!";
+            toastr.sucess(message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
         }
     });
 });
