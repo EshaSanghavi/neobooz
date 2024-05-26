@@ -21,12 +21,7 @@ $('.route-cart-updateResell').on('click', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-        } else {
-            var message = "successfully_updated!";
-            toastr.success(message, {
-                CloseButton: true,
-                ProgressBar: true
-            });
+
             if(is_resell == 1){
                 var elements = document.getElementsByName("resell_price_"+key);
                 elements.forEach(function(element) {
@@ -45,6 +40,13 @@ $('.route-cart-updateResell').on('click', function () {
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
                
             }
+
+        } else {
+            var message = "successfully_updated!";
+            toastr.success(message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
         }
     });
 });
@@ -64,12 +66,7 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-        } else {
-            var message = "successfully_updated!";
-            toastr.success(message, {
-                CloseButton: true,
-                ProgressBar: true
-            });
+
             if(is_resell == 1){
                 var elements = document.getElementsByName("resell_price_"+key);
                 elements.forEach(function(element) {
@@ -88,6 +85,13 @@ $('.route-cart-resellPrice').on('change', function () {
                 
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
+            
+        } else {
+            var message = "successfully_updated!";
+            toastr.success(message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
         }
     });
 });
