@@ -43,6 +43,7 @@ $('.route-cart-updateResell').on('click', function () {
                         element.style.display = 'none';
                 });
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
+                $('#cart-summary').empty().html(response);
             }
         }
     });
@@ -85,7 +86,10 @@ $('.route-cart-resellPrice').on('change', function () {
                     if (element)
                         element.style.display = 'none';
                 });
+                
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
+
+                $('#cart-summary').empty().html(response);
             }
         }
     });
