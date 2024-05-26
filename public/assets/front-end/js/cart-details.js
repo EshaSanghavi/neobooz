@@ -14,7 +14,6 @@ $('.route-cart-updateResell').on('click', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-        this.checked = is_resell;
         } else {
             var message = "successfully_updated!";
             toastr.success(message, {
