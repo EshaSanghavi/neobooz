@@ -452,7 +452,7 @@ class CartManager
         $cart = Cart::where(['id' => $request->key])->first();
         if($request->is_resell == 1){
             $cart->is_resell = 1;
-            $cart->resell_price = $request->resell_price ? $request->resell_price : $cart->price;
+            $cart->resell_price = ( $request->resell_price && $request->resell_price >= $cart->price) ? $request->resell_price : $cart->price;
         }
         else{
             $cart->is_resell = 0;
@@ -461,7 +461,7 @@ class CartManager
         
         $cart->save();
         $resell_total = 0;
-        
+
         if(!$cart->save()){
             $status = 0;
             $resell_total = 0;
