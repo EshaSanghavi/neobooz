@@ -28,11 +28,11 @@ $('.route-cart-updateResell').on('click', function () {
                 ProgressBar: true
             });
             if(is_resell == 1){
-                document.getElementByName("resell_price_"+key).style.display = 'block';
+                document.getElementsByName("resell_price_"+key).style.display = 'block';
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
             else{
-                document.getElementByName("resell_price_"+key).style.display = 'none';
+                document.getElementsByName("resell_price_"+key).style.display = 'none';
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
         }
@@ -61,11 +61,11 @@ $('.route-cart-resellPrice').on('change', function () {
                 ProgressBar: true
             });
             if(is_resell == 1){
-                document.getElementById("resell_price_"+key).style.display = 'block';
+                document.getElementsByName("resell_price_"+key).style.display = 'block';
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
             else{
-                document.getElementById("resell_price_"+key).style.display = 'none';
+                document.getElementsByName("resell_price_"+key).style.display = 'none';
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
         }
