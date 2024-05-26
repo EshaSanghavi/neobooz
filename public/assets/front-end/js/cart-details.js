@@ -10,7 +10,7 @@ $('.route-cart-updateResell').on('click', function () {
     {
         var is_resell = 0;
     }
-    
+
     alert(key+" "+is_resell);
     $.post($('#route-cart-updateResell').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
@@ -23,11 +23,11 @@ $('.route-cart-updateResell').on('click', function () {
                 ProgressBar: true
             });
         } else {
-            var message = "successfully_updated!";
-            toastr.success(message, {
-                CloseButton: true,
-                ProgressBar: true
-            });
+            updateNavCart();
+            $('#cart-summary').empty().html(response);
+            $('[data-toggle="tooltip"]').tooltip();
+            actionCheckoutFunctionInit();
+            couponCode();
         }
     });
 });
