@@ -43,6 +43,8 @@ $('.route-cart-updateResell').on('click', function () {
                         element.style.display = 'none';
                 });
             }
+
+            updateCartQuantityList(1, key, 0, 'undefined');
         }
     });
 });
@@ -85,12 +87,12 @@ $('.route-cart-resellPrice').on('change', function () {
                 });
             }
 
+            updateCartQuantityList(1, key, 0, 'undefined');
         }
     });
 });
 
 function updateCartQuantityList(minimum_order_qty, key, incr, e) {
-    alert(minimum_order_qty+", "+key+", "+incr+", "+e);
     let quantity_id = 'cart_quantity_web';
     updateCartCommon(minimum_order_qty, key, incr, e, quantity_id);
 }
