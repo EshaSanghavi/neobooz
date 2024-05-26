@@ -453,8 +453,6 @@ class CartManager
         $cart->is_resell = $request->is_resell ? 1 : 0;
         $cart->save();
 
-        php('echo $request->is_resell');
-
         if(!$cart->save()){
             $status = 0;
         }
