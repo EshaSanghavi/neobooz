@@ -14,6 +14,7 @@ $('.route-cart-updateResell').on('click', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
+        this.checked = is_resell;
         } else {
             updateNavCart();
             $('#cart-summary').empty().html(response);
