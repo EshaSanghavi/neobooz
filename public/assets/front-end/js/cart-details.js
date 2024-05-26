@@ -21,6 +21,8 @@ $('.route-cart-updateResell').on('click', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
+            document.getElementById("resell_total_"+key).innerText = response.resell_total;
+
         } else {
             var message = "successfully_updated!";
             toastr.success(response.message, {
@@ -33,8 +35,6 @@ $('.route-cart-updateResell').on('click', function () {
                     if (element)
                         element.style.display = 'block';
                 });
-
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
@@ -62,6 +62,8 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
+            document.getElementById("resell_total_"+key).innerText = response.resell_total;
+
         } else {
             var message = "successfully_updated!";
             toastr.success(response.message, {
@@ -74,7 +76,6 @@ $('.route-cart-resellPrice').on('change', function () {
                     if (element)
                         element.style.display = 'block';
                 });
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
