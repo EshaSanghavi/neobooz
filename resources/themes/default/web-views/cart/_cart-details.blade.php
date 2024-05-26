@@ -352,6 +352,7 @@
                                 <td colspan="2" class="__w-15p text-end {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
                                     <div>
                                         <label class="title-color">{{ translate('Total Resell Price') }}</label>
+                                        <br>
                                         <a  style="height: 32px; width: auto; margin: 5px 0px;">{{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}</a>
                                     </div>
                                 </td>
