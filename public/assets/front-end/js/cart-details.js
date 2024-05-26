@@ -59,14 +59,9 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            if(is_resell == 1){
-                document.getElementById("resell_price_"+key).style.display = 'block';
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            }
-            else{
-                document.getElementById("resell_price_"+key).style.display = 'none';
-                document.getElementById("resell_total_"+key).innerText = response.resell_total;
-            }
+            document.getElementById("resell_price_"+key).style.display = 'block';
+            document.getElementById("resell_total_"+key).innerText = response.resell_total;
+            
         }
     });
 });
