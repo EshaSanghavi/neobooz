@@ -25,7 +25,7 @@ $('.route-cart-updateResell').on('click', function () {
 
         } else {
             var message = "successfully_updated!";
-            toastr.success(response.message, {
+            toastr.success(message, {
                 CloseButton: true,
                 ProgressBar: true
             });
@@ -68,7 +68,7 @@ $('.route-cart-resellPrice').on('change', function () {
 
         } else {
             var message = "successfully_updated!";
-            toastr.success(response.message, {
+            toastr.success(message, {
                 CloseButton: true,
                 ProgressBar: true
             });
