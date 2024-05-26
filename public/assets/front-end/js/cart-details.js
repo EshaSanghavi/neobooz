@@ -7,7 +7,17 @@ $('.route-cart-updateResell').on('click', function () {
     $.post($('#route-cart-updateResell').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
-        is_resell
+        is_resell,
+        
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function () {
+            location.reload();
+        },
+        complete: function () {
+            $('#loading').hide();
+        },
     }, function (response) {
         if (response.status == 0) {
             toastr.error(response.message, {
