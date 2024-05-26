@@ -30,7 +30,8 @@ $('.route-cart-updateResell').on('click', function () {
             if(is_resell == 1){
                 var elements = document.getElementsByName("resell_price_"+key);
                 elements.forEach(function(element) {
-                    element.style.display = 'block';
+                    if (element)
+                        element.style.display = 'none';
                 });
 
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
@@ -38,7 +39,8 @@ $('.route-cart-updateResell').on('click', function () {
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
                 elements.forEach(function(element) {
-                    element.style.display = 'none';
+                    if (element)
+                        element.style.display = 'none';
                 });
                 document.getElementById("resell_total_"+key).innerText = response.resell_total;
             }
@@ -67,10 +69,23 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            var elements = document.getElementsByName("resell_price_"+key);
+            if(is_resell == 1){
+                var elements = document.getElementsByName("resell_price_"+key);
                 elements.forEach(function(element) {
-                    element.style.display = 'block';
-            });
+                    if (element)
+                        element.style.display = 'none';
+                });
+
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
+            }
+            else{
+                var elements = document.getElementsByName("resell_price_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'none';
+                });
+                document.getElementById("resell_total_"+key).innerText = response.resell_total;
+            }
         }
     });
 });
