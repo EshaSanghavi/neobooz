@@ -15,6 +15,15 @@ $('.route-cart-updateResell').on('click', function () {
         key,
         is_resell,
         resell_price: 0.0,
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function () {
+            location.reload();
+        },
+        complete: function () {
+            $('#loading').hide();
+        },
     }, function (response) {
         if (response.status == 0) {
             toastr.error(response.message, {
@@ -57,6 +66,15 @@ $('.route-cart-resellPrice').on('change', function () {
         key,
         is_resell,
         resell_price,
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function () {
+            location.reload();
+        },
+        complete: function () {
+            $('#loading').hide();
+        },
     }, function (response) {
         if (response.status == 0) {
             toastr.error(response.message, {
