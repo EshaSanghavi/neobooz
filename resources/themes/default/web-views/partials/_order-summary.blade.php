@@ -17,7 +17,9 @@
                     @php($subTotal+=$cartItem['price']*$cartItem['quantity'])
                     @php($totalTax+=$cartItem['tax_model']=='exclude' ? ($cartItem['tax']*$cartItem['quantity']):0)
                     @php($totalDiscountOnProduct+=$cartItem['discount']*$cartItem['quantity'])
-                    @php($totalResellerProfit+=($cartItem['resell_price'] - $cartItem['price'])*$cartItem['quantity'])
+                    @if($cart->is_resell == 1)
+                        @php($totalResellerProfit+=($cartItem['resell_price'] - $cartItem['price'])*$cartItem['quantity'])
+
                 @endforeach
 
                 @if(session()->missing('coupon_type') || session('coupon_type') !='free_delivery')
@@ -69,12 +71,16 @@
                     - {{ webCurrencyConverter(amount: $totalDiscountOnProduct) }}
                 </span>
             </div>
-            <div class="d-flex justify-content-between">
-                <span class="cart_title">{{translate('reseller_profit')}}</span>
-                <span class="cart_value">
-                    + {{ webCurrencyConverter(amount: $totalResellerProfit) }}
-                </span>
-            </div>
+            @php($coupon_dis=0)
+                @if(!totalResellerProfit == 0)
+                    <div class="d-flex justify-content-between">
+                        <span class="cart_title">{{translate('reseller_profit')}}</span>
+                        <span class="cart_value">
+                            + {{ webCurrencyConverter(amount: $totalResellerProfit) }}
+                        </span>
+                    </div>
+                @endif
+            @endphp
             @php($coupon_dis=0)
             @if(auth('customer')->check())
 
