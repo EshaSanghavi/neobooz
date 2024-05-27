@@ -71,12 +71,14 @@
                     - {{ webCurrencyConverter(amount: $totalDiscountOnProduct) }}
                 </span>
             </div>
-                    <div class="d-flex justify-content-between">
-                        <span class="cart_title">{{translate('reseller_profit')}}</span>
-                        <span class="cart_value">
-                            + {{ webCurrencyConverter(amount: $totalResellerProfit) }}
-                        </span>
-                    </div>
+            @if(!totalResellerProfit == 0)
+                <div class="d-flex justify-content-between">
+                    <span class="cart_title">{{translate('reseller_profit')}}</span>
+                    <span class="cart_value">
+                        + {{ webCurrencyConverter(amount: $totalResellerProfit) }}
+                    </span>
+                </div>
+            @endif
             @php($coupon_dis=0)
             @if(auth('customer')->check())
 
