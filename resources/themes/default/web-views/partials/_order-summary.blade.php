@@ -17,7 +17,7 @@
                     @php($subTotal+=$cartItem['price']*$cartItem['quantity'])
                     @php($totalTax+=$cartItem['tax_model']=='exclude' ? ($cartItem['tax']*$cartItem['quantity']):0)
                     @php($totalDiscountOnProduct+=$cartItem['discount']*$cartItem['quantity'])
-                    @if($cart->is_resell == 1)
+                    @if($cartItem->is_resell == 1)
                         @php($totalResellerProfit+=($cartItem['resell_price'] - $cartItem['price'])*$cartItem['quantity'])
 
                 @endforeach
