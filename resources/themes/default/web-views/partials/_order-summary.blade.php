@@ -19,7 +19,7 @@
                     @php($totalDiscountOnProduct+=$cartItem['discount']*$cartItem['quantity'])
                     @if($cartItem->is_resell == 1)
                         @php($totalResellerProfit+=($cartItem['resell_price'] - $cartItem['price'])*$cartItem['quantity'])
-
+                    @endif
                 @endforeach
 
                 @if(session()->missing('coupon_type') || session('coupon_type') !='free_delivery')
