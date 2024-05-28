@@ -170,7 +170,7 @@ class WebController extends Controller
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
             
-        if($blog){
+        if($blogs){
             return view(VIEW_FILE_NAMES['blogs'], compact('blogs'));
         }else{
             return redirect()->route('home');
