@@ -54,7 +54,7 @@ return [
     'shop_view_page'=>'web-views.seller-view.shopview',
     'faq'=>'web-views.pages.help-topics',
     'about_us'=>'web-views.pages.about-us',
-    'blogs'=>'web-views.pages.blogs',
+    'all_blogs'=>'web-views.pages.blogs',
     'recover_password'=>'web-views.customer-views.auth.recover-password',
     'otp_verification'=>'web-views.customer-views.auth.verify-otp',
     'reset_password'=>'web-views.customer-views.auth.reset-password',
