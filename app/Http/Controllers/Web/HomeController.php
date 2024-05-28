@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Utils\Helpers;
 use App\Http\Controllers\Controller;
-use App\Models\Banner;
-use App\Models\Brand;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogComment;
+use App\Models\Setting;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Enums\WebConfigKey;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Utils\Helpers;
+use App\Models\Banner;
+use App\Models\Brand;
 use App\Models\BusinessSetting;
 use App\Models\Category;
 use App\Models\Coupon;
@@ -148,7 +153,7 @@ class HomeController extends Controller
             compact(
                 'featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
                 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting', 'main_banner', 'main_section_banner',
-                'current_date','product','footer_banner', 'blogs',
+                'current_date','product','footer_banner', 'blogs'
             )
         );
     }
