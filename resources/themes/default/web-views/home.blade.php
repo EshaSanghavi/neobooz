@@ -268,7 +268,7 @@
 
 
         @foreach($blogs as $blog)
-            @include('web-views.partials._blog-home-section', ['decimal_point_settings'=>$decimalPointSettings])
+            @include('web-views.partials._blog-home-section')
         @endforeach
 
         
