@@ -336,6 +336,7 @@
                                             <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}">
                                         @endif
                                     </div>
+                                    <br>
                                     <div>
                                         @if($cartItem['is_resell'] == 1)
                                             <div name="reseller_{{ $cartItem['id'] }}">
