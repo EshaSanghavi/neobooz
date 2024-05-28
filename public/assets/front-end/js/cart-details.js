@@ -59,7 +59,7 @@ $('.route-cart-updateResell').on('click', function () {
     });
 });
 
-$('.route-cart-reseller').on('change', function () {
+$('.route-cart-updateReseller').on('change', function () {
     var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
     var reseller = this.value;
     alert(reseller);
