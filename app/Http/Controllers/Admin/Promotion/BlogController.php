@@ -39,7 +39,7 @@ class BlogController extends Controller
     }
 
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $rules = [
             'title'=>'required|unique:blogs',
@@ -82,8 +82,13 @@ class BlogController extends Controller
         $blog->save();
 
         
+        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->get();
+            
+        
         Toastr::success(translate('blog_added_successfully'));
-        return redirect()->route('admin.blog.list');
+        return redirect()->view('admin-views.blog.blog',compact('categories'));
     }
 
     public function edit($id)
