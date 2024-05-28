@@ -24,17 +24,6 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="d-sm-none">
-                    <div class="row g-2">
-                        @foreach($blog as $blog)
-                            @if($key < 4)
-                                <div class="col-6">
-                                    @include('web-views.partials._single-blog',['blog'=>$blog,'decimal_point_settings'=>$decimal_point_settings])
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
             </div>
         </div>
     </div>
