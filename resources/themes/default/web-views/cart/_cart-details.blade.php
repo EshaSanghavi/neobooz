@@ -689,12 +689,12 @@
                         
                         <div class="d-flex flex-column gap-1 ">
                             <div class="text-break __line-2">
-                                <label class="title-color" for="route-cart-updateResellMobile" style="width:100%;">
+                                <label class="title-color" style="width:100%;">
                                     Is this a resell product?
                                     @if($cartItem['is_resell'] == 1)
-                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" checked>
+                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" onclick="updateResellMobile(this, {{ $cartItem['id'] }})" checked>
                                     @else   
-                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}">
+                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" onclick="updateResellMobile(this, {{ $cartItem['id'] }})">
                                     @endif
                                 </label>
                             </div>
@@ -704,7 +704,7 @@
                             @else 
                             <div class="d-flex flex-wrap column-gap-2" name="resellerMobile_{{ $cartItem['id'] }}"  style="visibility: hidden;">
                             @endif
-                                <div class="text-nowrap text-muted"  for="resellerMobile_{{ $cartItem['id'] }}">{{ translate('Reseller Name:') }}</div>
+                                <div class="text-nowrap text-muted">{{ translate('Reseller Name:') }}</div>
                                     <div class="text-start d-flex gap-1 flex-wrap">
                                         <input type="text" value="{{ $cartItem['reseller'] }}" name="resellerMobile_{{ $cartItem['id'] }}" class="form-control route-cart-updateResellerMobile" id="route-cart-updateResellerMobile" data-url="cart/updateReseller" style="height:fit-content; padding:5px;">
                                     </div>
@@ -717,7 +717,7 @@
                             @else   
                                 <div name="resell_priceMobile_{{ $cartItem['id'] }}" style="visibility: hidden;">
                             @endif
-                                <label class="title-color" for="resell_priceMobile_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
+                                <label class="title-color">{{ translate('Unit Resell Price') }}</label>
                                 <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_priceMobile_{{ $cartItem['id'] }}" class="form-control route-cart-resellPriceMobile" id="route-cart-resellPriceMobile" data-url="cart/resellPrice" style="height:fit-content; padding:5px;">
                             </div>
                         </div>
@@ -848,6 +848,71 @@
     <span id="route-action-checkout-function" data-route="shop-cart"></span>
 </div>
 
+<script>
+"use strict";
+    function updateResellMobile(ele, id) {
+        console.log(ele.checked);
+        var is_resell = (ele.checked) ? 1 : 0;
+    
+        var key = id;
+        
+        console.log(key+" "+is_resell);
+        $.post($('#route-cart-updateResellMobile').data('url'), {
+            _token: $('meta[name="_token"]').attr('content'),
+            key,
+            is_resell,
+            resell_price: 0.0,
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            success: function () {
+                location.reload(true);
+            },
+            complete: function () {
+                $('#loading').hide();
+            },
+        }, function (response) {
+            if (response.status == 0) {
+                toastr.error(response.message, {
+                    CloseButton: true,
+                    ProgressBar: true
+                });
+                document.getElementById("resell_totalMobile_"+key).innerText = response.resell_total;
+    
+            } else {
+                var message = "successfully_updated!";
+                toastr.success(message, {
+                    CloseButton: true,
+                    ProgressBar: true
+                });
+                if(is_resell == 1){
+                    var elements = document.getElementsByName("resell_priceMobile_"+key);
+                    elements.forEach(function(element) {
+                        if (element)
+                            element.style.visibility = 'visible';
+                    });
+                    var elements = document.getElementsByName("resellerMobile_"+key);
+                    elements.forEach(function(element) {
+                        if (element)
+                            element.style.visibility = 'visible';
+                    });
+                }
+                else{
+                    var elements = document.getElementsByName("resell_priceMobile_"+key);
+                    elements.forEach(function(element) {
+                        if (element)
+                            element.style.visibility = 'hidden';
+                    });
+                    var elements = document.getElementsByName("resellerMobile_"+key);
+                    elements.forEach(function(element) {
+                        if (element)
+                            element.style.visibility = 'hidden';
+                    });
+                }
+            }
+        });
+    };
+</script>
 @push('script')
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/cart-details.js') }}"></script>
 @endpush

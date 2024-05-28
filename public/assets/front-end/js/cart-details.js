@@ -140,7 +140,9 @@ $('.route-cart-updateResellMobile').on('click change', function () {
     {
         var is_resell = 0;
     }
-    alert(key+" "+is_resell);
+    var msg = key+" "+is_resell;
+    toastr.success(msg);
+    
     $.post($('#route-cart-updateResellMobile').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
