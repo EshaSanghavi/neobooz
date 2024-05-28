@@ -143,6 +143,7 @@ class HomeController extends Controller
             ->orderBy('id','desc')
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
+        dd($blogs);
 
         return view(VIEW_FILE_NAMES['home'],
             compact(
