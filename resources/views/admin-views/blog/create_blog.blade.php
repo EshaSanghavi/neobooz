@@ -17,7 +17,7 @@
             </h2>
         </div>
 
-        <form class="blog-form text-start" action="{{ route('admin.blog-store') }}" method="POST" enctype="multipart/form-data" id="blog_form">
+        <form class="blog-form text-start" action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data" id="blog_form">
             @csrf
             <div class="card">
                 <div class="px-4 pt-3">

@@ -39,7 +39,7 @@ class BlogController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $rules = [
             'title'=>'required|unique:blogs',
@@ -82,11 +82,8 @@ class BlogController extends Controller
         $blog->save();
 
         
-        
-            
-        
-        Toastr::success(translate('blog_added_successfully'));
-        index();
+        Toastr::success(translate('banner_added_successfully'));
+        return redirect()->route('admin.blog.list');
     }
 
     public function edit($id)
