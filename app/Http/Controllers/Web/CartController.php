@@ -173,6 +173,17 @@ class CartController extends Controller
         return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
     }
 
+    public function updateReseller(Request $request)
+    {
+        $response = CartManager::update_reseller($request);
+
+        if ($response['status'] == 0) {
+            return response()->json($response);
+        }
+
+        return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
+    }
+
     //updated the quantity for a cart item
     public function updateQuantity(Request $request)
     {

@@ -478,6 +478,31 @@ class CartManager
         ];
     }
 
+    public static function update_reseller($request)
+    {
+        $cart = Cart::where(['id' => $request->key])->first();
+        if($cart->is_resell == 1){
+            $cart->reseller = $request->reseller;
+        }
+        else{
+            $cart->reseller = null;
+        }
+        
+        $cart->save();
+
+        if(!$cart->save()){
+            $status = 0;
+        }
+        else{
+            $status = 1;
+        }
+
+        return [
+            'status' => $status,
+            'message' => $status == 1 ? translate('successfully_updated!') : translate('could_not_update'),
+        ];
+    }
+
     public static function get_shipping_cost_for_product_category_wise($product,$qty)
     {
         $shippingMethod = Helpers::get_business_settings('shipping_method');

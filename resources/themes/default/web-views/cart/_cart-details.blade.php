@@ -336,6 +336,16 @@
                                             <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}">
                                         @endif
                                     </div>
+                                    <div>
+                                        @if($cartItem['is_resell'] == 1)
+                                            <div name="reseller_{{ $cartItem['id'] }}">
+                                        @else   
+                                            <div name="reseller_{{ $cartItem['id'] }}" style="display: none;">
+                                        @endif
+                                            <label class="title-color" for="reseller_{{ $cartItem['id'] }}">{{ translate('Reseller Name') }}</label>
+                                            <input type="text" value="{{ $cartItem['reseller'] }}" name="reseller_{{ $cartItem['id'] }}" class="form-control route-cart-updateReseller" id="route-cart-updateReseller" data-url="cart/reseller">
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="__w-30p">
                                     @if($cartItem['is_resell'] == 1)

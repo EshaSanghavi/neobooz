@@ -44,6 +44,7 @@ $('.route-cart-updateResell').on('click', function () {
                     if (element)
                         element.style.display = 'block';
                 });
+                var elements = document.getElementByName("reseller_"+key).style.display = 'block';
             }
             else{
                 var elements = document.getElementsByName("resell_price_"+key);
@@ -51,8 +52,45 @@ $('.route-cart-updateResell').on('click', function () {
                     if (element)
                         element.style.display = 'none';
                 });
+                var elements = document.getElementByName("reseller_"+key).style.display = 'none';
             }
 
+        }
+    });
+});
+
+$('.route-cart-reseller').on('change', function () {
+    var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
+    var is_resell = 1;
+    var reseller = this.value;
+    $.post($('#route-cart-updateReseller').data('url'), {
+        _token: $('meta[name="_token"]').attr('content'),
+        key,
+        is_resell,
+        reseller,
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function () {
+            location.reload();
+        },
+        complete: function () {
+            $('#loading').hide();
+        },
+    }, function (response) {
+        if (response.status == 0) {
+            toastr.error(response.message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+            document.getElementById("resell_total_"+key).innerText = response.resell_total;
+
+        } else {
+            var message = "successfully_updated!";
+            toastr.success(message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
         }
     });
 });
@@ -89,20 +127,6 @@ $('.route-cart-resellPrice').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            if(is_resell == 1){
-                var elements = document.getElementsByName("resell_price_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.display = 'block';
-                });
-            }
-            else{
-                var elements = document.getElementsByName("resell_price_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.display = 'none';
-                });
-            }
         }
     });
 });
