@@ -38,8 +38,8 @@
         <div class="brand_div-wrap mb-4">
             @foreach($blogs as $blog)
                 <a href="" class="brand_div"
-                   data-toggle="tooltip" title="{{$blog->name}}">
-                    <img alt="{{$blog->name}}"
+                   data-toggle="tooltip" title="{{$blog->title}}">
+                    <img alt="{{$blog->title}}"
                          src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}">
                 </a>
             @endforeach
