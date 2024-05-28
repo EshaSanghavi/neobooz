@@ -1,7 +1,7 @@
 @extends('layouts.front-end.app')
 
 @section('title', translate('all_Blogs'))
-
+@endsection
 @push('css_or_js')
     <meta property="og:image" content="{{dynamicStorage(path: 'storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
     <meta property="og:title" content="Blogs of {{$web_config['name']->value}} "/>
@@ -12,7 +12,6 @@
     <meta property="twitter:url" content="{{env('APP_URL')}}">
     <meta property="twitter:description" content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
 @endpush
-@endsection
 @section('content')
 
     <div class="container pb-5 mb-2 mb-md-4 rtl text-align-direction">
