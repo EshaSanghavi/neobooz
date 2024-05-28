@@ -267,7 +267,7 @@
         @endif
 
 
-        @if ($blogs->count() > 0)
+        @if ($blogs)
             @foreach($blogs as $blog)
                 @include('web-views.partials._blog-home-section')
             @endforeach
