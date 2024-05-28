@@ -19,7 +19,7 @@
 @section('content')
 
     <div class="container pb-5 mb-2 mb-md-4 rtl text-align-direction">
-        <div class="bg-primary-light rounded-10 my-4 p-3 p-sm-4"
+            <div class="bg-primary-light rounded-10 my-4 p-3 p-sm-4"
              data-bg-img="{{ theme_asset(path: 'public/assets/front-end/img/media/bg.png') }}">
             <div class="d-flex flex-column gap-1 text-primary">
                 <h4 class="mb-0 text-start fw-bold text-primary text-uppercase">
@@ -28,24 +28,28 @@
             </div>
         </div>
 
-        
-        <div class="brand_div-wrap mb-4">
+        <div class="row">
             @foreach($blogs as $blog)
-                <div class="row mx-n2">
-                    <div class="col-md-12">
-                        <div class="text-center">
-                            {{ $blog->title }}
+                <div class="col-lg-3 col-md-4 col-sm-4 col-6  p-2">
+                    <div class="product-single-hover style--card">
+                        <div class="inline_product clickable d-flex justify-content-center">
+                            <div class="p-10px pb-0">
+                                <a href="" class="brand_div" data-toggle="tooltip" title="{{$blog->title}}">
+                                    <img alt="{{$blog->title}}" src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-product-details">
+                            <div class="text-center">
+                                {{ $blog->title }}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <a href="" class="brand_div"
-                   data-toggle="tooltip" title="{{$blog->title}}">
-                    <img alt="{{$blog->title}}"
-                         src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}">
-                </a>
             @endforeach
         </div>
-    </div>
+
+    </div>   
 @endsection
 
 @push('script')
