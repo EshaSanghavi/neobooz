@@ -344,7 +344,7 @@
                                             <div name="reseller_{{ $cartItem['id'] }}" style="display: none;">
                                         @endif
                                             <label class="title-color" for="reseller_{{ $cartItem['id'] }}">{{ translate('Reseller Name') }}</label>
-                                            <input type="text" value="{{ $cartItem['reseller'] }}" name="reseller_{{ $cartItem['id'] }}" class="form-control route-cart-updateReseller" id="route-cart-updateReseller" data-url="cart/updateReseller">
+                                            <input type="text" value="{{ $cartItem['reseller'] }}" name="reseller_{{ $cartItem['id'] }}" class="form-control route-cart-updateReseller" id="route-cart-updateReseller" data-url="cart/reseller">
                                         </div>
                                     </div>
                                 </td>
