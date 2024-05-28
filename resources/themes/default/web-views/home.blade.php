@@ -269,7 +269,7 @@
 
         @if ($home_categories->count() > 0)
             @foreach($blogs as $blog)
-                <h1>{{ $blog->title }}</h1>
+                @include('web-views.partials._blog-home-section')
             @endforeach
         @endif
         
