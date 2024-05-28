@@ -326,6 +326,11 @@
                                 </ul>
                             </li>
                         @endif
+
+                        <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
+                            <a class="nav-link" href="{{route('blogs')}}">{{ translate('Blogs')}}</a>
+                        </li>
+
                         @php($discount_product = App\Models\Product::with(['reviews'])->active()->where('discount', '!=', 0)->count())
                         @if ($discount_product>0)
                             <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
