@@ -4,12 +4,11 @@
             <div class="d-flex __gap-6px flex-between px-sm-3">
                 <div class="category-product-view-title">
                 <span class="for-feature-title font-bold __text-20px text-uppercase">
-                        {{$blog->title]}}
+                    {{ translate('Blogs')}}
                 </span>
                 </div>
                 <div class="category-product-view-all">
-                    <a class="text-capitalize view-all-text text-nowrap web-text-primary"
-                       href="">
+                    <a class="text-capitalize view-all-text text-nowrap web-text-primary" href="{{route('blogs')}}">
                         {{ translate('view_all')}}
                         <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1 float-left' : 'right ml-1 mr-n1'}}"></i>
                     </a>
@@ -19,17 +18,20 @@
             <div class="mt-2">
                 <div class="carousel-wrap-2 d-none d-sm-block">
                     <div class="owl-carousel owl-theme category-wise-product-slider">
-                        <div class="product-single-hover style--category shadow-none">
-                            <div class="overflow-hidden position-relative">
-                                <div class=" inline_product clickable d-flex justify-content-center">
-                                    <div class="d-block pb-0">
-                                        <a href="" class="d-block">
-                                            <img alt="" src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image , type: 'backend-banner') }}">
-                                        </a>
-                                    </div>
+                        @foreach($blogs as $key => $blog)
+                            @include('web-views.partials._category-single-product',['product'=>$product,'decimal_point_settings'=>$decimal_point_settings])
+                        @endforeach
+                    </div>
+                </div>
+                <div class="d-sm-none">
+                    <div class="row g-2">
+                        @foreach($category['products'] as $key=>$product)
+                            @if($key < 4)
+                                <div class="col-6">
+                                    @include('web-views.partials._category-single-product',['product'=>$product,'decimal_point_settings'=>$decimal_point_settings])
                                 </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

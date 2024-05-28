@@ -148,7 +148,7 @@ class HomeController extends Controller
             compact(
                 'featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
                 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting', 'main_banner', 'main_section_banner',
-                'current_date','product','footer_banner', 'blogs',
+                'current_date','product','footer_banner', 'blogs'
             )
         );
     }
