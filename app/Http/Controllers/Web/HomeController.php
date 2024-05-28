@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
-use App\Models\BlogCategory;
-use App\Models\BlogComment;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -142,8 +139,6 @@ class HomeController extends Controller
 
         $product=$this->product->active()->inRandomOrder()->first();
         $footer_banner = $this->banner->where('banner_type','Footer Banner')->where('theme', theme_root_path())->where('published',1)->orderBy('id','desc')->get();
-
-        
 
         return view(VIEW_FILE_NAMES['home'],
             compact(
