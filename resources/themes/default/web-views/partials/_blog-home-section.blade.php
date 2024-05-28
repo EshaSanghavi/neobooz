@@ -4,7 +4,7 @@
             <div class="d-flex __gap-6px flex-between px-sm-3">
                 <div class="category-product-view-title">
                 <span class="for-feature-title font-bold __text-20px text-uppercase">
-                        {{$blog->title}}
+                        {{$blog->title]}}
                 </span>
                 </div>
                 <div class="category-product-view-all">
@@ -19,7 +19,9 @@
             <div class="mt-2">
                 <div class="carousel-wrap-2 d-none d-sm-block">
                     <div class="owl-carousel owl-theme category-wise-product-slider">
-                        
+                        @foreach($blog as $blog)
+                            @include('web-views.partials._single-blog',['blog'=>$blog])
+                        @endforeach
                     </div>
                 </div>
             </div>
