@@ -23,26 +23,21 @@
         </div>
 
         <div class="row ml-4">
-            <div class="col-lg-3 col-md-4 col-sm-4 col-6  p-2">
-                    <div class="product-single-hover style--card">
-                        <div class="inline_product clickable d-flex justify-content-center">
-                            <div class="p-10px pb-0">
-                                <img alt="{{$blog->title}}" src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}">
-                            </div>
-                        </div>
-                        <div class="single-product-details">
-                            <div class="text-center">
-                                <span class="text-accent text-dark"> {{ $blog->title }} </span>
-                                <div class="justify-content-between text-center">
-                                    <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">
-                                        {{ $blog->blog_category }}
-                                    </div>
-                                </div>
-                                
+            <div class="col-7">
+                    <img alt="{{$blog->title}}" src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}" style="width:100%;">
+            </div>
+        
+            <div class="col-3">
+                <div class="single-product-details">
+                    <div class="text-center">
+                        <span class="text-accent text-dark"> <h2><b>{{ $blog->title }}</b></h2> </span>
+                        <div class="justify-content-between text-center">
+                                {{ $blog->blog_category }}
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>   
 @endsection
