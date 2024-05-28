@@ -702,7 +702,7 @@
                             @if($cartItem['is_resell'] == 1)
                             <div class="d-flex flex-wrap column-gap-2" name="resellerMobile_{{ $cartItem['id'] }}">
                             @else 
-                            <div class="d-flex flex-wrap column-gap-2" name="resellerMobile_{{ $cartItem['id'] }}"  style="display: none;">
+                            <div class="d-flex flex-wrap column-gap-2" name="resellerMobile_{{ $cartItem['id'] }}"  style="visibility: hidden;">
                             @endif
                                 <div class="text-nowrap text-muted"  for="resellerMobile_{{ $cartItem['id'] }}">{{ translate('Reseller Name:') }}</div>
                                     <div class="text-start d-flex gap-1 flex-wrap">
@@ -715,7 +715,7 @@
                             @if($cartItem['is_resell'] == 1)
                                 <div name="resell_priceMobile_{{ $cartItem['id'] }}">
                             @else   
-                                <div name="resell_priceMobile_{{ $cartItem['id'] }}" style="display: none;">
+                                <div name="resell_priceMobile_{{ $cartItem['id'] }}" style="visibility: hidden;">
                             @endif
                                 <label class="title-color" for="resell_priceMobile_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
                                 <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_priceMobile_{{ $cartItem['id'] }}" class="form-control route-cart-resellPriceMobile" id="route-cart-resellPriceMobile" data-url="cart/resellPrice" style="height:fit-content; padding:5px;">
@@ -727,7 +727,7 @@
                         @if($cartItem['is_resell'] == 1)
                             <div class="d-flex gap-2" name="resell_priceMobile_{{ $cartItem['id'] }}">
                         @else 
-                            <div class="d-flex gap-2" name="resell_priceMobile_{{ $cartItem['id'] }}" style="display: none;">
+                            <div class="d-flex gap-2" name="resell_priceMobile_{{ $cartItem['id'] }}" style="visibility: hidden;">
                         @endif
                             <div class="text-nowrap text-muted">{{ translate('Total Resell Price:') }}</div>
                                 <div class="fw-semibold" id="resell_totalMobile_{{ $cartItem['id'] }}" >

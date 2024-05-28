@@ -171,24 +171,24 @@ $('.route-cart-updateResellMobile').on('click', function () {
                 var elements = document.getElementsByName("resell_priceMobile_"+key);
                 elements.forEach(function(element) {
                     if (element)
-                        element.style.display = 'block';
+                        element.style.visibility = 'visible';
                 });
                 var elements = document.getElementsByName("resellerMobile_"+key);
                 elements.forEach(function(element) {
                     if (element)
-                        element.style.display = 'block';
+                        element.style.visibility = 'visible';
                 });
             }
             else{
                 var elements = document.getElementsByName("resell_priceMobile_"+key);
                 elements.forEach(function(element) {
                     if (element)
-                        element.style.display = 'none';
+                        element.style.visibility = 'hidden';
                 });
                 var elements = document.getElementsByName("resellerMobile_"+key);
                 elements.forEach(function(element) {
                     if (element)
-                        element.style.display = 'none';
+                        element.style.visibility = 'hidden';
                 });
             }
 
