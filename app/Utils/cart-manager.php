@@ -498,6 +498,7 @@ class CartManager
         }
 
         return [
+            'reseller' => $reseller,
             'status' => $status,
             'message' => $status == 1 ? translate('successfully_updated!') : translate('could_not_update'),
         ];

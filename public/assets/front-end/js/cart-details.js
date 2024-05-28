@@ -82,7 +82,7 @@ $('.route-cart-updateReseller').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            this.value = reseller;
+            this.value = response.reseller;
         } else {
             var message = "successfully_updated!";
             toastr.success(message, {
