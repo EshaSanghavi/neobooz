@@ -25,7 +25,7 @@
         </div>
 
         <div class="brand_div-wrap mb-4">
-            @foreach($blogs as $blolg)
+            @foreach($blogs as $blog)
                 <a href="" class="brand_div"
                    data-toggle="tooltip" title="{{$blog->title}}">
                     <img alt="{{$blog->title}}"
