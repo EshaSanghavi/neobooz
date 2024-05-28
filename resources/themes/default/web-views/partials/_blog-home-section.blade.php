@@ -19,15 +19,15 @@
                 <div class="carousel-wrap-2 d-none d-sm-block">
                     <div class="owl-carousel owl-theme category-wise-product-slider">
                         @foreach($blogs as $key => $blog)
-                            @include('web-views.partials._single-blog')
+                            @include('web-views.partials._single-blog', ['blog'=>$blog])
                         @endforeach
                     </div>
                 </div>
                 <div class="d-sm-none">
                     <div class="row g-2">
-                        @foreach($category['products'] as $key=>$product)
+                        @foreach($blogs as $key => $blog)
                             @if($key < 4)
-                                @include('web-views.partials._single-blog')
+                                @include('web-views.partials._single-blog', ['blog'=>$blog])
                             @endif
                         @endforeach
                     </div>
