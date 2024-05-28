@@ -129,64 +129,7 @@ $('.route-cart-resellPrice').on('change', function () {
 });
 
 // Mobile
-$('.route-cart-updateResellMobile').on('click', function () {
-    var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
-    if($(this).is(':checked') == true) // Get checkbox checked state
-    {
-        var is_resell = 1;
-    }
-    else
-    {
-        var is_resell = 0;
-    }
-    $.post($('#route-cart-updateResellMobile').data('url'), {
-        _token: $('meta[name="_token"]').attr('content'),
-        key,
-        is_resell,
-        resell_price: 0.0,
-        
-    }, function (response) {
-        if (response.status == 0) {
-            toastr.error(response.message, {
-                CloseButton: true,
-                ProgressBar: true
-            });
-            document.getElementById("resell_totalMobile_"+key).innerText = response.resell_total;
 
-        } else {
-            var message = "successfully_updated!";
-            toastr.success(message, {
-                CloseButton: true,
-                ProgressBar: true
-            });
-            if(is_resell == 1){
-                var elements = document.getElementsByName("resell_priceMobile_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.visibility = 'visible';
-                });
-                var elements = document.getElementsByName("resellerMobile_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.visibility = 'visible';
-                });
-            }
-            else{
-                var elements = document.getElementsByName("resell_priceMobile_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.visibility = 'hidden';
-                });
-                var elements = document.getElementsByName("resellerMobile_"+key);
-                elements.forEach(function(element) {
-                    if (element)
-                        element.style.visibility = 'hidden';
-                });
-            }
-
-        }
-    });
-});
 
 $('.route-cart-updateResellerMobile').on('change', function () {
     var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
