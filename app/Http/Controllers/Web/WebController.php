@@ -156,7 +156,7 @@ class WebController extends Controller
                                     $query->where('name', 'LIKE', '%' . $request->search . '%');
                                 })->latest()->paginate(15)->appends(['order_by'=>$order_by, 'search'=>$request->search]);
 
-            return view('web-views.products.brands', compact('brands'));
+            return view(VIEW_FILE_NAMES['all_brands'], compact('brands'));
         }else{
             return redirect()->route('home');
         }
@@ -170,7 +170,7 @@ class WebController extends Controller
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
             
-        return view('themes.default.web-views.pages.blogs', compact('blogs'));
+        return view(VIEW_FILE_NAMES['all_blogs'], compact('blogs'));
         
     }
 
