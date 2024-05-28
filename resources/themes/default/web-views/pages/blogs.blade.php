@@ -40,7 +40,7 @@
                 <a href="" class="brand_div"
                    data-toggle="tooltip" title="{{$blog->name}}">
                     <img alt="{{$blog->name}}"
-                         src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'banner') }}">
+                         src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}">
                 </a>
             @endforeach
         </div>
