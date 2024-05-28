@@ -9,7 +9,7 @@
                 </div>
                 <div class="category-product-view-all">
                     <a class="text-capitalize view-all-text text-nowrap web-text-primary"
-                       href="{{route('blogs',['id'=> $blog->id,'page'=>1])}}">
+                       href="">
                         {{ translate('view_all')}}
                         <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1 float-left' : 'right ml-1 mr-n1'}}"></i>
                     </a>
