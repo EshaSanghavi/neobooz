@@ -692,9 +692,9 @@
                                 <label class="title-color" for="resell_{{ $cartItem['id'] }}" style="width:100%;">
                                     Is this a resell product?
                                     @if($cartItem['is_resell'] == 1)
-                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResellMobile" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" checked>
+                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" checked>
                                     @else   
-                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResellMobile" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}">
+                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}">
                                     @endif
                                 </label>
                             </div>
@@ -706,7 +706,7 @@
                             @endif
                                 <div class="text-nowrap text-muted"  for="resellerMobile_{{ $cartItem['id'] }}">{{ translate('Reseller Name:') }}</div>
                                     <div class="text-start d-flex gap-1 flex-wrap">
-                                        <input type="text" value="{{ $cartItem['reseller'] }}" name="resellerMobile_{{ $cartItem['id'] }}" class="form-control route-cart-updateResellerMobile" id="route-cart-updateResellerMobile" data-url="cart/updateResellerMobile" style="height:fit-content; padding:5px;">
+                                        <input type="text" value="{{ $cartItem['reseller'] }}" name="resellerMobile_{{ $cartItem['id'] }}" class="form-control route-cart-updateResellerMobile" id="route-cart-updateResellerMobile" data-url="cart/updateReseller" style="height:fit-content; padding:5px;">
                                     </div>
                             </div>
                         </div>
@@ -718,7 +718,7 @@
                                 <div name="resellMobile_price_{{ $cartItem['id'] }}" style="display: none;">
                             @endif
                                 <label class="title-color" for="resell_priceMobile_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
-                                <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_priceMobile_{{ $cartItem['id'] }}" class="form-control route-cart-resellPriceMobile" id="route-cart-resellPriceMobile" data-url="cart/resellPriceMobile" style="height:fit-content; padding:5px;">
+                                <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_priceMobile_{{ $cartItem['id'] }}" class="form-control route-cart-resellPriceMobile" id="route-cart-resellPriceMobile" data-url="cart/resellPrice" style="height:fit-content; padding:5px;">
                             </div>
                         </div>
                     </div>
