@@ -456,7 +456,7 @@ class CartManager
         }
         else{
             $cart->is_resell = 0;
-            $cart->resller = null;
+            $cart->reseller = null;
             $cart->resell_price = 0.0;
         }
         
