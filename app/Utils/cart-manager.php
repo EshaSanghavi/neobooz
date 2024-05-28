@@ -455,7 +455,10 @@ class CartManager
             $cart->resell_price = ( $request->resell_price && $request->resell_price >= $cart->price) ? $request->resell_price : $cart->price;
         }
         else{
-            $cart->is_resell = 0;
+            if($cart->is_resell == 1)
+                $cart->is_resell = 0;
+            else   
+                $cart->is_resell = 1;
             $cart->reseller = null;
             $cart->resell_price = 0.0;
         }
