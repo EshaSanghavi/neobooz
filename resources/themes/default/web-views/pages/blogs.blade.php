@@ -28,7 +28,7 @@
                     <div class="product-single-hover style--card">
                         <div class="inline_product clickable d-flex justify-content-center">
                             <div class="p-10px pb-0">
-                                <a href="{{route('blog',['id'=> $blog->id')}}" class="brand_div" data-toggle="tooltip" title="{{$blog->title}}">
+                                <a href="{{route('blog', $blog->id )}}" class="brand_div" data-toggle="tooltip" title="{{$blog->title}}">
                                     <img alt="{{$blog->title}}" src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}">
                                 </a>
                             </div>
