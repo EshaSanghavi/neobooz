@@ -162,7 +162,7 @@ class WebController extends Controller
         }
     }
 
-    public function all_blogs()
+    public function all_blogs(Request $request)
     {
         $brand_status = BusinessSetting::where(['type' => 'product_brand'])->value('value');
         session()->put('product_brand', $brand_status);
