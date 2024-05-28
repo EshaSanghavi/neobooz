@@ -577,8 +577,7 @@
                             }
                         }
                     ?>
-                    <div
-                        class="d-flex justify-content-between gap-3 p-3 fs-12  {{count($group)-1 == $cart_key ? '' :'border-bottom border-aliceblue'}}">
+                    <div class="d-flex justify-content-between gap-3 p-3 fs-12  {{count($group)-1 == $cart_key ? '' :'border-bottom border-aliceblue'}}">
                         <div class="d-flex gap-3">
                             <div class="">
                                 <a href="{{ $checkProductStatus == 1 ? route('product',$cartItem['slug']) : 'javascript:'}}"
@@ -593,7 +592,8 @@
                                     @endif
                                 </a>
                             </div>
-                            <div class="d-flex flex-column gap-1 {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
+
+                            <div class="d-flex flex-column gap-1 {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}" style="height:fit-content;">
                                 <div class="text-break __line-2">
                                     <a href="{{ $checkProductStatus == 1 ? route('product',$cartItem['slug']) : 'javascript:'}}">{{$cartItem['name']}}</a>
                                 </div>
@@ -642,7 +642,7 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div style="height:fit-content;">
                             @php($minimum_order=\App\Utils\ProductManager::get_product($cartItem['product_id']))
                             @if ($minimum_order && $checkProductStatus)
                                 <div class="qty d-flex flex-column align-items-center gap-3">
