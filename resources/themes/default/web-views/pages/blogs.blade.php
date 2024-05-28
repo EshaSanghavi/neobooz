@@ -28,15 +28,16 @@
             </div>
         </div>
 
-        <div class="row mx-n2">
-            <div class="col-md-12">
-                <div class="text-center">
-                    {{ $blogs->title }}
-                </div>
-            </div>
-        </div>
+        
         <div class="brand_div-wrap mb-4">
             @foreach($blogs as $blog)
+                <div class="row mx-n2">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            {{ $blog->title }}
+                        </div>
+                    </div>
+                </div>
                 <a href="" class="brand_div"
                    data-toggle="tooltip" title="{{$blog->title}}">
                     <img alt="{{$blog->title}}"
