@@ -265,9 +265,6 @@
                 @include('web-views.partials._category-wise-product', ['decimal_point_settings'=>$decimalPointSettings])
             @endforeach
         @endif
-
-
-        
         
         
         @php($companyReliability = getWebConfig(name: 'company_reliability'))
