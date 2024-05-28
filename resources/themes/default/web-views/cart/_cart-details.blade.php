@@ -632,6 +632,7 @@
                                         @endif
                                     </span>
                                 </div>
+
                                 @if ( $shipping_type != 'order_wise')
                                     <div class="d-flex flex-wrap gap-2 {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
                                         <span class="text-muted"> {{ translate('shipping_cost')}}</span>:<span
@@ -679,6 +680,51 @@
                                 </span>
                                 </div>
                             @endif
+                        </div>
+
+                        <div>
+                            <div>
+                                <label class="title-color" for="resell_{{ $cartItem['id'] }}" >Is this a resell product?</label>
+                                @if($cartItem['is_resell'] == 1)
+                                    <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" checked>
+                                @else   
+                                    <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}">
+                                @endif
+                            </div>
+                            <br>
+                            <div>
+                                @if($cartItem['is_resell'] == 1)
+                                    <div name="reseller_{{ $cartItem['id'] }}">
+                                @else   
+                                    <div name="reseller_{{ $cartItem['id'] }}" style="display: none;">
+                                @endif
+                                    <label class="title-color" for="reseller_{{ $cartItem['id'] }}">{{ translate('Reseller Name') }}</label>
+                                    <input type="text" value="{{ $cartItem['reseller'] }}" name="reseller_{{ $cartItem['id'] }}" class="form-control route-cart-updateReseller" id="route-cart-updateReseller" data-url="cart/updateReseller">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            @if($cartItem['is_resell'] == 1)
+                                <div name="resell_price_{{ $cartItem['id'] }}">
+                            @else   
+                                <div name="resell_price_{{ $cartItem['id'] }}" style="display: none;">
+                            @endif
+                                <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
+                                <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
+                            </div>
+                        </div>
+                        
+                        <div colspan="2" class="__w-15p text-end {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
+                            @if($cartItem['is_resell'] == 1)
+                                <div name="resell_price_{{ $cartItem['id'] }}">
+                            @else   
+                                <div name="resell_price_{{ $cartItem['id'] }}" style="display: none;">
+                            @endif    
+                                <label class="title-color">{{ translate('Total Resell Price') }}</label>
+                                <br>
+                                <a id="resell_total_{{ $cartItem['id'] }}" style="height: 32px; width: auto; margin: 5px 0px; font-weight: bold;">{{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
