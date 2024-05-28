@@ -690,10 +690,11 @@
                         <div class="d-flex flex-column gap-1 ">
                             <div class="text-break __line-2">
                                 <label class="title-color" for="route-cart-updateResellMobile" style="width:100%;">
+                                    Is this a resell product?
                                     @if($cartItem['is_resell'] == 1)
-                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" checked> Is this a resell product?
+                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" checked>
                                     @else   
-                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}"> Is this a resell product?
+                                        <input type="checkbox" class="form-control ml-2 route-cart-updateResellMobile" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}">
                                     @endif
                                 </label>
                             </div>
