@@ -62,6 +62,7 @@ $('.route-cart-updateResell').on('click', function () {
 $('.route-cart-updateReseller').on('change', function () {
     var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
     var reseller = this.value;
+    alert(reseller);
     $.post($('#route-cart-updateReseller').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
