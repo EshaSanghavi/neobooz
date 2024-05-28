@@ -681,7 +681,7 @@
                                 </div>
                             @endif
                         </div>
-
+                        <br>
                         <div>
                             <div>
                                 <label class="title-color" for="resell_{{ $cartItem['id'] }}" >Is this a resell product?</label>
