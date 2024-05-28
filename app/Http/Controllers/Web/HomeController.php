@@ -6,6 +6,9 @@ use App\Utils\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Brand;
+use App\Models\Blog;
+use App\Models\BlogCategory;
+use App\Models\BlogComment;
 use App\Models\BusinessSetting;
 use App\Models\Category;
 use App\Models\Coupon;
@@ -135,11 +138,17 @@ class HomeController extends Controller
         $product=$this->product->active()->inRandomOrder()->first();
         $footer_banner = $this->banner->where('banner_type','Footer Banner')->where('theme', theme_root_path())->where('published',1)->orderBy('id','desc')->get();
 
+        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->where('status',1)
+            ->orderBy('id','desc')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->get();
+
         return view(VIEW_FILE_NAMES['home'],
             compact(
                 'featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
                 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting', 'main_banner', 'main_section_banner',
-                'current_date','product','footer_banner',
+                'current_date','product','footer_banner', 'blogs',
             )
         );
     }
@@ -781,6 +790,12 @@ class HomeController extends Controller
                     ->whereDate('end_date', '>=', date('Y-m-d'));
             })->latest()->take(4)->get();
 
+        
+        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->where('status',1)
+            ->orderBy('id','desc')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->get();
 
         return view(VIEW_FILE_NAMES['home'],
             compact(
@@ -788,7 +803,7 @@ class HomeController extends Controller
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',
-                'featured_deals'
+                'featured_deals', 'blogs'
             )
         );
     }
@@ -989,9 +1004,16 @@ class HomeController extends Controller
             }])->priority()->get();
         // end category wise product
 
+
+        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->where('status',1)
+            ->orderBy('id','desc')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->get();
+
         return view(VIEW_FILE_NAMES['home'], compact('main_banner','footer_banner','categories','best_sellling_products',
             'discounted_products','featured_deals','just_for_you','deal_of_the_day','order_again_products','top_rated_brands','top_sellers',
-            'more_sellers','latest_products_count', 'latest_products', 'category_wise_products'));
+            'more_sellers','latest_products_count', 'latest_products', 'category_wise_products', 'blogs'));
     }
 
 
