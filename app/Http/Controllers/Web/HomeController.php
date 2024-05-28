@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use App\Enums\WebConfigKey;
-use Brian2694\Toastr\Facades\Toastr;
 use App\Utils\Helpers;
+use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\BusinessSetting;
@@ -142,7 +139,7 @@ class HomeController extends Controller
             compact(
                 'featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
                 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting', 'main_banner', 'main_section_banner',
-                'current_date','product','footer_banner'
+                'current_date','product','footer_banner',
             )
         );
     }
@@ -784,8 +781,6 @@ class HomeController extends Controller
                     ->whereDate('end_date', '>=', date('Y-m-d'));
             })->latest()->take(4)->get();
 
-        
-        
 
         return view(VIEW_FILE_NAMES['home'],
             compact(
@@ -993,9 +988,6 @@ class HomeController extends Controller
                 ])->inRandomOrder()->take(12)->get();
             }])->priority()->get();
         // end category wise product
-
-
-        
 
         return view(VIEW_FILE_NAMES['home'], compact('main_banner','footer_banner','categories','best_sellling_products',
             'discounted_products','featured_deals','just_for_you','deal_of_the_day','order_again_products','top_rated_brands','top_sellers',
