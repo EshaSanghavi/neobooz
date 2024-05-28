@@ -164,12 +164,7 @@ class WebController extends Controller
             ->get();
             
         if($blog->status == 1){
-            $order_by = $request->order_by ?? 'desc';
-            $blogs = Blog::active()->withCount('id')->orderBy('name', $order_by)
-                                    ->when($request->has('search'), function($query) use($request){
-                                    $query->where('name', 'LIKE', '%' . $request->search . '%');
-                                })->latest()->paginate(15)->appends(['order_by'=>$order_by, 'search'=>$request->search]);
-
+            
             return view(VIEW_FILE_NAMES['blogs'], compact('blogs'));
         }else{
             return redirect()->route('home');
