@@ -218,6 +218,8 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Web'], functi
     Route::post('updateQuantity', 'CartController@updateQuantity')->name('updateQuantity');
     Route::post('updateResell', 'CartController@updateResell')->name('updateResell');
     Route::post('updateReseller', 'CartController@updateReseller')->name('updateReseller');
+    Route::post('updateResellMobile', 'CartController@updateResellMobile')->name('updateResellMobile');
+    Route::post('updateResellerMobile', 'CartController@updateResellerMobile')->name('updateResellerMobile');
     Route::post('updateQuantity-guest', 'CartController@updateQuantity_guest')->name('updateQuantity.guest');
     Route::post('order-again', 'CartController@order_again')->name('order-again')->middleware('customer');
 });

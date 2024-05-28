@@ -173,6 +173,35 @@ class CartController extends Controller
         return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
     }
 
+    public function updateResellMobile(Request $request)
+    {
+        $response = CartManager::update_resell_price($request);
+
+        session()->forget('coupon_code');
+        session()->forget('coupon_type');
+        session()->forget('coupon_bearer');
+        session()->forget('coupon_discount');
+        session()->forget('coupon_seller_id');
+
+
+        if ($response['status'] == 0) {
+            return response()->json($response);
+        }
+
+        return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
+    }
+
+    public function updateResellerMobile(Request $request)
+    {
+        $response = CartManager::update_reseller($request);
+
+        if ($response['status'] == 0) {
+            return response()->json($response);
+        }
+
+        return response()->json(view(VIEW_FILE_NAMES['products_cart_details_partials'], compact('request'))->render());
+    }
+
     public function updateReseller(Request $request)
     {
         $response = CartManager::update_reseller($request);
