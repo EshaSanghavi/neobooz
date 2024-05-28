@@ -156,7 +156,7 @@ class WebController extends Controller
                                     $query->where('name', 'LIKE', '%' . $request->search . '%');
                                 })->latest()->paginate(15)->appends(['order_by'=>$order_by, 'search'=>$request->search]);
 
-            return view(VIEW_FILE_NAMES['all_brands'], compact('brands'));
+            return view('themes.default.web-views.products.brands', compact('brands'));
         }else{
             return redirect()->route('home');
         }
