@@ -139,8 +139,8 @@ class HomeController extends Controller
         $footer_banner = $this->banner->where('banner_type','Footer Banner')->where('theme', theme_root_path())->where('published',1)->orderBy('id','desc')->get();
 
         $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
-            ->where('status',1)
-            ->orderBy('id','desc')
+            ->where('blogs.status',1)
+            ->orderBy('blogs.id','desc')
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
 
