@@ -57,6 +57,10 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use function App\Utils\payment_gateways;
+use Illuminate\Support\Facades\Http;
+use App\Enums\WebConfigKey;
+use Image;
+use Auth;
 
 class WebController extends Controller
 {
