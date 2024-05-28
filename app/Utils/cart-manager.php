@@ -456,6 +456,7 @@ class CartManager
         }
         else{
             $cart->is_resell = 0;
+            $cart->resller = null;
             $cart->resell_price = 0.0;
         }
         
@@ -481,12 +482,8 @@ class CartManager
     public static function update_reseller($request)
     {
         $cart = Cart::where(['id' => $request->key])->first();
-        if($cart->is_resell == 1){
-            $cart->reseller = $request->reseller;
-        }
-        else{
-            $cart->reseller = null;
-        }
+        
+        $cart->reseller = $request->reseller;
         
         $cart->save();
 
