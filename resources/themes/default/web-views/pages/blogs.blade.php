@@ -1,23 +1,56 @@
 @extends('layouts.front-end.app')
 
-@section('title', translate('about_us'))
+@section('title', translate('all_Blogs'))
 
 @push('css_or_js')
     <meta property="og:image" content="{{dynamicStorage(path: 'storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="og:title" content="About {{$web_config['name']->value}} "/>
+    <meta property="og:title" content="Brands of {{$web_config['name']->value}} "/>
     <meta property="og:url" content="{{env('APP_URL')}}">
-    <meta property="og:description" content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
+    <meta property="og:description"
+          content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
+
     <meta property="twitter:card" content="{{dynamicStorage(path: 'storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="twitter:title" content="about {{$web_config['name']->value}}"/>
+    <meta property="twitter:title" content="Brands of {{$web_config['name']->value}}"/>
     <meta property="twitter:url" content="{{env('APP_URL')}}">
-    <meta property="twitter:description" content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
+    <meta property="twitter:description"
+          content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
 @endpush
 
 @section('content')
-    <div class="container for-container rtl">
-        <h2 class="text-center mt-3 headerTitle">{{ translate('about_Our_Company')}}</h2>
-        <div class="for-padding text-justify">
-            {!! $aboutUs !!}
+
+    <div class="container pb-5 mb-2 mb-md-4 rtl text-align-direction">
+        <div class="bg-primary-light rounded-10 my-4 p-3 p-sm-4"
+             data-bg-img="{{ theme_asset(path: 'public/assets/front-end/img/media/bg.png') }}">
+            <div class="d-flex flex-column gap-1 text-primary">
+                <h4 class="mb-0 text-start fw-bold text-primary text-uppercase">
+                    {{ translate('Blogs') }}
+                </h4>
+                <p class="fs-14 fw-semibold mb-0">
+                    {{translate('Find_blogs')}}
+                </p>
+            </div>
+        </div>
+
+        <div class="brand_div-wrap mb-4">
+            @foreach($blogs as $blog)
+                <a href="" class="brand_div"
+                   data-toggle="tooltip" title="{{$blog->name}}">
+                    <img alt="{{$blog->name}}"
+                         src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'banner') }}">
+                </a>
+            @endforeach
+        </div>
+
+        <div class="row mx-n2">
+            <div class="col-md-12">
+                <div class="text-center">
+                    {{ $brands->title }}
+                </div>
+            </div>
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="{{theme_asset(path: 'public/assets/front-end/vendor/nouislider/distribute/nouislider.min.js')}}"></script>
+@endpush

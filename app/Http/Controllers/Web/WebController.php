@@ -155,6 +155,27 @@ class WebController extends Controller
         }
     }
 
+    public function all_blogs(Request $request)
+    {
+        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->where('blogs.status',1)
+            ->orderBy('blogs.id','desc')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->get();
+            
+        if($blog->status == 1){
+            $order_by = $request->order_by ?? 'desc';
+            $blogs = Blog::active()->withCount('id')->orderBy('name', $order_by)
+                                    ->when($request->has('search'), function($query) use($request){
+                                    $query->where('name', 'LIKE', '%' . $request->search . '%');
+                                })->latest()->paginate(15)->appends(['order_by'=>$order_by, 'search'=>$request->search]);
+
+            return view(VIEW_FILE_NAMES['blogs'], compact('blogs'));
+        }else{
+            return redirect()->route('home');
+        }
+    }
+
     public function all_sellers(Request $request)
     {
         $businessMode = getWebConfig(name: 'business_mode');
