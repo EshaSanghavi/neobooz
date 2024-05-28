@@ -10,6 +10,7 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Enums\WebConfigKey;
+use Brian2694\Toastr\Facades\Toastr;
 
 use Image;
 use File;
@@ -85,9 +86,9 @@ class BlogController extends Controller
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
             
-        $notification= translate('Created Successfully');
-        $notification = array('messege'=>$notification,'alert-type'=>'success');
-        return redirect()->route('admin.promotion.blog.index')->with($notification);
+        
+        Toastr::success(translate('blog_added_successfully'));
+        return redirect()->view('admin-views.blog.blog',compact('categories', 'languages', 'defaultLanguage'));
     }
 
     public function edit($id)
