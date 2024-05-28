@@ -267,10 +267,12 @@
         @endif
 
 
-        @foreach($blogs as $blog)
-            @include('web-views.partials._blog-home-section')
-        @endforeach
-
+        @if ($blogs->count() > 0)
+            @foreach($blogs as $blog)
+                @include('web-views.partials._blog-home-section')
+            @endforeach
+        @endif
+        
         
         @php($companyReliability = getWebConfig(name: 'company_reliability'))
         @if($companyReliability != null)
