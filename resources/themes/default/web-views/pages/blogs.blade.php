@@ -12,7 +12,7 @@
     <meta property="twitter:url" content="{{env('APP_URL')}}">
     <meta property="twitter:description" content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
 @endpush
-
+@endsection
 @section('content')
 
     <div class="container pb-5 mb-2 mb-md-4 rtl text-align-direction">
