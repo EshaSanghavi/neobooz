@@ -681,51 +681,60 @@
                                 </div>
                             @endif
                         </div>
-                        <br>
-                        <div>
-                            <div>
-                                <label class="title-color" for="resell_{{ $cartItem['id'] }}" >Is this a resell product?</label>
-                                @if($cartItem['is_resell'] == 1)
-                                    <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}" checked>
-                                @else   
-                                    <input type="checkbox" class="form-control route-cart-updateResell" id="route-cart-updateResell" data-url="cart/updateResell" style="height: 32px; width: 32px; margin: 5px 0px;" name="resell_{{ $cartItem['id'] }}">
-                                @endif
-                            </div>
-                            <br>
-                            <div>
-                                @if($cartItem['is_resell'] == 1)
-                                    <div name="reseller_{{ $cartItem['id'] }}">
-                                @else   
-                                    <div name="reseller_{{ $cartItem['id'] }}" style="display: none;">
-                                @endif
-                                    <label class="title-color" for="reseller_{{ $cartItem['id'] }}">{{ translate('Reseller Name') }}</label>
-                                    <input type="text" value="{{ $cartItem['reseller'] }}" name="reseller_{{ $cartItem['id'] }}" class="form-control route-cart-updateReseller" id="route-cart-updateReseller" data-url="cart/updateReseller">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            @if($cartItem['is_resell'] == 1)
-                                <div name="resell_price_{{ $cartItem['id'] }}">
-                            @else   
-                                <div name="resell_price_{{ $cartItem['id'] }}" style="display: none;">
-                            @endif
-                                <label class="title-color" for="resell_price_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
-                                <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_price_{{ $cartItem['id'] }}" class="form-control route-cart-resellPrice" id="route-cart-resellPrice" data-url="cart/resellPrice">
-                            </div>
-                        </div>
+                    </div>
+                    
+                    
+                                                            
+                    <div class="d-flex justify-content-between gap-3 px-3 fs-12">
                         
-                        <div colspan="2" class="__w-15p text-end {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
+                        <div class="d-flex flex-column gap-1 ">
+                            <div class="text-break __line-2">
+                                <label class="title-color" for="resell_{{ $cartItem['id'] }}" style="width:100%;">
+                                    Is this a resell product?
+                                    @if($cartItem['is_resell'] == 1)
+                                        <input type="checkbox" class="form-control route-cart-updateResellMobile ml-2" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}" checked>
+                                    @else   
+                                        <input type="checkbox" class="form-control route-cart-updateResellMobile ml-2" id="route-cart-updateResellMobile" data-url="cart/updateResell" style="height: 15px; width: 15px; margin: 0px; display:inline;" name="resellMobile_{{ $cartItem['id'] }}">
+                                    @endif
+                                </label>
+                            </div>
+
                             @if($cartItem['is_resell'] == 1)
-                                <div name="resell_price_{{ $cartItem['id'] }}">
-                            @else   
-                                <div name="resell_price_{{ $cartItem['id'] }}" style="display: none;">
-                            @endif    
-                                <label class="title-color">{{ translate('Total Resell Price') }}</label>
-                                <br>
-                                <a id="resell_total_{{ $cartItem['id'] }}" style="height: 32px; width: auto; margin: 5px 0px; font-weight: bold;">{{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}</a>
+                            <div class="d-flex flex-wrap column-gap-2" name="resellerMobile_{{ $cartItem['id'] }}">
+                            @else 
+                            <div class="d-flex flex-wrap column-gap-2" name="resellerMobile_{{ $cartItem['id'] }}"  style="display: none;">
+                            @endif
+                                <div class="text-nowrap text-muted"  for="resellerMobile_{{ $cartItem['id'] }}">{{ translate('Reseller Name:') }}</div>
+                                    <div class="text-start d-flex gap-1 flex-wrap">
+                                        <input type="text" value="{{ $cartItem['reseller'] }}" name="resellerMobile_{{ $cartItem['id'] }}" class="form-control route-cart-updateResellerMobile" id="route-cart-updateResellerMobile" data-url="cart/updateReseller" style="height:fit-content; padding:5px;">
+                                    </div>
                             </div>
                         </div>
+                    
+                        <div>
+                            @if($cartItem['is_resell'] == 1)
+                                <div name="resellMobile_price_{{ $cartItem['id'] }}">
+                            @else   
+                                <div name="resellMobile_price_{{ $cartItem['id'] }}" style="display: none;">
+                            @endif
+                                <label class="title-color" for="resell_priceMobile_{{ $cartItem['id'] }}">{{ translate('Unit Resell Price') }}</label>
+                                <input type="text" value="{{ $cartItem['resell_price'] }}" name="resell_priceMobile_{{ $cartItem['id'] }}" class="form-control route-cart-resellPriceMobile" id="route-cart-resellPriceMobile" data-url="cart/resellPrice" style="height:fit-content; padding:5px;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between gap-3 p-3 fs-14">
+                        @if($cartItem['is_resell'] == 1)
+                            <div class="d-flex gap-2" name="resell_priceMobile_{{ $cartItem['id'] }}">
+                        @else 
+                            <div class="d-flex gap-2" name="resell_priceMobile_{{ $cartItem['id'] }}" style="display: none;">
+                        @endif
+                            <div class="text-nowrap text-muted">{{ translate('Total Resell Price:') }}</div>
+                                <div class="fw-semibold" id="resell_totalMobile_{{ $cartItem['id'] }}" >
+                                   {{ webCurrencyConverter(amount: ($cartItem['resell_price']-$cartItem['discount'])*$cartItem['quantity']) }}
+                                </div>
+                                <span class="text-nowrap fs-10 mt-1px">(Tax included)</span>
+                            </div>
                     </div>
                 @endforeach
 

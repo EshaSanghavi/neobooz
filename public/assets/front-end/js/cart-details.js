@@ -128,6 +128,138 @@ $('.route-cart-resellPrice').on('change', function () {
     });
 });
 
+// Mobile
+$('.route-cart-updateResellMobile').on('click', function () {
+    var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
+    if($(this).is(':checked') == true) // Get checkbox checked state
+    {
+        var is_resell = 1;
+    }
+    else
+    {
+        var is_resell = 0;
+    }
+    $.post($('#route-cart-updateResellMobile').data('url'), {
+        _token: $('meta[name="_token"]').attr('content'),
+        key,
+        is_resell,
+        resell_price: 0.0,
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function () {
+            location.reload();
+        },
+        complete: function () {
+            $('#loading').hide();
+        },
+    }, function (response) {
+        if (response.status == 0) {
+            toastr.error(response.message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+            document.getElementById("resell_totalMobile_"+key).innerText = response.resell_total;
+
+        } else {
+            var message = "successfully_updated!";
+            toastr.success(message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+            if(is_resell == 1){
+                var elements = document.getElementsByName("resell_priceMobile_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'block';
+                });
+                var elements = document.getElementByName("resellerMobile_"+key).style.display = 'block';
+            }
+            else{
+                var elements = document.getElementsByName("resell_priceMobile_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'none';
+                });
+                var elements = document.getElementByName("resellerMobile_"+key).style.display = 'none';
+            }
+
+        }
+    });
+});
+
+$('.route-cart-updateResellerMobile').on('change', function () {
+    var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
+    var reseller = this.value;
+    $.post($('#route-cart-updateResellerMobile').data('url'), {
+        _token: $('meta[name="_token"]').attr('content'),
+        key,
+        reseller,
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function () {
+            location.reload();
+        },
+        complete: function () {
+            $('#loading').hide();
+        },
+    }, function (response) {
+        if (response.status == 0) {
+            toastr.error(response.message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+            this.value = response.reseller;
+        } else {
+            var message = "successfully_updated!";
+            toastr.success(message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+        }
+    });
+});
+
+$('.route-cart-resellPriceMobile').on('change', function () {
+    var key = $(this).attr('name').split('_')[2]; // Extract item ID from checkbox name
+    var is_resell = 1;
+    var resell_price = this.value;
+    $.post($('#route-cart-updateResellMobile').data('url'), {
+        _token: $('meta[name="_token"]').attr('content'),
+        key,
+        is_resell,
+        resell_price,
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function () {
+            location.reload();
+        },
+        complete: function () {
+            $('#loading').hide();
+        },
+    }, function (response) {
+        if (response.status == 0) {
+            toastr.error(response.message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+            document.getElementById("resell_totalMobile_"+key).innerText = response.resell_total;
+
+        } else {
+            var message = "successfully_updated!";
+            toastr.success(message, {
+                CloseButton: true,
+                ProgressBar: true
+            });
+        }
+    });
+});
+// Mobile end
+
+
+
 function updateCartQuantityList(minimum_order_qty, key, incr, e) {
     let quantity_id = 'cart_quantity_web';
     updateCartCommon(minimum_order_qty, key, incr, e, quantity_id);
