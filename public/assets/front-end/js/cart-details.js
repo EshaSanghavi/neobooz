@@ -19,7 +19,7 @@ $('.route-cart-updateResell').on('click', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload(true);
+            location.reload();
         },
         complete: function () {
             $('#loading').hide();
@@ -132,14 +132,15 @@ $('.route-cart-resellPrice').on('change', function () {
 // Mobile
 $('.route-cart-updateResellMobile').on('click change', function () {
     var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
-    var is_resell = 0;
-    
-    var message = key + " " + is_resell;
-    toastr.success(message, {
-        CloseButton: true,
-        ProgressBar: true
-    });
-    
+    if($(this).is(':checked') == true) // Get checkbox checked state
+    {
+        var is_resell = 1;
+    }
+    else
+    {
+        var is_resell = 0;
+    }
+    alert(key+" "+is_resell);
     $.post($('#route-cart-updateResellMobile').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
@@ -192,7 +193,6 @@ $('.route-cart-updateResellMobile').on('click change', function () {
                         element.style.visibility = 'hidden';
                 });
             }
-
         }
     });
 });
