@@ -82,13 +82,11 @@ class BlogController extends Controller
         $blog->save();
 
         
-        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
-            ->select('blogs.*', 'blog_categories.name as blog_category')
-            ->get();
+        
             
         
         Toastr::success(translate('blog_added_successfully'));
-        return redirect()->view('admin-views.blog.blog',compact('categories', 'languages', 'defaultLanguage'));
+        index();
     }
 
     public function edit($id)
