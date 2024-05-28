@@ -19,9 +19,7 @@
             <div class="mt-2">
                 <div class="carousel-wrap-2 d-none d-sm-block">
                     <div class="owl-carousel owl-theme category-wise-product-slider">
-                        @foreach($blog as $blog)
-                            @include('web-views.partials._single-blog')
-                        @endforeach
+                        @include('web-views.partials._single-blog')
                     </div>
                 </div>
             </div>
