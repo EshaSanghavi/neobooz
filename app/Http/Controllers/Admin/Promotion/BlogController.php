@@ -33,6 +33,7 @@ class BlogController extends Controller
         $categories = BlogCategory::where('status',1)->get();
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
+
         return view('admin-views.blog.create_blog',compact('categories', 'languages', 'defaultLanguage'));
     }
 
@@ -83,9 +84,10 @@ class BlogController extends Controller
         $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
+            
         $notification= translate('Created Successfully');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
-        return view('admin-views.blog.blog', compact('blogs', 'languages'))->with($notification);
+        return redirect()->route('admin.promotion.blog.index')->with($notification);
     }
 
     public function edit($id)
