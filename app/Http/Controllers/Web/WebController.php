@@ -170,7 +170,7 @@ class WebController extends Controller
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
             
-        return view(VIEW_FILE_NAMES['all_blogs'], compact('blogs'));
+        return view('themes.default.web-views.pages.blogs', compact('blogs'));
         
     }
 
