@@ -19,7 +19,7 @@ $('.route-cart-updateResell').on('click', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
@@ -149,7 +149,7 @@ $('.route-cart-updateResellMobile').on('click', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
