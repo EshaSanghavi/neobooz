@@ -266,12 +266,19 @@
             @endforeach
         @endif
 
+        @if ($blogs->count() > 0)
+            @foreach($blogs as $blog)
+                @include('web-views.partials._blog-home-section', ['decimal_point_settings'=>$decimalPointSettings])
+            @endforeach
+        @endif
+
         @php($companyReliability = getWebConfig(name: 'company_reliability'))
         @if($companyReliability != null)
             @include('web-views.partials._company-reliability')
         @endif
     </div>
 
+    
     <span id="direction-from-session" data-value="{{ session()->get('direction') }}"></span>
 @endsection
 

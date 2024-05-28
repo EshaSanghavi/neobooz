@@ -82,7 +82,7 @@ class BlogController extends Controller
         $blog->save();
 
         
-        Toastr::success(translate('banner_added_successfully'));
+        Toastr::success(translate('blog_added_successfully'));
         return redirect()->route('admin.blog.list');
     }
 

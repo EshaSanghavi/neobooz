@@ -6,6 +6,9 @@ use App\Utils\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Brand;
+use App\Models\Blog;
+use App\Models\BlogCategory;
+use App\Models\BlogComment;
 use App\Models\BusinessSetting;
 use App\Models\Category;
 use App\Models\Coupon;
@@ -135,11 +138,15 @@ class HomeController extends Controller
         $product=$this->product->active()->inRandomOrder()->first();
         $footer_banner = $this->banner->where('banner_type','Footer Banner')->where('theme', theme_root_path())->where('published',1)->orderBy('id','desc')->get();
 
+        $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->get();
+
         return view(VIEW_FILE_NAMES['home'],
             compact(
                 'featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
                 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting', 'main_banner', 'main_section_banner',
-                'current_date','product','footer_banner',
+                'current_date','product','footer_banner', 'blogs'
             )
         );
     }
