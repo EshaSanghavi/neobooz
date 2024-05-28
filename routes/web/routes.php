@@ -88,7 +88,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     Route::get('category-ajax/{id}', 'WebController@categories_by_category')->name('category-ajax');
 
     Route::get('brands', 'WebController@all_brands')->name('brands');
-    Route::get('logs', 'WebController@all_blogs')->name('blogs');
+    Route::get('blogs', 'WebController@all_blogs')->name('blogs');
     Route::get('vendors', 'WebController@all_sellers')->name('vendors');
     Route::get('seller-profile/{id}', 'WebController@seller_profile')->name('seller-profile');
 
