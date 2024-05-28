@@ -176,7 +176,7 @@ class WebController extends Controller
     
     public function getSingleBlog($id)
     {
-        $blog = Blog::where('id', $id)
+        $blog = Blog::where('blogs.id', $id)
             ->leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->first();
