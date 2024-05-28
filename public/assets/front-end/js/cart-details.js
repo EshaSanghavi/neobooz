@@ -61,12 +61,10 @@ $('.route-cart-updateResell').on('click', function () {
 
 $('.route-cart-reseller').on('change', function () {
     var key = $(this).attr('name').split('_')[1]; // Extract item ID from checkbox name
-    var is_resell = 1;
     var reseller = this.value;
     $.post($('#route-cart-updateReseller').data('url'), {
         _token: $('meta[name="_token"]').attr('content'),
         key,
-        is_resell,
         reseller,
         beforeSend: function () {
             $('#loading').show();
@@ -83,8 +81,7 @@ $('.route-cart-reseller').on('change', function () {
                 CloseButton: true,
                 ProgressBar: true
             });
-            document.getElementById("resell_total_"+key).innerText = response.resell_total;
-
+            this.value = reseller;
         } else {
             var message = "successfully_updated!";
             toastr.success(message, {
