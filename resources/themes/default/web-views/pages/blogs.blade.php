@@ -18,37 +18,7 @@
 
 @section('content')
 
-    <div class="container pb-5 mb-2 mb-md-4 rtl text-align-direction">
-        <div class="bg-primary-light rounded-10 my-4 p-3 p-sm-4"
-             data-bg-img="{{ theme_asset(path: 'public/assets/front-end/img/media/bg.png') }}">
-            <div class="d-flex flex-column gap-1 text-primary">
-                <h4 class="mb-0 text-start fw-bold text-primary text-uppercase">
-                    {{ translate('Blogs') }}
-                </h4>
-                <p class="fs-14 fw-semibold mb-0">
-                    {{translate('Find_blogs')}}
-                </p>
-            </div>
-        </div>
-
-        <div class="brand_div-wrap mb-4">
-            @foreach($blogs as $blog)
-                <a href="" class="brand_div"
-                   data-toggle="tooltip" title="{{$blog->name}}">
-                    <img alt="{{$blog->name}}"
-                         src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'banner') }}">
-                </a>
-            @endforeach
-        </div>
-
-        <div class="row mx-n2">
-            <div class="col-md-12">
-                <div class="text-center">
-                    {{ $brands->title }}
-                </div>
-            </div>
-        </div>
-    </div>
+    
 @endsection
 
 @push('script')
