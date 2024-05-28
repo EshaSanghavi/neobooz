@@ -17,14 +17,13 @@
     <div class="container pb-5 md-4 rtl text-align-direction">
         <div class="bg-primary-light rounded-10 mt-4 p-3 p-sm-4" data-bg-img="{{ theme_asset(path: 'public/assets/front-end/img/media/bg.png') }}">
                     <h4 class="mb-0 text-start fw-bold text-primary text-uppercase">
-                        {{ translate('Blogs') }}
+                        {{ $blog->title }}
                     </h4>
             </div>
         </div>
 
         <div class="row ml-4">
-            @foreach($blogs as $blog)
-                <div class="col-lg-3 col-md-4 col-sm-4 col-6  p-2">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-6  p-2">
                     <div class="product-single-hover style--card">
                         <div class="inline_product clickable d-flex justify-content-center">
                             <div class="p-10px pb-0">
@@ -46,7 +45,6 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
         </div>
     </div>   
 @endsection

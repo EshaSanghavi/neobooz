@@ -173,6 +173,17 @@ class WebController extends Controller
         return view(VIEW_FILE_NAMES['all_blogs'], compact('blogs'));
         
     }
+    
+    public function getSingleBlog($id)
+    {
+        $blog = Blog::where('id', $id)
+            ->leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
+            ->select('blogs.*', 'blog_categories.name as blog_category')
+            ->first();
+            
+        return view(VIEW_FILE_NAMES['blog'], compact('blog'));
+        
+    }
 
     public function all_sellers(Request $request)
     {

@@ -89,6 +89,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
 
     Route::get('brands', 'WebController@all_brands')->name('brands');
     Route::get('blogs', 'WebController@all_blogs')->name('blogs');
+    Route::get('blog/{id}', 'WebController@getSingleBlog')->name('blog');
     Route::get('vendors', 'WebController@all_sellers')->name('vendors');
     Route::get('seller-profile/{id}', 'WebController@seller_profile')->name('seller-profile');
 
