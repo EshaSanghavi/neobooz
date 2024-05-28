@@ -162,7 +162,7 @@ class WebController extends Controller
         }
     }
 
-    public function all_blogs(Request $request)
+    public function all_blogs()
     {
         $blogs = Blog::leftjoin('blog_categories', 'blogs.blog_category_id', '=', 'blog_categories.id')
             ->where('blogs.status',1)
