@@ -167,7 +167,6 @@ class WebController extends Controller
             ->get();
             
         if($blog->status == 1){
-            
             return view(VIEW_FILE_NAMES['blogs'], compact('blogs'));
         }else{
             return redirect()->route('home');
