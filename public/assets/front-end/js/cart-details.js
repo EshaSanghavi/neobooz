@@ -144,15 +144,7 @@ $('.route-cart-updateResellMobile').on('click', function () {
         key,
         is_resell,
         resell_price: 0.0,
-        beforeSend: function () {
-            $('#loading').show();
-        },
-        success: function () {
-            location.reload(true);
-        },
-        complete: function () {
-            $('#loading').hide();
-        },
+        
     }, function (response) {
         if (response.status == 0) {
             toastr.error(response.message, {
