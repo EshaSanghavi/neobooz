@@ -265,42 +265,6 @@
                 @include('web-views.partials._category-wise-product', ['decimal_point_settings'=>$decimalPointSettings])
             @endforeach
         @endif
-
-
-        @if ($blogs->count() > 0)
-        <section class="container rtl pb-4 px-max-sm-0">
-            <div class="__shadow-2">
-                <div class="__p-20px rounded bg-white overflow-hidden">
-                    <div class="d-flex __gap-6px flex-between px-sm-3">
-                        <div class="category-product-view-title">
-                            @foreach($blogs as $blog)
-                                <span class="for-feature-title font-bold __text-20px text-uppercase">
-                                    {{$blog->title]}}
-                                </span> 
-                                <div class="mt-2">
-                                    <div class="carousel-wrap-2 d-none d-sm-block">
-                                        <div class="owl-carousel owl-theme category-wise-product-slider">
-                                            <div class="product-single-hover style--category shadow-none">
-                                                <div class="overflow-hidden position-relative">
-                                                    <div class=" inline_product clickable d-flex justify-content-center">
-                                                        <div class="d-block pb-0">
-                                                            <a href="" class="d-block">
-                                                                <img alt="" src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image , type: 'backend-banner') }}">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        @endif
         
         
         @php($companyReliability = getWebConfig(name: 'company_reliability'))
