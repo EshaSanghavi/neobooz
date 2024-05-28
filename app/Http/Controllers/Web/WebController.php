@@ -170,11 +170,8 @@ class WebController extends Controller
             ->select('blogs.*', 'blog_categories.name as blog_category')
             ->get();
             
-        if($blogs){
-            return view(VIEW_FILE_NAMES['blogs'], compact('blogs'));
-        }else{
-            return redirect()->route('home');
-        }
+        return view(VIEW_FILE_NAMES['blogs'], compact('blogs'));
+        
     }
 
     public function all_sellers(Request $request)
