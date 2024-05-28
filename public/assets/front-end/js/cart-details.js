@@ -19,7 +19,7 @@ $('.route-cart-updateResell').on('click', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
@@ -70,7 +70,7 @@ $('.route-cart-updateReseller').on('change', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
@@ -105,7 +105,7 @@ $('.route-cart-resellPrice').on('change', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
@@ -148,7 +148,7 @@ $('.route-cart-updateResellMobile').on('click', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
@@ -207,7 +207,7 @@ $('.route-cart-updateResellerMobile').on('change', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
@@ -242,7 +242,7 @@ $('.route-cart-resellPriceMobile').on('change', function () {
             $('#loading').show();
         },
         success: function () {
-            location.reload();
+            location.reload(true);
         },
         complete: function () {
             $('#loading').hide();
