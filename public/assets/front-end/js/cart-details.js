@@ -173,7 +173,11 @@ $('.route-cart-updateResellMobile').on('click', function () {
                     if (element)
                         element.style.display = 'block';
                 });
-                var elements = document.getElementByName("resellerMobile_"+key).style.display = 'block';
+                var elements = document.getElementsByName("resellerMobile_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'block';
+                });
             }
             else{
                 var elements = document.getElementsByName("resell_priceMobile_"+key);
@@ -181,7 +185,11 @@ $('.route-cart-updateResellMobile').on('click', function () {
                     if (element)
                         element.style.display = 'none';
                 });
-                var elements = document.getElementByName("resellerMobile_"+key).style.display = 'none';
+                var elements = document.getElementsByName("resellerMobile_"+key);
+                elements.forEach(function(element) {
+                    if (element)
+                        element.style.display = 'none';
+                });
             }
 
         }
