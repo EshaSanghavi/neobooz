@@ -15,10 +15,24 @@
                 </div>
             </div>
 
-            @foreach($blogs as $key => $blog)
-                @include('web-views.partials._single-blog')
-            @endforeach
-                    
+            <div class="mt-2">
+                <div class="carousel-wrap-2 d-none d-sm-block">
+                    <div class="owl-carousel owl-theme category-wise-product-slider">
+                        @foreach($blogs as $key => $blog)
+                            @include('web-views.partials._single-blog')
+                        @endforeach
+                    </div>
+                </div>
+                <div class="d-sm-none">
+                    <div class="row g-2">
+                        @foreach($category['products'] as $key=>$product)
+                            @if($key < 4)
+                                @include('web-views.partials._single-blog')
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

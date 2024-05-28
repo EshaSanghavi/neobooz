@@ -1,20 +1,31 @@
-<div class="product-single-hover style--card">
-    <div class="inline_product clickable d-flex justify-content-center">
-        <div class="p-10px pb-0">
-            <a href="{{route('blog', $blog->id )}}" class="brand_div" data-toggle="tooltip" title="{{$blog->title}}">
-                <img alt="{{$blog->title}}" src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'brand') }}">
-            </a>
+
+<div class="product-single-hover style--category shadow-none">
+    <div class="overflow-hidden position-relative">
+        <div class=" inline_product clickable d-flex justify-content-center">
+            
+            <div class="d-block pb-0">
+                <a href="{{route('blog', $blog->id )}}" class="d-block">
+                    <img alt=""
+                         src="{{ getValidImage(path: 'storage/app/public/blog/'.$blog->image, type: 'product') }}">
+                </a>
+            </div>
+
         </div>
-    </div>
-    <div class="single-product-details">
-        <div class="text-center">
-            <span class="text-accent text-dark"> {{ $blog->title }} </span>
-            <div class="justify-content-between text-center">
-                <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">
-                    {{ $blog->blog_category }}
+        <div class="single-product-details">
+            <div class="">
+                <a href="{{route('blog', $blog->id )}}" class="text-capitalize fw-semibold">
+                    {{ $blog->title }}
+                </a>
+            </div>
+            <div class="justify-content-between ">
+                <div class="product-price d-flex flex-wrap gap-8 align-items-center row-gap-0">
+                    <span class="text-accent text-dark">
+                        {{ $blog->blog_category }}
+                    </span>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>
+
+
