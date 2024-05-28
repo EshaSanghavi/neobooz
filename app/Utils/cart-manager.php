@@ -450,7 +450,7 @@ class CartManager
     public static function update_resell_price($request)
     {
         $cart = Cart::where(['id' => $request->key])->first();
-        if($request->is_resell == 1){
+        if($cart->is_resell == 0){
             $cart->is_resell = 1;
             $cart->resell_price = ( $request->resell_price && $request->resell_price >= $cart->price) ? $request->resell_price : $cart->price;
         }
