@@ -688,18 +688,18 @@ class WebController extends Controller
             }
             return view(VIEW_FILE_NAMES['cart_list'], compact('topRatedShops', 'newSellers', 'currentDate', 'request'));
         }
-        else if (
+        if (
             (auth('customer')->check() && Cart::where(['customer_id' => auth('customer')->id()])->count() == 0)
             || (getWebConfig(name: 'guest_checkout') && session()->has('guest_id') && session('guest_id'))
         )
         {
             Toastr::info(transalte('cart_is_empty'));
+            return redirect('/');
         }
-        else
-        {
-            Toastr::info(translate('invalid_access'));
-        }
+        
+        Toastr::info(translate('invalid_access'));
         return redirect('/');
+        
     }
 
     //ajax filter (category based)
