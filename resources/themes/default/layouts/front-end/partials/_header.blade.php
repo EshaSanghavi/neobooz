@@ -378,12 +378,12 @@
                                         <button class="btn dropdown-toggle text-white text-max-md-dark text-capitalize ps-2"
                                                 type="button" id="dropdownMenuButton"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ translate('Sell_with_Neobooz')}}
+                                            {{ translate('vendor_zone')}}
                                         </button>
                                         <div class="dropdown-menu __dropdown-menu-3 __min-w-165px text-align-direction"
                                              aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item text-capitalize" href="{{route('vendor.auth.registration.index')}}">
-                                                {{ translate('become_a_vendor')}}
+                                                {{ translate('Sell_with_Neobooz')}}
                                             </a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{{route('vendor.auth.login')}}">
