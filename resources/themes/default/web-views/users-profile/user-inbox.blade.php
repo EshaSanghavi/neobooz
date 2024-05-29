@@ -1,7 +1,7 @@
 @extends('layouts.front-end.app')
 
 @section('title')
-    {{ Request::is('chat/seller') ? translate('chat_with_vendor') : translate('chat_with_delivery_man')}}
+    {{ Request::is('chat/admin') ? translate('chat_with_admin') : Request::is('chat/seller') ? translate('chat_with_vendor') : translate('chat_with_delivery_man')}}
 @endsection
 
 @section('content')
@@ -27,6 +27,11 @@
                             <div class="chat--sidebar-top">
 
                                 <ul class="nav nav-tabs nav--tabs justify-content-center">
+                                    <li class="nav-item">
+                                        <a class="nav-link {{Request::is('chat/admin')?'active': '' }}" href="{{route('chat', ['type' => 'admin'])}}">
+                                            {{translate('admin')}}
+                                        </a>
+                                    </li>
                                     @php($business_mode = getWebConfig(name: 'business_mode'))
                                     @if($business_mode == 'multi')
                                         <li class="nav-item">
@@ -267,6 +272,10 @@
                                                             <input type="text" id="hidden_value_dm" hidden
                                                                    value="{{$last_chat->delivery_man_id}}" name="delivery_man_id">
                                                         @endif
+                                                        @elseif( Request::is('chat/admin') )
+                                                            <input type="text" id="hidden_value_dm" hidden
+                                                                   value="{{$last_chat->admin_id}}" name="admin_id">
+                                                        @endif
                                                         <div class="w-0 flex-grow-1">
                                                             <textarea class="form-control ticket-view-control px-0 py-3" name="message" rows="8" id="msgInputValue" placeholder="{{translate('write_your_message_here')}}..." ></textarea>
                                                             <div class="d-flex gap-3 flex-wrap filearray"></div>
@@ -393,6 +402,9 @@
                 }
                 else if("{{ Request::is('chat/delivery-man') }}" == true) {
                     url = "{{ route('messages') }}" +"?delivery_man_id=" + shop_id;
+                }
+                else if("{{ Request::is('chat/admin') }}" == true) {
+                    url = "{{ route('messages') }}" +"?admin_id=" + shop_id;
                 }
 
 
