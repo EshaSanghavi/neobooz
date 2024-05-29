@@ -293,9 +293,7 @@
                                aria-expanded="false">
                                 <div class="navbar-tool-icon-box bg-secondary">
                                     <div class="navbar-tool-icon-box bg-secondary">
-                                        <img class="img-profile rounded-circle __inline-14" alt=""
-                                             src="{{ getValidImage(path: 'storage/app/public/profile/'.auth('customer')->user()->image, type: 'avatar') }}">
-                                        
+                                        <i class="tio-user"></i>
                                     </div>
                                 </div>
                                 <div class="navbar-tool-text">
