@@ -1,7 +1,13 @@
 @extends('layouts.front-end.app')
 
 @section('title')
-    {{ Request::is('chat/admin') ? translate('chat_with_admin') : Request::is('chat/seller') ? translate('chat_with_vendor') : translate('chat_with_delivery_man')}}
+    @if (Request::is('chat/admin'))
+        translate('chat_with_admin')
+    @elseif (Request::is('chat/seller')) 
+        translate('chat_with_vendor') 
+    @else
+        translate('chat_with_delivery_man')
+    @endif
 @endsection
 
 @section('content')
