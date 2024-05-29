@@ -316,10 +316,10 @@
                                                             </svg>
                                                             <input type="file" id="f_p_v_up1" class="h-100 position-absolute w-100 " hidden multiple accept="image/*">
                                                         </label>
-                                                        @if( Request::is('chat/admin') )
+                                                        <!-- @if( Request::is('chat/admin') )
                                                             <input type="text" id="hidden_value_dm" hidden
-                                                                   value="{{$last_chat->admin_id}}" name="admin_id">
-                                                        @elseif( Request::is('chat/seller') )
+                                                                   value="{{$last_chat->admin_id}}" name="admin_id"> -->
+                                                        @if( Request::is('chat/seller') )
                                                             <input type="text" id="hidden_value" hidden
                                                                    value="{{$last_chat->shop_id}}" name="shop_id">
                                                             @if($last_chat->shop)
