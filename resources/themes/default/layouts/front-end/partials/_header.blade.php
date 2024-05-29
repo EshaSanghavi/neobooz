@@ -531,20 +531,20 @@
                                 </a>
                             @else 
                                 <a class="navbar-tool-icon-box bg-white" href="#" onclick="emptyCart()" style="display: grid; align-items: center;">
-                                        <span class="navbar-tool-label">
+                                        <span class="navbar-tool-label" style="height: 18px;width: 18px;line-height: normal;padding: 0;">
                                             @php($cart=\App\Utils\CartManager::get_cart())
                                             {{$cart->count()}}
                                         </span>
-                                    <i class="navbar-tool-icon czi-cart"></i>
+                                    <i class="navbar-tool-icon czi-cart" style="line-height: 1;"></i>
                                     <small style="line-height: 1;">Cart</small>
                                 </a>  
                             @endif
                         @else
                             <a class="navbar-tool-icon-box bg-white" href="{{ route('customer.auth.login') }}" style="display: grid; align-items: center;">
-                                    <span class="navbar-tool-label">
+                                    <span class="navbar-tool-label" style="height: 18px;width: 18px;line-height: normal;padding: 0;">
                                         0
                                     </span>
-                                <i class="navbar-tool-icon czi-cart"></i>
+                                <i class="navbar-tool-icon czi-cart" style="line-height: 1;"></i>
                                 <small style="line-height: 1;">Cart</small>
                             </a>   
                         @endif 
