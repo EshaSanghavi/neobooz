@@ -253,9 +253,9 @@ class ChattingController extends Controller
                 ->orderBy('created_at', 'ASC')
                 ->get();
         }
-        if ($request->has('admin_id'))
+        elseif ($request->has('admin_id'))
         {
-            Chatting::where(['user_id'=>auth('customer')->id(), 'admin_id'=> $request->shop_id])->update([
+            Chatting::where(['user_id'=>auth('customer')->id(), 'admin_id'=> $request->admin_id])->update([
                 'seen_by_customer' => 1
             ]);
 
@@ -331,26 +331,22 @@ class ChattingController extends Controller
             $delivery_man = DeliveryMan::find($request->delivery_man_id);
             ChattingEvent::dispatch('message_from_customer', 'delivery_man', $delivery_man, $message_form);
         }
+
         elseif ($request->has('admin_id'))
         {
-            $chatting = [
+            Chatting::create([
                 'user_id'          => auth('customer')->id(),
-                'admin_id'          => $request['admin_id'] != 0 ? $request['admin_id'] : null,
-                'message'          => $request['message'],
+                'admin_id'         => $request->admin_id,
+                'message'          => $request->message,
                 'attachment'       => json_encode($image),
                 'sent_by_customer' => 1,
                 'seen_by_customer' => 1,
-                'seen_by_admin'   => 0,
+                'seen_by_admin'    => 0,
                 'created_at'       => now(),
-            ];
+            ]);
 
-            $chatting += $request['shop_id'] == 0 ? ['admin_id' => 0] : ['admin_id' => $request->get('admin_id')];
-            Chatting::create($chatting);
-
-            if ($request['admin_id'] != 0) {
-                $admin = Admin::find($request->admin_id);
-                ChattingEvent::dispatch('message_from_customer', 'admin', $admin, $message_form);
-            }
+            $admin = Admin::find($request->admin_id);
+            ChattingEvent::dispatch('message_from_customer', 'admin', $admin, $message_form);
         }
 
         $imageArray = [];

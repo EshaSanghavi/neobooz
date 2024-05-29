@@ -330,6 +330,11 @@
                             <a class="nav-link" href="{{route('blogs')}}">{{ translate('Blogs')}}</a>
                         </li>
 
+                        <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
+                            <a class="nav-link" href="#" data-target="#exampleModal" data-toggle="modal">{{ translate('Chat_with_doctor')}}</a>
+                        </li>
+
+
                         @php($discount_product = App\Models\Product::with(['reviews'])->active()->where('discount', '!=', 0)->count())
                         @if ($discount_product>0)
                             <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
@@ -441,6 +446,39 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-faded-info">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{translate('Send_Message_to_Doctor')}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('messages_store')}}" method="post" id="shop-view-chat-form">
+                        @csrf
+                        <input value="1" name="admin_id" hidden>
+
+                        <textarea name="message" class="form-control min-height-100px max-height-200px" required placeholder="{{ translate('Write_here') }}..."></textarea>
+                        <br>
+
+                        <div class="justify-content-end gap-2 d-flex flex-wrap">
+                            <a href="{{route('chat', ['type' => 'admin'])}}" class="btn btn-soft-primary bg--secondary border">
+                                {{translate('go_to_chatbox')}}
+                            </a>
+                            <button class="btn btn--primary text-white">
+                                {{translate('send')}}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
