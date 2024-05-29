@@ -459,6 +459,7 @@
                         <a class="navbar-tool-icon-box bg-white mr-3" href="https://neobooz.com">
                             <i class="tio-home"></i>
                         </a>
+                        <small>Home</small>
                     </div>
 
                     <div class="dropdown">
@@ -468,6 +469,7 @@
                                 <div class="navbar-tool-icon-box bg-white">
                                     <i class="tio-grid"></i>
                                 </div>
+                                <small>Category</small>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
@@ -544,6 +546,7 @@
                                 <i class="navbar-tool-icon czi-cart"></i>
                             </a>   
                         @endif 
+                        <small>Cart</small>
                     </div>  
                                 
 
@@ -555,6 +558,7 @@
                                     <div class="navbar-tool-icon-box bg-white">
                                         <i class="tio-user"></i>
                                     </div>
+                                    <small>My Profile</small>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="transform: translateY(-140%); position: fixed; right: 5px;">
@@ -580,6 +584,7 @@
                                                     fill="#1B7FED"/>
                                         </svg>
                                     </div>
+                                    <small>My Profile</small>
                                 </div>
                             </a>
                             <div class="text-align-direction dropdown-menu __auth-dropdown dropdown-menu-right"
