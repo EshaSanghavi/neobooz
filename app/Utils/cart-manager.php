@@ -205,7 +205,6 @@ class CartManager
                     - $item['discount'] * $item['quantity'];
                 $total += $product_subtotal;
             }
-            $total += $shipping_cost;
         }
         return $total;
     }
