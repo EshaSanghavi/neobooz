@@ -202,7 +202,7 @@ class CartManager
                 $tax = $item['tax_model']=='include'? 0 : $item['tax'];
                 $product_subtotal = (($item['resell_price'] - $item['price']) * $item['quantity'])
                     + ($tax * $item['quantity'])
-                    - $item['discount'] * $item['quantity'];
+                    - ($item['discount'] * $item['quantity']);
                 $total += $product_subtotal;
             }
         }
