@@ -528,7 +528,7 @@
                                     <i class="navbar-tool-icon czi-cart"></i>
                                 </a>
                             @else 
-                                <a class="navbar-tool-icon-box bg-secondary mr-3" href="" onclick="emptyCart()">
+                                <a class="navbar-tool-icon-box bg-secondary mr-3" href="#" onclick="emptyCart()">
                                         <span class="navbar-tool-label">
                                             @php($cart=\App\Utils\CartManager::get_cart())
                                             {{$cart->count()}}
