@@ -215,6 +215,8 @@
 
                                                 @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                     <h5 class="m-0">{{ $web_config['name']->value }}</h5>
+                                                @elseif($last_chat->admin_id != 0)
+                                                    <h5 class="m-0">{{ $last_chat->admin->name }}</h5>
                                                 @else
                                                     <h5 class="m-0">{{ $last_chat->deliveryMan ? $last_chat->deliveryMan->f_name.' '.$last_chat->deliveryMan->l_name : $last_chat->shop->name  }}</h5>
                                                 @endif
