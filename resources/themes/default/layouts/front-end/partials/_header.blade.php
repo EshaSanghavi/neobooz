@@ -212,7 +212,7 @@
                     
                     <div class="navbar-tool d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
                         <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
-                            <i class="tio-home"></i>Home
+                            <i class="tio-home"></i>
                         </a>
                     </div>
 
@@ -221,7 +221,7 @@
                                aria-expanded="false">
                             <div class="navbar-tool-icon-box bg-secondary">
                                 <div class="navbar-tool-icon-box bg-secondary">
-                                    <i class="tio-command_key"></i>Category
+                                    <i class="tio-command_key"></i>
                                 </div>
                             </div>
                         </a>
@@ -275,7 +275,7 @@
 
                     <div id="cart_items">
                         @include('layouts.front-end.partials._cart')
-                        Cart
+                        
                     </div>
 
                     <div class="navbar-tool dropdown d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
@@ -286,7 +286,7 @@
                                 </span>
                            </span>
                             <i class="navbar-tool-icon czi-heart"></i>
-                            Wishlist
+                            
                         </a>
                     </div>
                     @if(auth('customer')->check())
@@ -297,7 +297,7 @@
                                     <div class="navbar-tool-icon-box bg-secondary">
                                         <img class="img-profile rounded-circle __inline-14" alt=""
                                              src="{{ getValidImage(path: 'storage/app/public/profile/'.auth('customer')->user()->image, type: 'avatar') }}">
-                                        Profile
+                                        
                                     </div>
                                 </div>
                                 <div class="navbar-tool-text">
