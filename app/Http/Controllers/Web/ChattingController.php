@@ -201,6 +201,7 @@ class ChattingController extends Controller
                     ->orderBy('chattings.created_at', 'desc')
                     ->get()
                     ->unique('admin_id');
+                    
                 /*Unseen Message Count*/
                 $Admins?->map(function ($admin) {
                     $admin['unseen_message_count'] = Chatting::where([

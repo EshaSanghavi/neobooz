@@ -64,7 +64,7 @@
                                 @endif
                             </div>
                             <div class="inbox_chat">
-                                @if (isset($Admins))
+                                <!-- @if (isset($Admins))
                                     @foreach($Admins as $key=>$admin)
                                         @php($type = 'admin')
                                         @php($admin_id = $admin->admin_id)
@@ -104,7 +104,7 @@
                                             </div>
                                         </div>
                                     @endForeach
-                                @endif
+                                @endif -->
 
 
                                 @if(isset($inhouseShop))
