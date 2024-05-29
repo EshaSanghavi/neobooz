@@ -455,23 +455,25 @@
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" 
                     style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
-                    <div class="navbar-tool d-lg-none " style="display: flex; align-items: center;">
-                        <a class="navbar-tool-icon-box bg-white mr-3" href="https://neobooz.com">
+                   
+                    <div class="navbar-tool d-lg-none " style="display: inline-block; align-items: center;">
+                        <a class="navbar-tool-icon-box bg-white" href="https://neobooz.com" style="height: auto;">
                             <i class="tio-home"></i>
                         </a>
                         <small>Home</small>
                     </div>
 
 
-                    <div class="dropdown">
-                        <a class="navbar-tool mr-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
+                    <div class="dropdown" style="display: inline-block; align-items: center;">
+                        <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"  style="height: auto;">
                             <div class="navbar-tool-icon-box bg-white">
                                 <div class="navbar-tool-icon-box bg-white">
                                     <i class="tio-grid"></i>
                                 </div>
                             </div>
                         </a>
+                        <small>Category</small>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
                                     @foreach($categories as $category)
                                     <li class="dropdown px-3 pb-2">
