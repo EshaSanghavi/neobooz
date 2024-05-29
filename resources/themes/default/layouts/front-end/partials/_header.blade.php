@@ -519,27 +519,17 @@
                     <div id="cart_items">
                         <div class="navbar-tool dropdown me-2 {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
                             @if($web_config['guest_checkout_status'] || auth('customer')->check())
-                                <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('shop-cart')}}">
-                                    <span class="navbar-tool-label">
-                                        @php($cart=\App\Utils\CartManager::get_cart())
-                                        {{$cart->count()}}
-                                    </span>
-                                    <i class="navbar-tool-icon czi-cart"></i>
-                                </a>
                                 @if($cart->count() > 0)
-                                    <a class="navbar-tool-text ms-2"
-                                        href="{{route('shop-cart')}}"><small>{{translate('my_cart')}}</small>
-                                        <span class="cart-total-price font-bold fs-14">
-                                            {{ webCurrencyConverter(amount: \App\Utils\CartManager::cart_total_applied_discount(\App\Utils\CartManager::get_cart()))}}
-                                        </span>
-                                    </a>
-                                @else   
-                                    <a class="navbar-tool-text ms-2" onclick="emptyCart()"><small>{{translate('my_cart')}}</small>
-                                        <span class="cart-total-price font-bold fs-14">
-                                            {{ webCurrencyConverter(amount: \App\Utils\CartManager::cart_total_applied_discount(\App\Utils\CartManager::get_cart()))}}
-                                        </span>
-                                    </a>    
+                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('shop-cart')}}">
+                                @else 
+                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" onclick="emptyCart()">
                                 @endif
+                                        <span class="navbar-tool-label">
+                                            @php($cart=\App\Utils\CartManager::get_cart())
+                                            {{$cart->count()}}
+                                        </span>
+                                        <i class="navbar-tool-icon czi-cart"></i>
+                                    </a>
                             @else
                                 <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{ route('customer.auth.login') }}">
                                     <span class="navbar-tool-label">
