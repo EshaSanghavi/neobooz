@@ -55,7 +55,8 @@
         @media (max-width: 767px) {
             .mobile-nav{
                 display: block;
-                position: sticky;
+                position: fixed;
+                width: 100%;
                 bottom: 0px;
                 z-index: 100;
             }
