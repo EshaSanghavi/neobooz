@@ -1,13 +1,3 @@
-@php($announcement=getWebConfig(name: 'announcement'))
-
-@if (isset($announcement) && $announcement['status']==1)
-    <div class="text-center position-relative px-4 py-1" id="announcement"
-         style="background-color: {{ $announcement['color'] }};color:{{$announcement['text_color']}}">
-        <span>{{ $announcement['announcement'] }} </span>
-        <span class="__close-announcement web-announcement-slideUp">X</span>
-    </div>
-@endif
-
 <header class="mobile-nav rtl __inline-10">
     <div class="navbar-sticky bg-light mobile-head" style="background-color:white; padding: 10px 0px 5px 0px;">
         <div class="navbar navbar-expand-md navbar-light">
@@ -31,7 +21,7 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    @foreach($categories as $category)
+                                @foreach($categories as $category)
                                     <li class="dropdown px-3 pb-2">
 
                                         <a <?php if ($category->childes->count() > 0) echo "" ?>
@@ -78,7 +68,6 @@
 
                     <div id="cart_items">
                         @include('layouts.front-end.partials._cart')
-                        
                     </div>
 
                     <div class="navbar-tool dropdown d-none d-md-block-right">
@@ -150,15 +139,3 @@
         </div>
     </div>
 </header>
-
-
-
-@push('script')
-    <script>
-        "use strict";
-
-        $(".category-menu").find(".mega_menu").parents("li")
-            .addClass("has-sub-item").find("> a")
-            .append("<i class='czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}'></i>");
-    </script>
-@endpush
