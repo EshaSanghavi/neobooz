@@ -457,10 +457,10 @@
                     
                    
                     <div class="navbar-tool d-lg-none " style="align-items: center;">
-                        <a class="navbar-tool-icon-box bg-white" href="https://neobooz.com" style="height: auto;">
+                        <a class="navbar-tool-icon-box bg-white d-flex align-items: center" href="https://neobooz.com">
                             <i class="tio-home"></i>
+                            <small style="display: block;">Home</small>
                         </a>
-                        <small style="display: block;">Home</small>
                     </div>
 
 
