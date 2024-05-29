@@ -8,24 +8,6 @@
     </div>
 @endif
 
-
-@push('styles')
-<style>
-.mobile{
-    position: sticky;
-    bottom: 0px;
-    z-index: 100;
-  }
-  
-@media only screen and (max-width: 768px) {
-  /* Hide desktop header styles */
-  .mobile{
-    display: none;
-  }
-}
-</style>
-@endpush
-
 <header class="mobile rtl __inline-10">
     <div class="navbar-sticky bg-light mobile-head">
         <div class="navbar navbar-expand-md navbar-light">
@@ -169,6 +151,22 @@
     </div>
 </header>
 
+@push('styles')
+<style>
+.mobile{
+    position: sticky;
+    bottom: 0px;
+    z-index: 100;
+  }
+  
+@media only screen and (max-width: 768px) {
+  /* Hide desktop header styles */
+  .mobile{
+    display: none;
+  }
+}
+</style>
+@endpush
 
 @push('script')
     <script>
