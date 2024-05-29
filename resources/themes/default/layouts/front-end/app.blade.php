@@ -116,7 +116,6 @@
 
 @include('layouts.front-end.partials._header')
 
-@include('layouts.front-end.partials._navbar-mobile')
 
 <span id="authentication-status" data-auth="{{ auth('customer')->check() ? 'true' : 'false' }}"></span>
 
