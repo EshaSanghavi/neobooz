@@ -237,7 +237,7 @@
                                         </a>
                                         @if ($category->childes->count() > 0)
                                             <a data-toggle='dropdown' class='__ml-50px'>
-                                                <i class="czi-arrow-right"></i>
+                                                <i class="czi-arrow-right" style="float: right;"></i>
                                             </a>
                                         @endif
 
@@ -250,9 +250,8 @@
                                                         </a>
 
                                                         @if($subCategory->childes->count()>0)
-                                                            <a class="header-subcategories-links"
-                                                               data-toggle='dropdown'>
-                                                                <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} __inline-16"></i>
+                                                            <a class="header-subcategories-links" data-toggle='dropdown'>
+                                                                <i class="czi-arrow-right" style="float: right;"></i>
                                                             </a>
                                                             <ul class="dropdown-menu">
                                                                 @foreach($subCategory['childes'] as $subSubCategory)
