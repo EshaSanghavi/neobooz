@@ -455,7 +455,7 @@
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" 
                     style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
-                    <div class="navbar-tool d-lg-none  mr-md-3">
+                    <div class="navbar-tool d-lg-none  mr-md-3" style="display: flex; align-items: center;">
                         <a class="navbar-tool-icon-box bg-white mr-3" href="https://neobooz.com">
                             <i class="tio-home"></i>
                         </a>
