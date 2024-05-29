@@ -522,7 +522,7 @@
                                 @if($cart->count() > 0)
                                     <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('shop-cart')}}">
                                 @else 
-                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" onclick="emptyCart()">
+                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="" onclick="emptyCart()">
                                 @endif
                                         <span class="navbar-tool-label">
                                             @php($cart=\App\Utils\CartManager::get_cart())
