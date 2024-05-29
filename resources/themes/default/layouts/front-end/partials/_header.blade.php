@@ -449,11 +449,10 @@
 
 <div class="mobile-nav rtl __inline-10" style="background-color:white;">
     <div class="navbar-sticky mobile-head" style="padding: 10px 0px 5px 0px;">
-        <div class="navbar navbar-expand-md navbar-light" style="align-items: center; text-align: center; display: flex;
-    justify-content: center;">
+        <div class="navbar navbar-expand-md navbar-light" style="align-items: center; text-align: center; display: flex; justify-content: center;">
 
-            <div class="container px-10px" style="width: fit-content;">
-                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" style="width: 100%;">
+            <div class="container px-10px m-0" style="display: flex; justify-content: space-evenly; width: 100%;">
+                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" style="width: 100%; justify-content: space-evenly;">
                     
                     <div class="navbar-tool d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"">
                         <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
