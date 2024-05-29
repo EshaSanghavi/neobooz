@@ -611,7 +611,7 @@
     
         function emptyCart()
         {
-            toastr.info(translate('Your_cart_is_empty'));
+            toastr.info("Your cart is empty");
         }
    </script>
 @endpush
