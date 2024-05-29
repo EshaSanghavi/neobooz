@@ -455,23 +455,21 @@
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" 
                     style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
-                    <div class="navbar-tool d-lg-none  mr-md-3" style="display: flex; align-items: center;">
-                        <a class="navbar-tool-icon-box bg-white mr-3" href="https://neobooz.com">
+                    <div class="navbar-tool d-lg-none  mr-md-3" style="display: block; align-items: center;">
+                        <a class="navbar-tool-icon-box bg-white mr-3" href="https://neobooz.com" 
+                            style="height: auto;">
                             <i class="tio-home"></i>
                         </a>
-                        <small>Home</small>
+                       <small class="mr-3">Home</small>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="dropdown" style="display: block; align-items: center;">
                         <a class="navbar-tool mr-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                            <div class="navbar-tool-icon-box bg-white">
-                                <div class="navbar-tool-icon-box bg-white">
+                                aria-expanded="false" style="height: auto;">
                                     <i class="tio-grid"></i>
-                                </div>
-                                <small>Category</small>
                             </div>
                         </a>
+                        <small class="mr-3">Category</small>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
                                     @foreach($categories as $category)
                                     <li class="dropdown px-3 pb-2">
@@ -517,50 +515,49 @@
                         </div>
                     </div>
 
-
-                    <div class="navbar-tool d-lg-none  ml-md-3">
+        
+                    <div class="navbar-tool d-lg-none  mr-md-3" style="display: block; align-items: center;">
                         @if(auth('customer')->check())
                             @php($cart=\App\Utils\CartManager::get_cart())
                             @if($cart->count() > 0)
-                                <a class="navbar-tool-icon-box bg-white mr-3" href="{{route('shop-cart')}}">
-                                        <span class="navbar-tool-label">
-                                            @php($cart=\App\Utils\CartManager::get_cart())
-                                            {{$cart->count()}}
-                                        </span>
-                                    <i class="navbar-tool-icon czi-cart"></i>
+                                <a class="navbar-tool-icon-box bg-white mr-3" href="{{route('shop-cart')}}"
+                                    style="height: auto;">
+                                    <span class="navbar-tool-label">
+                                        @php($cart=\App\Utils\CartManager::get_cart())
+                                        {{$cart->count()}}
+                                    </span>
+                                    <i class="navbar-tool-icon czi-cart mr-3"></i>
                                 </a>
                             @else 
-                                <a class="navbar-tool-icon-box bg-white mr-3" href="#" onclick="emptyCart()">
-                                        <span class="navbar-tool-label">
-                                            @php($cart=\App\Utils\CartManager::get_cart())
-                                            {{$cart->count()}}
-                                        </span>
-                                    <i class="navbar-tool-icon czi-cart"></i>
+                                <a class="navbar-tool-icon-box bg-white mr-3" href="#" onclick="emptyCart()"
+                                    style="height: auto;">
+                                    <span class="navbar-tool-label">
+                                        @php($cart=\App\Utils\CartManager::get_cart())
+                                        {{$cart->count()}}
+                                    </span>
+                                    <i class="navbar-tool-icon czi-cart mr-3"></i>
                                 </a>  
                             @endif
                         @else
-                            <a class="navbar-tool-icon-box bg-white mr-3" href="{{ route('customer.auth.login') }}">
-                                    <span class="navbar-tool-label">
-                                        0
-                                    </span>
-                                <i class="navbar-tool-icon czi-cart"></i>
+                            <a class="navbar-tool-icon-box bg-white mr-3" href="{{ route('customer.auth.login') }}"
+                                style="height: auto;">
+                                <span class="navbar-tool-label">
+                                    0
+                                </span>
+                                <i class="navbar-tool-icon czi-cart mr-3"></i>
                             </a>   
                         @endif 
-                        <small>Cart</small>
+                        <small class="mr-3">Cart</small>
                     </div>  
                                 
 
                     @if(auth('customer')->check())
-                        <div class="dropdown ml-3">
+                        <div class="dropdown ml-3" style="display: block; align-items: center;">
                             <a class="navbar-tool ml-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-white">
-                                    <div class="navbar-tool-icon-box bg-white">
-                                        <i class="tio-user"></i>
-                                    </div>
-                                    <small>My Profile</small>
-                                </div>
+                                aria-expanded="false" style="height: auto;">
+                                    <i class="tio-user"></i>
                             </a>
+                            <small class="ml-3">My Profile</small>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="transform: translateY(-140%); position: fixed; right: 5px;">
                                 <a class="dropdown-item"
                                     href="{{route('account-oder')}}"> {{ translate('my_Order')}} </a>
@@ -572,21 +569,17 @@
                             </div>
                         </div>
                     @else
-                        <div class="dropdown ml-3">
+                        <div class="dropdown ml-3" style="display: block; align-items: center;">
                             <a class="navbar-tool ml-md-3"
                                 type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-white">
-                                    <div class="navbar-tool-icon-box bg-white">
-                                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4.25 4.41675C4.25 6.48425 5.9325 8.16675 8 8.16675C10.0675 8.16675 11.75 6.48425 11.75 4.41675C11.75 2.34925 10.0675 0.666748 8 0.666748C5.9325 0.666748 4.25 2.34925 4.25 4.41675ZM14.6667 16.5001H15.5V15.6667C15.5 12.4509 12.8825 9.83341 9.66667 9.83341H6.33333C3.11667 9.83341 0.5 12.4509 0.5 15.6667V16.5001H14.6667Z"
-                                                    fill="#1B7FED"/>
-                                        </svg>
-                                    </div>
-                                    <small>My Profile</small>
-                                </div>
+                                aria-expanded="false" style="height: auto;">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.25 4.41675C4.25 6.48425 5.9325 8.16675 8 8.16675C10.0675 8.16675 11.75 6.48425 11.75 4.41675C11.75 2.34925 10.0675 0.666748 8 0.666748C5.9325 0.666748 4.25 2.34925 4.25 4.41675ZM14.6667 16.5001H15.5V15.6667C15.5 12.4509 12.8825 9.83341 9.66667 9.83341H6.33333C3.11667 9.83341 0.5 12.4509 0.5 15.6667V16.5001H14.6667Z"
+                                            fill="#1B7FED"/>
+                                </svg>
                             </a>
+                            <small class="ml-3">My Profile</small>
                             <div class="text-align-direction dropdown-menu __auth-dropdown dropdown-menu-right"
                                     aria-labelledby="dropdownMenuButton" style="transform: translateY(-155%); postition: fixed; right: 5px;">
                                 <a class="dropdown-item" href="{{route('customer.auth.login')}}">
