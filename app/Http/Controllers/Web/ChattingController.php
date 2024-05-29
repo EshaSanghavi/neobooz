@@ -195,17 +195,17 @@ class ChattingController extends Controller
                     })
                     ->get();
 
-                $uniqueShops = Chatting::join('admins', 'admins.id', '=', 'chattings.admin_id')
+                $Admins = Chatting::join('admins', 'admins.id', '=', 'chattings.admin_id')
                     ->select('chattings.*', 'admins.name', 'admins.phone', 'admins.image', 'admins.email')
                     ->where('chattings.user_id', auth('customer')->id())
                     ->orderBy('chattings.created_at', 'desc')
                     ->get()
                     ->unique('admin_id');
                 /*Unseen Message Count*/
-                $uniqueShops?->map(function ($unique_shop) {
-                    $unique_shop['unseen_message_count'] = Chatting::where([
-                        'user_id' => $unique_shop->user_id,
-                        'admin_id' => $unique_shop->admin_id,
+                $Admins?->map(function ($admin) {
+                    $admin['unseen_message_count'] = Chatting::where([
+                        'user_id' => $admin->user_id,
+                        'admin_id' => $admin->admin_id,
                         'sent_by_customer' => 0,
                         'seen_by_customer' => 0,
                     ])->count();
@@ -213,7 +213,7 @@ class ChattingController extends Controller
                 /*End Unseen Message*/
                 return view(VIEW_FILE_NAMES['user_inbox'], [
                     'chattings' => $chattings,
-                    'unique_shops' => $uniqueShops,
+                    'Admins' => $Admins,
                     'last_chat' => $lastChatting
                 ]);
             }

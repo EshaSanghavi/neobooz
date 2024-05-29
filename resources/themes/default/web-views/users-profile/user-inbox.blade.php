@@ -64,6 +64,48 @@
                                 @endif
                             </div>
                             <div class="inbox_chat">
+                                @if (isset($Admins))
+                                    @foreach($Admins as $key=>$admin)
+                                        @php($type = 'admin')
+                                        @php($admin_id = $admin->admin_id)
+                                        <div class="chat_list {{($last_chat->admin_id==$admin_id) ? 'active' : ''}} get-view-by-onclick"
+                                            data-link="{{route('chat', ['type' => $type])}}/?id={{$admin_id}}" id="user_{{$admin_id}}">
+                                            <div class="chat_people">
+                                                <div class="chat_img">
+                                                    <img alt="" class="__inline-14 __rounded-10 img-profile"
+                                                             src="{{ getValidImage(path: 'storage/app/public/admin/'.$admin->admin->image, type: 'avatar') }}">
+                                                </div>
+                                                <div class="chat_ib">
+                                                    <div>
+                                                        <div class="d-flex flex-wrap align-items-center justify-content-between mb-1">
+                                                            <h5 class="{{$admin->seen_by_customer == 0 ? 'active-text' : ''}}">{{$admin->name}}</h5>
+                                                            <span class="date">
+                                                                {{$admin->created_at->diffForHumans()}}
+                                                            </span>
+                                                        </div>
+                                                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                                            @if($admin->message)
+                                                                <span class="last-msg">{{ $admin->message }}</span>
+                                                            @elseif(json_decode($admin['attachment'], true) !=null)
+                                                                <span class="last-msg">
+                                                                    <i class="fa fa-paperclip pe-1"></i>
+                                                                    {{ translate('sent_attachments') }}
+                                                                </span>
+                                                            @endif
+
+                                                            @if($admin->unseen_message_count >0)
+                                                            <span class="new-msg badge btn--primary rounded-full">
+                                                                {{ $admin->unseen_message_count }}
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endForeach
+                                @endif
+
 
                                 @if(isset($inhouseShop))
                                     <div class="chat_list {{ request()->has('id') && request('id') == 0 ? 'active':'' }} get-view-by-onclick"
