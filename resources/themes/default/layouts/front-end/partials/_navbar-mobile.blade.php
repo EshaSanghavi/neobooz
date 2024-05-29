@@ -13,14 +13,14 @@
 <style>
 .mobile{
     position: sticky;
-    bottom: 0; 
+    bottom: 0px;
+    z-index: 100;
   }
+  
 @media only screen and (max-width: 768px) {
   /* Hide desktop header styles */
   .mobile{
     display: none;
-    position: sticky;
-    bottom: 0; 
   }
 }
 </style>
