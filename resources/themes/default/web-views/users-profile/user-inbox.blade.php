@@ -203,6 +203,8 @@
 
                                                 @if($last_chat->delivery_man_id)
                                                     <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/delivery-man/'.$last_chat->deliveryMan->image, type: 'avatar') }}">
+                                                @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
+                                                    <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar'">
                                                 @else
                                                     @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
