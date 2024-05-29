@@ -64,48 +64,6 @@
                                 @endif
                             </div>
                             <div class="inbox_chat">
-                                <!-- @if (isset($Admins))
-                                    @foreach($Admins as $key=>$admin)
-                                        @php($type = 'admin')
-                                        @php($admin_id = $admin->admin_id)
-                                        <div class="chat_list {{($last_chat->admin_id==$admin_id) ? 'active' : ''}} get-view-by-onclick"
-                                            data-link="{{route('chat', ['type' => $type])}}/?id={{$admin_id}}" id="user_{{$admin_id}}">
-                                            <div class="chat_people">
-                                                <div class="chat_img">
-                                                    <img alt="" class="__inline-14 __rounded-10 img-profile"
-                                                             src="{{ getValidImage(path: 'storage/app/public/admin/'.$admin->admin->image, type: 'avatar') }}">
-                                                </div>
-                                                <div class="chat_ib">
-                                                    <div>
-                                                        <div class="d-flex flex-wrap align-items-center justify-content-between mb-1">
-                                                            <h5 class="{{$admin->seen_by_customer == 0 ? 'active-text' : ''}}">{{$admin->name}}</h5>
-                                                            <span class="date">
-                                                                {{$admin->created_at->diffForHumans()}}
-                                                            </span>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                                            @if($admin->message)
-                                                                <span class="last-msg">{{ $admin->message }}</span>
-                                                            @elseif(json_decode($admin['attachment'], true) !=null)
-                                                                <span class="last-msg">
-                                                                    <i class="fa fa-paperclip pe-1"></i>
-                                                                    {{ translate('sent_attachments') }}
-                                                                </span>
-                                                            @endif
-
-                                                            @if($admin->unseen_message_count >0)
-                                                            <span class="new-msg badge btn--primary rounded-full">
-                                                                {{ $admin->unseen_message_count }}
-                                                            </span>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endForeach
-                                @endif -->
-
 
                                 @if(isset($inhouseShop))
                                     <div class="chat_list {{ request()->has('id') && request('id') == 0 ? 'active':'' }} get-view-by-onclick"
@@ -207,8 +165,6 @@
                                                 @else
                                                     @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
-                                                    <!-- @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
-                                                        <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar'"> -->
                                                     @else
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/shop/'.($last_chat->shop->image), type: 'shop') }}">
                                                     @endif
@@ -216,8 +172,6 @@
 
                                                 @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                     <h5 class="m-0">{{ $web_config['name']->value }}</h5>
-                                                <!-- @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
-                                                    <h5 class="m-0">{{ $last_chat->admin->name }}</h5> -->
                                                 @else
                                                     <h5 class="m-0">{{ $last_chat->deliveryMan ? $last_chat->deliveryMan->f_name.' '.$last_chat->deliveryMan->l_name : $last_chat->shop->name  }}</h5>
                                                 @endif
@@ -316,9 +270,7 @@
                                                             </svg>
                                                             <input type="file" id="f_p_v_up1" class="h-100 position-absolute w-100 " hidden multiple accept="image/*">
                                                         </label>
-                                                        <!-- @if( Request::is('chat/admin') )
-                                                            <input type="text" id="hidden_value_dm" hidden
-                                                                   value="{{$last_chat->admin_id}}" name="admin_id"> -->
+                                                       
                                                         @if( Request::is('chat/seller') )
                                                             <input type="text" id="hidden_value" hidden
                                                                    value="{{$last_chat->shop_id}}" name="shop_id">
