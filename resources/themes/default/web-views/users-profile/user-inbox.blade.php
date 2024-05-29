@@ -53,7 +53,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                                @if(isset($unique_shops) && count($unique_shops) !== 0)
+                                @if(isset($unique_shops) && count($unique_shops) !== 0 || Request::is('chat/admin'))
                                     <div class="heading_search px-0">
                                         <form class="rounded bg-white form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
                                             <input class="form-control form-control-sm border-0 me-3 w-75"
