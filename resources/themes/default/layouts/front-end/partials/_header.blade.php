@@ -448,13 +448,13 @@
 
 
 <div class="mobile-nav rtl __inline-10" style="background-color:white;">
-    <div class="navbar-sticky bg-light mobile-head" style="padding: 10px 0px 5px 0px;">
+    <div class="navbar-sticky mobile-head" style="padding: 10px 0px 5px 0px;">
         <div class="navbar navbar-expand-md navbar-light">
 
             <div class="container px-10px">
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-between gap-3">
                     
-                    <div class="navbar-tool d-lg-none mr-md-3">
+                    <div class="navbar-tool d-lg-none ml-md-3">
                         <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
                             <i class="tio-home"></i>
                         </a>
