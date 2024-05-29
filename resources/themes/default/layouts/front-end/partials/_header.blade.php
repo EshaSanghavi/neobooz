@@ -521,15 +521,21 @@
                             @if($web_config['guest_checkout_status'] || auth('customer')->check())
                                 @if($cart->count() > 0)
                                     <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('shop-cart')}}">
-                                @else 
-                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="" onclick="emptyCart()">
-                                @endif
                                         <span class="navbar-tool-label">
                                             @php($cart=\App\Utils\CartManager::get_cart())
                                             {{$cart->count()}}
                                         </span>
                                         <i class="navbar-tool-icon czi-cart"></i>
                                     </a>
+                                @else 
+                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="" onclick="emptyCart()">
+                                        <span class="navbar-tool-label">
+                                            @php($cart=\App\Utils\CartManager::get_cart())
+                                            {{$cart->count()}}
+                                        </span>
+                                        <i class="navbar-tool-icon czi-cart"></i>
+                                    </a>
+                                @endif
                             @else
                                 <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{ route('customer.auth.login') }}">
                                     <span class="navbar-tool-label">
@@ -537,13 +543,6 @@
                                         {{$cart->count()}}
                                     </span>
                                     <i class="navbar-tool-icon czi-cart"></i>
-                                </a>
-                                <a class="navbar-tool-text ms-2"
-                                    href="{{ route('customer.auth.login') }}">
-                                    <small>{{translate('my_cart')}}</small>
-                                    <span class="cart-total-price font-bold fs-14">
-                                        {{ webCurrencyConverter(amount: \App\Utils\CartManager::cart_total_applied_discount(\App\Utils\CartManager::get_cart()))}}
-                                    </span>
                                 </a>
                             @endif
                         </div>
