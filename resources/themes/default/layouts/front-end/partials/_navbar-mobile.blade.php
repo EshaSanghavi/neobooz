@@ -28,7 +28,7 @@
 @endif
 
 <header class="mobile-nav rtl __inline-10">
-    <div class="navbar-sticky bg-light mobile-head">
+    <div class="navbar-sticky bg-light mobile-head" style="background-color:white; padding: 10px 0px 5px 0px;">
         <div class="navbar navbar-expand-md navbar-light">
 
             <div class="container px-10px">
