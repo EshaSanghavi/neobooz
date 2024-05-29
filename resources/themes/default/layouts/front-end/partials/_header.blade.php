@@ -464,8 +464,8 @@
                     <div class="dropdown">
                         <a class="navbar-tool mr-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                            <div class="navbar-tool-icon-box bg-secondary">
-                                <div class="navbar-tool-icon-box bg-secondary">
+                            <div class="navbar-tool-icon-box bg-white">
+                                <div class="navbar-tool-icon-box bg-white">
                                     <i class="tio-grid"></i>
                                 </div>
                             </div>
@@ -520,7 +520,7 @@
                         @if(auth('customer')->check())
                             @php($cart=\App\Utils\CartManager::get_cart())
                             @if($cart->count() > 0)
-                                <a class="navbar-tool-icon-box bg-secondary mr-3" href="{{route('shop-cart')}}">
+                                <a class="navbar-tool-icon-box bg-white mr-3" href="{{route('shop-cart')}}">
                                         <span class="navbar-tool-label">
                                             @php($cart=\App\Utils\CartManager::get_cart())
                                             {{$cart->count()}}
@@ -528,7 +528,7 @@
                                     <i class="navbar-tool-icon czi-cart"></i>
                                 </a>
                             @else 
-                                <a class="navbar-tool-icon-box bg-secondary mr-3" href="#" onclick="emptyCart()">
+                                <a class="navbar-tool-icon-box bg-white mr-3" href="#" onclick="emptyCart()">
                                         <span class="navbar-tool-label">
                                             @php($cart=\App\Utils\CartManager::get_cart())
                                             {{$cart->count()}}
@@ -537,7 +537,7 @@
                                 </a>  
                             @endif
                         @else
-                            <a class="navbar-tool-icon-box bg-secondary mr-3" href="{{ route('customer.auth.login') }}">
+                            <a class="navbar-tool-icon-box bg-white mr-3" href="{{ route('customer.auth.login') }}">
                                     <span class="navbar-tool-label">
                                         0
                                     </span>
@@ -551,8 +551,8 @@
                         <div class="dropdown ml-3">
                             <a class="navbar-tool ml-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-secondary">
-                                    <div class="navbar-tool-icon-box bg-secondary">
+                                <div class="navbar-tool-icon-box bg-white">
+                                    <div class="navbar-tool-icon-box bg-white">
                                         <i class="tio-user"></i>
                                     </div>
                                 </div>
@@ -572,8 +572,8 @@
                             <a class="navbar-tool ml-md-3"
                                 type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-secondary">
-                                    <div class="navbar-tool-icon-box bg-secondary">
+                                <div class="navbar-tool-icon-box bg-white">
+                                    <div class="navbar-tool-icon-box bg-white">
                                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                             <path d="M4.25 4.41675C4.25 6.48425 5.9325 8.16675 8 8.16675C10.0675 8.16675 11.75 6.48425 11.75 4.41675C11.75 2.34925 10.0675 0.666748 8 0.666748C5.9325 0.666748 4.25 2.34925 4.25 4.41675ZM14.6667 16.5001H15.5V15.6667C15.5 12.4509 12.8825 9.83341 9.66667 9.83341H6.33333C3.11667 9.83341 0.5 12.4509 0.5 15.6667V16.5001H14.6667Z"
