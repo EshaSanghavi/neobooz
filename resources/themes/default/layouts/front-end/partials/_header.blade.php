@@ -221,13 +221,13 @@
                                aria-expanded="false">
                             <div class="navbar-tool-icon-box bg-secondary">
                                 <div class="navbar-tool-icon-box bg-secondary">
-                                    <i class="tio">command_key</i>
+                                    <i class="tio-grid"></i>
                                 </div>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     @foreach($categories as $category)
-                                    <li class="dropdown pl-3">
+                                    <li class="dropdown pl-3 pb-2">
 
                                         <a <?php if ($category->childes->count() > 0) echo "" ?>
                                            href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
@@ -243,7 +243,7 @@
                                         @if($category->childes->count()>0)
                                             <ul class="dropdown-menu text-align-direction">
                                                 @foreach($category['childes'] as $subCategory)
-                                                    <li class="dropdown">
+                                                    <li class="dropdown pl-3 pb-2">
                                                         <a href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">
                                                             <span>{{$subCategory['name']}}</span>
                                                         </a>
