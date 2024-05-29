@@ -212,7 +212,6 @@ class ChattingController extends Controller
                         'seen_by_customer' => 0,
                     ])->count();
                 });
-
                 
                 /*End Unseen Message*/
                 return view(VIEW_FILE_NAMES['user_inbox'], [
