@@ -192,6 +192,24 @@ class CartManager
         return $total;
     }
 
+    public static function cart_reseller_profit($cart_group_id = null)
+    {
+        $cart = CartManager::get_cart($cart_group_id);
+        $shipping_cost = CartManager::get_shipping_cost($cart_group_id);
+        $total = 0;
+        if (!empty($cart)) {
+            foreach ($cart as $item) {
+                $tax = $item['tax_model']=='include'? 0 : $item['tax'];
+                $product_subtotal = (($item['resell_price'] - $item['price']) * $item['quantity'])
+                    + ($tax * $item['quantity'])
+                    - $item['discount'] * $item['quantity'];
+                $total += $product_subtotal;
+            }
+            $total += $shipping_cost;
+        }
+        return $total;
+    }
+
     public static function api_cart_grand_total($request, $cart_group_id = null)
     {
         $cart = CartManager::get_cart_for_api($request, $cart_group_id);
@@ -218,7 +236,7 @@ class CartManager
         if (!empty($cart)) {
             foreach ($cart as $item) {
                 $price = ($item->is_resell == 1) ? $item['resell_price'] : $item['price'];
-                
+
                 $tax = $item['tax_model']=='include'? 0 : $item['tax'];
                 $product_subtotal = ($price * $item['quantity'])
                     + ($tax * $item['quantity'])

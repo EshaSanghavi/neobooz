@@ -73,6 +73,7 @@ class OrderManager
             ->first();
 
         $sub_total = 0;
+        $reseller_profit = 0;
         $total_discount_on_product = 0;
 
         if ($coupon && ($coupon->seller_id == NULL || $coupon->seller_id == '0' || $coupon->seller_id == $cart[0]->seller_id)) {
@@ -82,7 +83,9 @@ class OrderManager
         }
 
         foreach ($cart as $item) {
-            $sub_total += $item->price * $item->quantity;
+            $price = ($item->is_resell == 1) ? $item->resell_price : $item->price;
+            $sub_total += $price * $item->quantity;
+            $reseller_profit += ($item->resell_price - $item->price) * $item->quantity;
             $total_discount_on_product += $item->discount * $item->quantity;
         }
 
@@ -550,6 +553,7 @@ class OrderManager
             'coupon_discount_bearer' => $coupon_bearer,
             'order_amount' => CartManager::cart_grand_total($cart_group_id) - $discount - $free_shipping_discount,
             'admin_commission' => $admin_commission,
+            'reseller_profit' => CartManager::cart_reseller_profit($cart_group_id),
             'shipping_address' => $address_id,
             'shipping_address_data' => ShippingAddress::find($address_id),
             'billing_address' => $billing_address_id,
@@ -871,6 +875,7 @@ class OrderManager
             'coupon_discount_bearer' => $order_data['coupon_bearer'],
             'order_amount' => CartManager::cart_grand_total($order_data['cart_group_id']) - $order_data['discount'],
             'admin_commission' => $order_data['admin_commission'],
+            'reseller_profit' => CartManager::cart_reseller_profit($cart_group_id),
             'shipping_address' => $order_data['address_id'],
             'shipping_address_data' => ShippingAddress::find($order_data['address_id']),
             'billing_address' => $order_data['billing_address_id'],
