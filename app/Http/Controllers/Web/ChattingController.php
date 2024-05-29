@@ -224,16 +224,6 @@ class ChattingController extends Controller
                     }
                 }
 
-                $inhouseShop = Chatting::where(['user_id' => auth('customer')->id(), 'admin_id' => 0])
-                    ->orderBy('chattings.created_at', 'desc')
-                    ->first();
-
-                $inhouseShopUnseenMessage = Chatting::where([
-                    'user_id' => auth('customer')->id(),
-                    'admin_id' => 0,
-                    'seen_by_customer' => 0])
-                    ->count();
-
                 $uniqueShops = Chatting::join('admins', 'admins.id', '=', 'chattings.admin_id')
                     ->select('chattings.*', 'admins.name', 'admins.image', 'admins.phone', 'admins.email as admin_email')
                     ->where('chattings.user_id', auth('customer')->id())
@@ -244,7 +234,7 @@ class ChattingController extends Controller
                 $uniqueShops?->map(function ($unique_shop) {
                     $unique_shop['unseen_message_count'] = Chatting::where([
                         'user_id' => $unique_shop->user_id,
-                        'shop_id' => $unique_shop->admin_id,
+                        'admin_id' => $unique_shop->admin_id,
                         'sent_by_customer' => 0,
                         'seen_by_customer' => 0,
                     ])->count();
@@ -255,8 +245,6 @@ class ChattingController extends Controller
                     'chattings' => $chattings ?? null,
                     'unique_shops' => $uniqueShops,
                     'last_chat' => $lastChatting,
-                    'inhouseShop' => $inhouseShop,
-                    'inhouseShopUnseenMessage' => $inhouseShopUnseenMessage,
                 ]);
             }
         }
