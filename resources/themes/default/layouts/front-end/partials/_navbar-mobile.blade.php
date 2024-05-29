@@ -40,7 +40,7 @@
                         </a>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="dropdown" style="transform: translateY(-120%);">
                         <a class="navbar-tool ml-3" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                             <div class="navbar-tool-icon-box bg-secondary">

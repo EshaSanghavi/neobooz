@@ -186,7 +186,6 @@
 
 @include('layouts.front-end.partials._footer')
 @include('layouts.front-end.partials.modal._dynamic-modals')
-@include('layouts.front-end.partials._navbar-mobile')
 
 <a class="btn-scroll-top btn--primary" href="#top" data-scroll>
     <span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">{{ translate('top')}}</span>
