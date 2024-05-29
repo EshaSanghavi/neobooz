@@ -209,18 +209,13 @@
 
             <div class="container px-10px">
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
-                    <a class="navbar-tool navbar-stuck-toggler" href="#">
-                        <span class="navbar-tool-tooltip">{{ translate('expand_Menu') }}</span>
-                        <div class="navbar-tool-icon-box">
-                            <i class="navbar-tool-icon czi-menu open-icon"></i>
-                            <i class="navbar-tool-icon czi-close close-icon"></i>
-                        </div>
-                    </a>
-                    <div class="navbar-tool open-search-form-mobile d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
-                        <a class="navbar-tool-icon-box bg-secondary" href="javascript:">
-                            <i class="tio-search"></i>
+                    
+                    <div class="navbar-tool d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
+                        <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
+                            <i class="tio-home"></i>
                         </a>
                     </div>
+                    
                     <div class="navbar-tool dropdown d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
                         <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
                             <span class="navbar-tool-label">
@@ -290,8 +285,8 @@
                     </div>
                 </div>
             </div>
-            
         </div>
+
         <div class="navbar navbar-expand-md navbar-stuck-menu">
             <div class="container px-10px">
                 <div class="collapse navbar-collapse text-align-direction" id="navbarCollapse">
