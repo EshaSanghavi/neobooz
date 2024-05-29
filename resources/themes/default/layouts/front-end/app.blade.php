@@ -51,9 +51,10 @@
         .mobile-nav{
             display: none;
         }
-        
+
         @media (max-width: 767px) {
             .mobile-nav{
+                display: block;
                 position: sticky;
                 bottom: 0px;
                 z-index: 100;

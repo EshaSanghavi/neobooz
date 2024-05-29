@@ -10,6 +10,7 @@
 @media only screen and (max-width: 768px) {
   /* Hide desktop header styles */
   .mobile{
+    display: block;
     position: sticky;
     bottom: 0px;
     z-index: 100;
