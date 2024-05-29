@@ -453,7 +453,7 @@
 
             <div class="container px-10px m-0" style="display: flex; justify-content: space-evenly; width: 100%;">
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" 
-                    style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
+                    style="width: -webkit-fill-available; margin: 0; justify-content: space-evenly;">
                     
                    
                     <div class="navbar-tool d-lg-none">
@@ -467,7 +467,7 @@
                     <div class="dropdown" style="align-items: center;">
                         <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="display: grid; align-items: center;">
-                                    <i class="tio-grid"></i>
+                                    <i class="tio-transform"></i>
                                     <small style="line-height: 1;">Category</small>
                         </a>
                         <!-- <small style="display: block;">Category</small> -->
@@ -526,7 +526,7 @@
                                         @php($cart=\App\Utils\CartManager::get_cart())
                                         {{$cart->count()}}
                                     </span>
-                                    <i class="navbar-tool-icon czi-cart"></i>
+                                    <i class="navbar-tool-icon tio-shopping-cart-outlined"></i>
                                     <small style="line-height: 1;">Cart</small>
                                 </a>
                             @else 
@@ -535,7 +535,7 @@
                                             @php($cart=\App\Utils\CartManager::get_cart())
                                             {{$cart->count()}}
                                         </span>
-                                    <i class="navbar-tool-icon czi-cart" style="line-height: 1;"></i>
+                                    <i class="navbar-tool-icon tio-shopping-cart-outlined" style="line-height: 1;"></i>
                                     <small style="line-height: 1;">Cart</small>
                                 </a>  
                             @endif
