@@ -47,7 +47,15 @@
             margin-{{ Session::get('direction') === "rtl" ? 'right' : 'left' }}: -8px !important;
         }
 
+        .mobile-nav{
+            position: sticky;
+            bottom: 0px;
+            z-index: 100;
+        }
         @media (max-width: 767px) {
+            .mobile-nav{
+                display: none;
+            }
             .navbar-expand-md .dropdown-menu > .dropdown > .dropdown-toggle {
                 padding-{{ Session::get('direction') === "rtl" ? 'left' : 'right'}}: 1.95rem;
             }

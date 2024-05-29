@@ -8,7 +8,7 @@
     </div>
 @endif
 
-<header class="mobile rtl __inline-10">
+<header class="mobile-nav rtl __inline-10">
     <div class="navbar-sticky bg-light mobile-head">
         <div class="navbar navbar-expand-md navbar-light">
 
