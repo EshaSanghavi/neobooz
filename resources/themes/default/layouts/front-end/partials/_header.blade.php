@@ -449,19 +449,20 @@
 
 <div class="mobile-nav rtl __inline-10" style="background-color:white;">
     <div class="navbar-sticky mobile-head" style="padding: 10px 0px 5px 0px;">
-        <div class="navbar navbar-expand-md navbar-light" style="align-items: center; text-align: center; display: flex; justify-content: center;">
+        <div class="navbar navbar-expand-md navbar-light" style="align-items: center; text-align: center; display: flex;
+    justify-content: center;">
 
             <div class="container px-10px" style="width: fit-content;">
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-between gap-3">
                     
-                    <div class="navbar-tool d-lg-none md-3">
+                    <div class="navbar-tool d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"">
                         <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
                             <i class="tio-home"></i>
                         </a>
                     </div>
 
                     <div class="dropdown">
-                        <a class="navbar-tool md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                             <div class="navbar-tool-icon-box bg-secondary">
                                 <div class="navbar-tool-icon-box bg-secondary">
@@ -520,7 +521,7 @@
                         
                     </div>
 
-                    <div class="navbar-tool dropdown d-none d-md-block md-3">
+                    <div class="navbar-tool dropdown d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"">
                         <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
                             <span class="navbar-tool-label">
                                 <span class="countWishlist">
@@ -533,7 +534,7 @@
                     </div>
                     @if(auth('customer')->check())
                         <div class="dropdown">
-                            <a class="navbar-tool md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                            <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <div class="navbar-tool-icon-box bg-secondary">
                                     <div class="navbar-tool-icon-box bg-secondary">
@@ -558,7 +559,7 @@
                         </div>
                     @else
                         <div class="dropdown">
-                            <a class="navbar-tool md-3"
+                            <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}""
                                 type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <div class="navbar-tool-icon-box bg-secondary">
