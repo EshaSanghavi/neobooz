@@ -234,8 +234,8 @@
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/shop/'.$last_chat->shop->image, type: 'shop') }}">
                                                                     @elseif(isset($chat->sent_by_admin) && $last_chat->admin_id == 0)
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
-                                                                    <!-- @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
-                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}"> -->
+                                                                    @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
+                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                                     @endif
                                                                 </div>company
                                                                 <div class="received_msg">
