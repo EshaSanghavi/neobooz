@@ -516,37 +516,38 @@
                     </div>
 
 
-                    <div id="cart_items">
-                        <div class="navbar-tool dropdown me-2 {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
-                            @if($web_config['guest_checkout_status'] || auth('customer')->check())
-                                @if($cart->count() > 0)
-                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('shop-cart')}}">
-                                        <span class="navbar-tool-label">
-                                            @php($cart=\App\Utils\CartManager::get_cart())
-                                            {{$cart->count()}}
-                                        </span>
-                                        <i class="navbar-tool-icon czi-cart"></i>
-                                    </a>
-                                @else 
-                                    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="" onclick="emptyCart()">
-                                        <span class="navbar-tool-label">
-                                            @php($cart=\App\Utils\CartManager::get_cart())
-                                            {{$cart->count()}}
-                                        </span>
-                                        <i class="navbar-tool-icon czi-cart"></i>
-                                    </a>
-                                @endif
-                            @else
-                                <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{ route('customer.auth.login') }}">
+                    
+                    <div class="navbar-tool d-lg-none  ml-md-3">
+                        <a class="navbar-tool-icon-box bg-secondary mr-3" href="{{route('shop-cart')}}">
+                                <span class="navbar-tool-label">
+                                    @php($cart=\App\Utils\CartManager::get_cart())
+                                    {{$cart->count()}}
+                                </span>
+                            <i class="navbar-tool-icon czi-cart"></i>
+                        </a>
+                    </div>
+
+
+
+                    <div class="navbar-tool d-lg-none  ml-md-3">
+                        @if(auth('customer')->check())
+                            <a class="navbar-tool-icon-box bg-secondary mr-3" href="{{route('shop-cart')}}">
                                     <span class="navbar-tool-label">
                                         @php($cart=\App\Utils\CartManager::get_cart())
                                         {{$cart->count()}}
                                     </span>
-                                    <i class="navbar-tool-icon czi-cart"></i>
-                                </a>
-                            @endif
-                        </div>
+                                <i class="navbar-tool-icon czi-cart"></i>
+                            </a>
+                        @else
+                            <a class="navbar-tool-icon-box bg-secondary mr-3" href="{{ route('customer.auth.login') }}">
+                                    <span class="navbar-tool-label">
+                                        0
+                                    </span>
+                                <i class="navbar-tool-icon czi-cart"></i>
+                            </a>   
+                        @endif 
                     </div>
+                                
 
                     @if(auth('customer')->check())
                         <div class="dropdown ml-3">
