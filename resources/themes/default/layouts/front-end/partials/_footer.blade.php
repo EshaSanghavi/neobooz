@@ -1,4 +1,4 @@
-<header class="mobile-nav rtl __inline-10" style="background-color:white;">
+<div class="mobile-nav rtl __inline-10" style="background-color:white;">
     <div class="navbar-sticky bg-light mobile-head" style="padding: 10px 0px 5px 0px;">
         <div class="navbar navbar-expand-md navbar-light">
 
@@ -139,7 +139,7 @@
             </div>
         </div>
     </div>
-</header>
+</div>
 
 <div class="__inline-9 rtl">
     <div
