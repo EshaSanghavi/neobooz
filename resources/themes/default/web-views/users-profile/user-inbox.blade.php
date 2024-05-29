@@ -64,7 +64,7 @@
                                 @endif
                             </div>
                             <div class="inbox_chat">
-                                @if (isset($Admins))
+                                <!-- @if (isset($Admins))
                                     @foreach($Admins as $key=>$admin)
                                         @php($type = 'admin')
                                         @php($admin_id = $admin->admin_id)
@@ -104,7 +104,7 @@
                                             </div>
                                         </div>
                                     @endForeach
-                                @endif
+                                @endif -->
 
 
                                 @if(isset($inhouseShop))
@@ -207,7 +207,7 @@
                                                 @else
                                                     @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
-                                                    @elseif(isset($last_chat->admin_id))
+                                                    @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar'">
                                                     @else
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/shop/'.($last_chat->shop->image), type: 'shop') }}">
@@ -216,10 +216,10 @@
 
                                                 @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                     <h5 class="m-0">{{ $web_config['name']->value }}</h5>
-                                                @elseif(isset($last_chat->admin_id))
-                                                    <h5 class="m-0">{{ $last_chat->admin->name  }}</h5>
+                                                @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
+                                                    <h5 class="m-0">{{ $last_chat->admin->name }}</h5>
                                                 @else
-                                                    <h5 class="m-0">{{ $last_chat->deliveryMan?$last_chat->deliveryMan->f_name.' '.$last_chat->deliveryMan->l_name : $last_chat->shop->name  }}</h5>
+                                                    <h5 class="m-0">{{ $last_chat->deliveryMan ? $last_chat->deliveryMan->f_name.' '.$last_chat->deliveryMan->l_name : $last_chat->shop->name  }}</h5>
                                                 @endif
                                             </a>
 
