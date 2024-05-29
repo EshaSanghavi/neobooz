@@ -216,6 +216,75 @@
                         </a>
                     </div>
                     
+
+                    <div class="navbar-tool d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
+                        <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
+                            <i class="tio-home"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="navbar-tool ml-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                            <div class="navbar-tool-icon-box bg-secondary">
+                                <div class="navbar-tool-icon-box bg-secondary">
+                                    <img class="img-profile rounded-circle __inline-14" alt=""
+                                            src="{{ getValidImage(path: 'storage/app/public/profile/'.auth('customer')->user()->image, type: 'avatar') }}">
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
+                                aria-labelledby="dropdownMenuButton">
+                                    @foreach($categories as $category)
+                                    <li class="dropdown">
+
+                                        <a <?php if ($category->childes->count() > 0) echo "" ?>
+                                           href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
+                                            <span>{{$category['name']}}</span>
+
+                                        </a>
+                                        @if ($category->childes->count() > 0)
+                                            <a data-toggle='dropdown' class='__ml-50px'>
+                                                <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} __inline-16"></i>
+                                            </a>
+                                        @endif
+
+                                        @if($category->childes->count()>0)
+                                            <ul class="dropdown-menu text-align-direction">
+                                                @foreach($category['childes'] as $subCategory)
+                                                    <li class="dropdown">
+                                                        <a href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">
+                                                            <span>{{$subCategory['name']}}</span>
+                                                        </a>
+
+                                                        @if($subCategory->childes->count()>0)
+                                                            <a class="header-subcategories-links"
+                                                               data-toggle='dropdown'>
+                                                                <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} __inline-16"></i>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                @foreach($subCategory['childes'] as $subSubCategory)
+                                                                    <li>
+                                                                        <a class="dropdown-item"
+                                                                           href="{{route('products',['id'=> $subSubCategory['id'],'data_from'=>'category','page'=>1])}}">{{$subSubCategory['name']}}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                        </div>
+                    </div>
+
+
+                    <div id="cart_items">
+                        @include('layouts.front-end.partials._cart')
+                    </div>
+
                     <div class="navbar-tool dropdown d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
                         <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
                             <span class="navbar-tool-label">
@@ -280,9 +349,6 @@
                             </div>
                         </div>
                     @endif
-                    <div id="cart_items">
-                        @include('layouts.front-end.partials._cart')
-                    </div>
                 </div>
             </div>
         </div>
