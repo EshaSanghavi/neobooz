@@ -9,7 +9,7 @@
 @endif
 
 
-<header class="rtl __inline-10" style="position: sticky; top: 0; z-index: 10;">
+<header class="rtl __inline-10" style="position: sticky; top: 0; z-index: 10; background: rgb(243 243 243);">
     <div class="topbar" style="">
         <div class="container">
 
