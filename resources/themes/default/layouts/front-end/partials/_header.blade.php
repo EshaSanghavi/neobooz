@@ -452,10 +452,11 @@
         <div class="navbar navbar-expand-md navbar-light" style="align-items: center; text-align: center; display: flex; justify-content: center;">
 
             <div class="container px-10px m-0" style="display: flex; justify-content: space-evenly; width: 100%;">
-                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" style="width: 100%; justify-content: space-evenly;">
+                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" 
+                    style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
                     <div class="navbar-tool d-lg-none  mr-md-3">
-                        <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
+                        <a class="navbar-tool-icon-box bg-secondary ml-3" href="https://neobooz.com">
                             <i class="tio-home"></i>
                         </a>
                     </div>
@@ -520,7 +521,7 @@
                     </div>
 
                     @if(auth('customer')->check())
-                        <div class="dropdown">
+                        <div class="dropdown ml-3">
                             <a class="navbar-tool ml-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <div class="navbar-tool-icon-box bg-secondary">
@@ -540,7 +541,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="dropdown">
+                        <div class="dropdown ml-3">
                             <a class="navbar-tool ml-md-3"
                                 type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
