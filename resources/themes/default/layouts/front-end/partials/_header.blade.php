@@ -461,7 +461,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <a class="navbar-tool md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="navbar-tool mr-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                             <div class="navbar-tool-icon-box bg-secondary">
                                 <div class="navbar-tool-icon-box bg-secondary">
@@ -522,7 +522,7 @@
 
                     @if(auth('customer')->check())
                         <div class="dropdown">
-                            <a class="navbar-tool md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                            <a class="navbar-tool ml-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <div class="navbar-tool-icon-box bg-secondary">
                                     <div class="navbar-tool-icon-box bg-secondary">
