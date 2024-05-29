@@ -92,6 +92,36 @@ class ChattingController extends BaseController
                     'chattingMessages' => $chattingMessages,
                 ]);
             }
+        } elseif ($type == 'seller') {
+            $allChattingUsers = $this->chattingRepo->getListWhereNotNull(
+                orderBy: ['created_at' => 'DESC'],
+                filters: ['admin_id' =>$adminId],
+                whereNotNull: ['user_id','admin_id'],
+                relations: ['seller'],
+                dataLimit: 'all'
+            )->unique('user_id');
+
+            if (count($allChattingUsers) > 0) {
+                $lastChatUser = $allChattingUsers[0]->seller;
+                $this->chattingRepo->updateAllWhere(
+                    params: ['admin_id' => $adminId, 'user_id' => $lastChatUser['id']],
+                    data: ['seen_by_admin' => 1]
+                );
+
+                $chattingMessages = $this->chattingRepo->getListWhereNotNull(
+                    orderBy: ['created_at' => 'DESC'],
+                    filters: ['admin_id' =>$adminId, 'user_id'=>$lastChatUser->id],
+                    whereNotNull: ['user_id','admin_id'],
+                    relations: ['seller'],
+                    dataLimit: 'all'
+                );
+                return view(Chatting::INDEX[VIEW], [
+                    'userType' => $type,
+                    'allChattingUsers' => $allChattingUsers,
+                    'lastChatUser' => $lastChatUser,
+                    'chattingMessages' => $chattingMessages,
+                ]);
+            }
         } elseif ($type == 'customer') {
             $allChattingUsers = $this->chattingRepo->getListWhereNotNull(
                 orderBy: ['created_at' => 'DESC'],
@@ -123,6 +153,7 @@ class ChattingController extends BaseController
                 ]);
             }
         }
+
         return view(Chatting::INDEX[VIEW], compact('shop'));
 
     }
