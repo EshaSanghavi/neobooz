@@ -1,24 +1,5 @@
 @php($announcement=getWebConfig(name: 'announcement'))
 
-@section('styles')
-<style>
-
-  .mobile{
-    display: none;
-  }
-  
-@media only screen and (max-width: 768px) {
-  /* Hide desktop header styles */
-  .mobile{
-    display: block;
-    position: sticky;
-    bottom: 0px;
-    z-index: 100;
-  }
-}
-</style>
-@endsection
-
 @if (isset($announcement) && $announcement['status']==1)
     <div class="text-center position-relative px-4 py-1" id="announcement"
          style="background-color: {{ $announcement['color'] }};color:{{$announcement['text_color']}}">
@@ -100,7 +81,7 @@
                         
                     </div>
 
-                    <div class="navbar-tool dropdown d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
+                    <div class="navbar-tool dropdown d-none d-md-block-right">
                         <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
                             <span class="navbar-tool-label">
                                 <span class="countWishlist">
