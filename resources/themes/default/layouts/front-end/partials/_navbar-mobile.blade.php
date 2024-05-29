@@ -1,9 +1,9 @@
-<header class="mobile-nav rtl __inline-10">
-    <div class="navbar-sticky bg-light mobile-head" style="background-color:white; padding: 10px 0px 5px 0px;">
+<header class="mobile-nav rtl __inline-10" style="background-color:white;">
+    <div class="navbar-sticky bg-light mobile-head" style="padding: 10px 0px 5px 0px;">
         <div class="navbar navbar-expand-md navbar-light">
 
             <div class="container px-10px">
-                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
+                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-between gap-3">
                     
                     <div class="navbar-tool d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}">
                         <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
