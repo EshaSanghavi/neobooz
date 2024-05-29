@@ -33,6 +33,12 @@
                             <div class="chat--sidebar-top">
 
                                 <ul class="nav nav-tabs nav--tabs justify-content-center">
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link {{Request::is('chat/admin')?'active': '' }}" href="{{route('chat', ['type' => 'admin'])}}">
+                                            {{translate('admin')}}
+                                        </a>
+                                    </li>
                                     @php($business_mode = getWebConfig(name: 'business_mode'))
                                     @if($business_mode == 'multi')
                                         <li class="nav-item">
