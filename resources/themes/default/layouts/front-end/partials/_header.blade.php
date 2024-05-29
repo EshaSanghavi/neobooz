@@ -470,7 +470,6 @@
                                     <i class="tio-transform"></i>
                                     <small style="line-height: 1;">Category</small>
                         </a>
-                        <!-- <small style="display: block;">Category</small> -->
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
                                     @foreach($categories as $category)
                                     <li class="dropdown px-3 pb-2">
