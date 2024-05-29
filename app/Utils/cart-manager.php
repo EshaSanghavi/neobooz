@@ -179,11 +179,8 @@ class CartManager
         $total = 0;
         if (!empty($cart)) {
             foreach ($cart as $item) {
-                if($cart->is_resell == 1)
-                    $price = $item['resell_price'];
-                else    
-                    $price = $item['price'];
-                
+                $price = ($item->is_resell == 1) ? $item['resell_price'] : $item['price'];
+
                 $tax = $item['tax_model']=='include'? 0 : $item['tax'];
                 $product_subtotal = ($price * $item['quantity'])
                     + ($tax * $item['quantity'])
@@ -202,8 +199,9 @@ class CartManager
         $total = 0;
         if (!empty($cart)) {
             foreach ($cart as $item) {
+                $price = ($item->is_resell == 1) ? $item['resell_price'] : $item['price'];
                 $tax = $item['tax_model']=='include'? 0 : $item['tax'];
-                $product_subtotal = ($item['price'] * $item['quantity'])
+                $product_subtotal = ($price * $item['quantity'])
                     + ($tax * $item['quantity'])
                     - $item['discount'] * $item['quantity'];
                 $total += $product_subtotal;
@@ -219,8 +217,10 @@ class CartManager
         $total = 0;
         if (!empty($cart)) {
             foreach ($cart as $item) {
+                $price = ($item->is_resell == 1) ? $item['resell_price'] : $item['price'];
+                
                 $tax = $item['tax_model']=='include'? 0 : $item['tax'];
-                $product_subtotal = ($item['price'] * $item['quantity'])
+                $product_subtotal = ($price * $item['quantity'])
                     + ($tax * $item['quantity'])
                     - $item['discount'] * $item['quantity'];
                 $total += $product_subtotal;
