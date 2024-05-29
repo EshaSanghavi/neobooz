@@ -456,7 +456,7 @@
                     style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
                    
-                    <div class="navbar-tool d-lg-none " style="align-items: center;">
+                    <div class="navbar-tool d-lg-none ">
                         <a class="navbar-tool-icon-box bg-white d-flex align-items: center" href="https://neobooz.com">
                             <i class="tio-home"></i>
                             <small style="display: block;">Home</small>
