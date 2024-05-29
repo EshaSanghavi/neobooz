@@ -116,6 +116,8 @@
 
 @include('layouts.front-end.partials._header')
 
+@include('layouts.front-end.partials._navbar-mobile')
+
 <span id="authentication-status" data-auth="{{ auth('customer')->check() ? 'true' : 'false' }}"></span>
 
 <div class="row">
@@ -184,8 +186,6 @@
 
 <span id="storage-flash-deals" data-value="{{ $web_config['flash_deals']['start_date'] ?? '' }}"></span>
 
-
-@include('layouts.front-end.partials._navbar-mobile')
 @include('layouts.front-end.partials._footer')
 @include('layouts.front-end.partials.modal._dynamic-modals')
 
