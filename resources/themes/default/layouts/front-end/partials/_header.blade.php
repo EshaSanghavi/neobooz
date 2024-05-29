@@ -456,7 +456,7 @@
                     style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
                     <div class="navbar-tool d-lg-none  mr-md-3">
-                        <a class="navbar-tool-icon-box bg-secondary mr-3" href="https://neobooz.com">
+                        <a class="navbar-tool-icon-box bg-white mr-3" href="https://neobooz.com">
                             <i class="tio-home"></i>
                         </a>
                     </div>
