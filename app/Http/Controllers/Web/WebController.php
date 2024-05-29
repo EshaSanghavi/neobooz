@@ -688,7 +688,10 @@ class WebController extends Controller
             }
             return view(VIEW_FILE_NAMES['cart_list'], compact('topRatedShops', 'newSellers', 'currentDate', 'request'));
         }
-        Toastr::info(translate('invalid_access'));
+        else if(Cart::where(['customer_id' => auth('customer')->id()])->count() == 0)
+            Toastr::info(transalte('cart_is_empty'));
+        else
+            Toastr::info(translate('invalid_access'));
         return redirect('/');
     }
 
