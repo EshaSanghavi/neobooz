@@ -170,66 +170,37 @@ class ChattingController extends Controller
                 ]);
             }
         } else if ($type == 'admin') {
-            if ($request->has('id') && $request['id'] == 0) {
-                $lastChatting = Chatting::where(['user_id' => auth('customer')->id(), 'admin_id' => 0])
-                    ->orderBy('created_at', 'DESC')->first();
-            } else {
-                $lastChatting = Chatting::with(['shop'])->where('user_id', auth('customer')->id())
-                    ->whereNotNull(['seller_id', 'user_id'])->orderBy('created_at', 'DESC')
-                    ->orWhereNotNull(['admin_id'])
-                    ->first();
-            }
-
+            $lastChatting = Chatting::with('deliveryMan')->where('user_id', auth('customer')->id())
+                ->whereNotNull(['delivery_man_id', 'user_id'])
+                ->orderBy('created_at', 'DESC')
+                ->first();
             if (isset($lastChatting)) {
-                if ($request->has('id') && $request['id'] != 0) {
-                    $lastChatting = Chatting::with('admin')->where(['user_id' => auth('customer')->id(), 'admin_id' => $request['id']])
-                        ->whereNotNull(['admin_id', 'user_id'])
+                // theme_aster - specific shop start
+                if ($request->has('id')) {
+                    $lastChatting = Chatting::with('admin')->where('admin_id', $request->id)
                         ->orderBy('created_at', 'DESC')
                         ->first();
-                    Chatting::with('admin')->where(['user_id' => auth('customer')->id(), 'admin_id' => $request['id']])
-                        ->whereNotNull(['admin_id', 'user_id'])
-                        ->orderBy('created_at', 'DESC')
-                        ->update(['seen_by_customer' => 1]);
-                } elseif ($request->has('id') && $request['id'] == 0) {
-                    $lastChatting = Chatting::where(['user_id' => auth('customer')->id(), 'admin_id' => 0])
-                        ->orderBy('created_at', 'DESC')->first();
-                    Chatting::where(['user_id' => auth('customer')->id(), 'admin_id' => 0])->update(['seen_by_customer' => 1]);
-                }
-                // theme_aster - specific shop end
+                    Chatting::where(['user_id' => auth('customer')->id(), 'admin_id' => $request['id']])->update(['seen_by_customer' => 1]);
+                }// theme_aster - specific shop end
 
-                if (isset($lastChatting['admin_id']) && $lastChatting['admin_id'] == 0) {
-                    $chattings = Chatting::where(['user_id' => auth('customer')->id(), 'admin_id' => 0])
-                            ->when(theme_root_path() == 'default', function ($query) {
-                                return $query->orderBy('chattings.created_at', 'desc');
-                            })
-                            ->when(theme_root_path() != 'default', function ($query) {
-                                return $query->orderBy('chattings.created_at', 'asc');
-                            })
-                            ->get();
-                    Chatting::where(['user_id' => auth('customer')->id(), 'admin_id' => 0])
-                        ->update(['seen_by_customer' => 1]);
-                } else {
-                    if (isset($lastChatting->shop_id)) {
-                        $chattings = Chatting::join('admins', 'admins.id', '=', 'chattings.admin_id')
-                            ->select('chattings.*', 'admins.name', 'admins.image')
-                            ->where('chattings.user_id', auth('customer')->id())
-                            ->where('admin_id', $lastChatting->admin_id)
-                            ->when(theme_root_path() == 'default', function ($query) {
-                                return $query->orderBy('chattings.created_at', 'desc');
-                            })
-                            ->when(theme_root_path() != 'default', function ($query) {
-                                return $query->orderBy('chattings.created_at', 'asc');
-                            })
-                            ->get();
-                    }
-                }
+                $chattings = Chatting::join('admins', 'admins.id', '=', 'chattings.admin_id')
+                    ->select('chattings.*', 'admins.name', 'admins.phone', 'admins.image')
+                    ->where('chattings.user_id', auth('customer')->id())
+                    ->where('admin_id', $lastChatting->admin_id)
+                    ->when(theme_root_path() == 'default', function ($query) {
+                        return $query->orderBy('chattings.created_at', 'desc');
+                    })
+                    ->when(theme_root_path() != 'default', function ($query) {
+                        return $query->orderBy('chattings.created_at', 'asc');
+                    })
+                    ->get();
 
                 $uniqueShops = Chatting::join('admins', 'admins.id', '=', 'chattings.admin_id')
-                    ->select('chattings.*', 'admins.name', 'admins.image', 'admins.phone', 'admins.email as admin_email')
+                    ->select('chattings.*', 'admins.name', 'admins.phone', 'admins.image', 'admins.email')
                     ->where('chattings.user_id', auth('customer')->id())
                     ->orderBy('chattings.created_at', 'desc')
-                    ->get()->unique('shop_id');
-
+                    ->get()
+                    ->unique('admin_id');
                 /*Unseen Message Count*/
                 $uniqueShops?->map(function ($unique_shop) {
                     $unique_shop['unseen_message_count'] = Chatting::where([
@@ -240,11 +211,10 @@ class ChattingController extends Controller
                     ])->count();
                 });
                 /*End Unseen Message*/
-
                 return view(VIEW_FILE_NAMES['user_inbox'], [
-                    'chattings' => $chattings ?? null,
+                    'chattings' => $chattings,
                     'unique_shops' => $uniqueShops,
-                    'last_chat' => $lastChatting,
+                    'last_chat' => $lastChatting
                 ]);
             }
         }
