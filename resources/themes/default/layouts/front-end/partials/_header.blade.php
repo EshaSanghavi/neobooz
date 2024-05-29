@@ -455,7 +455,7 @@
                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" 
                     style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
-                    <div class="navbar-tool d-lg-none  mr-md-3" style="display: block; align-items: center;">
+                    <div class="navbar-tool d-lg-none" style="display: block; align-items: center;">
                         <a class="navbar-tool-icon-box bg-white mr-3" href="https://neobooz.com" 
                             style="height: auto;">
                             <i class="tio-home"></i>
@@ -463,13 +463,15 @@
                        <small class="mr-3">Home</small>
                     </div>
 
-                    <div class="dropdown" style="display: block; align-items: center;">
-                        <a class="navbar-tool mr-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" style="height: auto;">
-                                    <i class="tio-grid"></i>
-                            </div>
-                        </a>
-                        <small class="mr-3">Category</small>
+                    <div class="dropdown">
+                        <div class="navbar-tool d-lg-none" style="display: block; align-items: center;">
+                            <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" style="height: auto;">
+                                        <i class="tio-grid"></i>
+                                </div>
+                            </a>
+                            <small>Category</small>
+                        </div>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
                                     @foreach($categories as $category)
                                     <li class="dropdown px-3 pb-2">
@@ -516,48 +518,48 @@
                     </div>
 
         
-                    <div class="navbar-tool d-lg-none  mr-md-3" style="display: block; align-items: center;">
+                    <div class="navbar-tool d-lg-none" style="display: block; align-items: center;">
                         @if(auth('customer')->check())
                             @php($cart=\App\Utils\CartManager::get_cart())
                             @if($cart->count() > 0)
-                                <a class="navbar-tool-icon-box bg-white mr-3" href="{{route('shop-cart')}}"
+                                <a class="navbar-tool-icon-box bg-white" href="{{route('shop-cart')}}"
                                     style="height: auto;">
                                     <span class="navbar-tool-label">
                                         @php($cart=\App\Utils\CartManager::get_cart())
                                         {{$cart->count()}}
                                     </span>
-                                    <i class="navbar-tool-icon czi-cart mr-3"></i>
+                                    <i class="navbar-tool-icon czi-cart"></i>
                                 </a>
                             @else 
-                                <a class="navbar-tool-icon-box bg-white mr-3" href="#" onclick="emptyCart()"
+                                <a class="navbar-tool-icon-box bg-white" href="#" onclick="emptyCart()"
                                     style="height: auto;">
                                     <span class="navbar-tool-label">
                                         @php($cart=\App\Utils\CartManager::get_cart())
                                         {{$cart->count()}}
                                     </span>
-                                    <i class="navbar-tool-icon czi-cart mr-3"></i>
+                                    <i class="navbar-tool-icon czi-cart"></i>
                                 </a>  
                             @endif
                         @else
-                            <a class="navbar-tool-icon-box bg-white mr-3" href="{{ route('customer.auth.login') }}"
+                            <a class="navbar-tool-icon-box bg-white" href="{{ route('customer.auth.login') }}"
                                 style="height: auto;">
                                 <span class="navbar-tool-label">
                                     0
                                 </span>
-                                <i class="navbar-tool-icon czi-cart mr-3"></i>
+                                <i class="navbar-tool-icon czi-cart"></i>
                             </a>   
                         @endif 
-                        <small class="mr-3">Cart</small>
+                        <small>Cart</small>
                     </div>  
                                 
 
                     @if(auth('customer')->check())
-                        <div class="dropdown ml-3" style="display: block; align-items: center;">
-                            <a class="navbar-tool ml-md-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                        <div class="dropdown" style="display: block; align-items: center;">
+                            <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="height: auto;">
                                     <i class="tio-user"></i>
                             </a>
-                            <small class="ml-3">My Profile</small>
+                            <small>My Profile</small>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="transform: translateY(-140%); position: fixed; right: 5px;">
                                 <a class="dropdown-item"
                                     href="{{route('account-oder')}}"> {{ translate('my_Order')}} </a>
@@ -569,8 +571,8 @@
                             </div>
                         </div>
                     @else
-                        <div class="dropdown ml-3" style="display: block; align-items: center;">
-                            <a class="navbar-tool ml-md-3"
+                        <div class="dropdown" style="display: block; align-items: center;">
+                            <a class="navbar-tool "
                                 type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="height: auto;">
                                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
@@ -579,7 +581,7 @@
                                             fill="#1B7FED"/>
                                 </svg>
                             </a>
-                            <small class="ml-3">My Profile</small>
+                            <small>My Profile</small>
                             <div class="text-align-direction dropdown-menu __auth-dropdown dropdown-menu-right"
                                     aria-labelledby="dropdownMenuButton" style="transform: translateY(-155%); postition: fixed; right: 5px;">
                                 <a class="dropdown-item" href="{{route('customer.auth.login')}}">
