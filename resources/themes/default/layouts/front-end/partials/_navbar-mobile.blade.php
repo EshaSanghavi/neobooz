@@ -1,5 +1,22 @@
 @php($announcement=getWebConfig(name: 'announcement'))
 
+@section('styles')
+<style>
+.mobile{
+    position: sticky;
+    bottom: 0px;
+    z-index: 100;
+  }
+  
+@media only screen and (max-width: 768px) {
+  /* Hide desktop header styles */
+  .mobile{
+    display: none;
+  }
+}
+</style>
+@endsection
+
 @if (isset($announcement) && $announcement['status']==1)
     <div class="text-center position-relative px-4 py-1" id="announcement"
          style="background-color: {{ $announcement['color'] }};color:{{$announcement['text_color']}}">
@@ -151,22 +168,7 @@
     </div>
 </header>
 
-@push('styles')
-<style>
-.mobile{
-    position: sticky;
-    bottom: 0px;
-    z-index: 100;
-  }
-  
-@media only screen and (max-width: 768px) {
-  /* Hide desktop header styles */
-  .mobile{
-    display: none;
-  }
-}
-</style>
-@endpush
+
 
 @push('script')
     <script>
