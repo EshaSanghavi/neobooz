@@ -221,14 +221,13 @@
                                aria-expanded="false">
                             <div class="navbar-tool-icon-box bg-secondary">
                                 <div class="navbar-tool-icon-box bg-secondary">
-                                    <i class="tio-command_key"></i>
+                                    <i class="tio">command_key</i>
                                 </div>
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu"
-                                aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     @foreach($categories as $category)
-                                    <li class="dropdown">
+                                    <li class="dropdown pl-3">
 
                                         <a <?php if ($category->childes->count() > 0) echo "" ?>
                                            href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
@@ -236,8 +235,8 @@
 
                                         </a>
                                         @if ($category->childes->count() > 0)
-                                            <a data-toggle='dropdown' class='__ml-50px'>
-                                                <i class="czi-arrow-right" style="float: right;"></i>
+                                            <a data-toggle='dropdown' class='__ml-50px' style="float: right;">
+                                                <i class="czi-arrow-right"></i>
                                             </a>
                                         @endif
 
@@ -250,8 +249,8 @@
                                                         </a>
 
                                                         @if($subCategory->childes->count()>0)
-                                                            <a class="header-subcategories-links" data-toggle='dropdown'>
-                                                                <i class="czi-arrow-right" style="float: right;"></i>
+                                                            <a class="header-subcategories-links" data-toggle='dropdown' style="float: right;">
+                                                                <i class="czi-arrow-right"></i>
                                                             </a>
                                                             <ul class="dropdown-menu">
                                                                 @foreach($subCategory['childes'] as $subSubCategory)
