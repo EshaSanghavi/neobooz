@@ -458,8 +458,9 @@
                    
                     <div class="navbar-tool d-lg-none ">
                         <a class="navbar-tool-icon-box bg-white d-flex align-items: center" href="https://neobooz.com">
-                            <i class="tio-home"></i>
-                            <small style="display: block;">Home</small>
+                            <i class="tio-home">
+                                <small>Home</small>
+                            </i>
                         </a>
                     </div>
 
