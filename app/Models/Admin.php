@@ -75,4 +75,9 @@ class Admin extends Authenticatable
         return $this->belongsTo(AdminRole::class,'admin_role_id');
     }
 
+    public function chats():HasMany
+    {
+        return $this->hasMany(Chatting::class);
+    }
+
 }

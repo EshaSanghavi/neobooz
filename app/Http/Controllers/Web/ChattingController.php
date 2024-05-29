@@ -170,8 +170,8 @@ class ChattingController extends Controller
                 ]);
             }
         } else if ($type == 'admin') {
-            $lastChatting = Chatting::with('deliveryMan')->where('user_id', auth('customer')->id())
-                ->whereNotNull(['delivery_man_id', 'user_id'])
+            $lastChatting = Chatting::with('admin')->where('user_id', auth('customer')->id())
+                ->whereNotNull(['admin_id', 'user_id'])
                 ->orderBy('created_at', 'DESC')
                 ->first();
             if (isset($lastChatting)) {
