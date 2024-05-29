@@ -470,7 +470,7 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-117%); position: absolute;">
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
                                     @foreach($categories as $category)
                                     <li class="dropdown px-3 pb-2">
 
@@ -530,7 +530,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="transform: translateY(-140%); position: fixed;">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="transform: translateY(-140%); position: fixed; right: 5px;">
                                 <a class="dropdown-item"
                                     href="{{route('account-oder')}}"> {{ translate('my_Order')}} </a>
                                 <a class="dropdown-item"
