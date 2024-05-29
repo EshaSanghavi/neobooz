@@ -456,15 +456,15 @@
                     style="width: -webkit-fill-available; margin: 0 32px; justify-content: space-evenly;">
                     
                    
-                    <div class="navbar-tool d-lg-none " style="display: inline-block; align-items: center;">
+                    <div class="navbar-tool d-lg-none " style="align-items: center;">
                         <a class="navbar-tool-icon-box bg-white" href="https://neobooz.com" style="height: auto;">
                             <i class="tio-home"></i>
                         </a>
-                        <small>Home</small>
+                        <small style="display: block;">Home</small>
                     </div>
 
 
-                    <div class="dropdown" style="display: inline-block; align-items: center;">
+                    <div class="dropdown" style="align-items: center;">
                         <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false"  style="height: auto;">
                             <div class="navbar-tool-icon-box bg-white">
@@ -473,7 +473,7 @@
                                 </div>
                             </div>
                         </a>
-                        <small>Category</small>
+                        <small style="display: block;">Category</small>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
                                     @foreach($categories as $category)
                                     <li class="dropdown px-3 pb-2">
