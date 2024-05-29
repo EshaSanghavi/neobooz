@@ -452,8 +452,8 @@
         <div class="navbar navbar-expand-md navbar-light" style="align-items: center; text-align: center; display: flex;
     justify-content: center;">
 
-            <div class="container px-10px" style="width: fit-content;">
-                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-between gap-3">
+            <div class="container px-10px m-0" style="width: fit-content;">
+                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center justify-content-evenly" style="width: 100%;">
                     
                     <div class="navbar-tool d-lg-none {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"">
                         <a class="navbar-tool-icon-box bg-secondary" href="https://neobooz.com">
@@ -521,17 +521,6 @@
                         
                     </div>
 
-                    <div class="navbar-tool dropdown d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"">
-                        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
-                            <span class="navbar-tool-label">
-                                <span class="countWishlist">
-                                    {{session()->has('wish_list')?count(session('wish_list')):0}}
-                                </span>
-                            </span>
-                            <i class="navbar-tool-icon czi-heart"></i>
-                            
-                        </a>
-                    </div>
                     @if(auth('customer')->check())
                         <div class="dropdown">
                             <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-md-3' : 'ml-md-3'}}"" type="button" data-toggle="dropdown" aria-haspopup="true"
@@ -540,10 +529,6 @@
                                     <div class="navbar-tool-icon-box bg-secondary">
                                         <i class="tio-user"></i>
                                     </div>
-                                </div>
-                                <div class="navbar-tool-text">
-                                    <small>{{ translate('hello')}}, {{auth('customer')->user()->f_name}}</small>
-                                    {{ translate('dashboard')}}
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="transform: translateY(-140%); position: fixed;">
@@ -572,7 +557,7 @@
                                 </div>
                             </a>
                             <div class="text-align-direction dropdown-menu __auth-dropdown dropdown-menu-right"
-                                    aria-labelledby="dropdownMenuButton">
+                                    aria-labelledby="dropdownMenuButton" style="transform: translateY(-155%); postition: fixed; right: 5px;">
                                 <a class="dropdown-item" href="{{route('customer.auth.login')}}">
                                     <i class="fa fa-sign-in mr-2"></i> {{ translate('sign_in')}}
                                 </a>
