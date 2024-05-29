@@ -97,7 +97,7 @@
             <div class="container rtl pt-4 px-0 px-md-3">
                 <a href="{{$main_section_banner->url}}" target="_blank"
                     class="cursor-pointer d-block">
-                    <img class="d-block footer_banner_img __inline-63" alt=""
+                    <img class="d-block footer_banner_img __inline-63" alt="" style="height: auto;"
                          src="{{ getValidImage(path: 'storage/app/public/banner/'.$main_section_banner['photo'], type: 'wide-banner') }}">
                 </a>
             </div>
