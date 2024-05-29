@@ -555,7 +555,7 @@
                         <div class="dropdown">
                             <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="display: grid; align-items: center;">
-                                <i class="tio-user"></i>
+                                <i class="tio-user-big"></i>
                                 <small style="line-height: 1;">My Profile</small>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="transform: translateY(-140%); position: fixed; right: 5px;">
