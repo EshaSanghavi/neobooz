@@ -205,8 +205,10 @@
                                                 @if($last_chat->delivery_man_id)
                                                     <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/delivery-man/'.$last_chat->deliveryMan->image, type: 'avatar') }}">
                                                 @else
-                                                    @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
+                                                    if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
+                                                    @elseif(isset($last_chat->admin_id))
+                                                        <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar'">
                                                     @else
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/shop/'.($last_chat->shop->image), type: 'shop') }}">
                                                     @endif
@@ -214,6 +216,8 @@
 
                                                 @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                     <h5 class="m-0">{{ $web_config['name']->value }}</h5>
+                                                @elseif(isset($last_chat->admin_id))
+                                                    <h5 class="m-0">{{ $last_chat->admin->name  }}</h5>
                                                 @else
                                                     <h5 class="m-0">{{ $last_chat->deliveryMan?$last_chat->deliveryMan->f_name.' '.$last_chat->deliveryMan->l_name : $last_chat->shop->name  }}</h5>
                                                 @endif
@@ -229,10 +233,12 @@
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/delivery-man/'.$last_chat->deliveryMan->image, type: 'avatar') }}">
                                                                     @elseif(isset($last_chat->shop))
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/shop/'.$last_chat->shop->image, type: 'shop') }}">
-                                                                    @elseif(isset($chat->sent_by_admin))
+                                                                    @elseif(isset($chat->sent_by_admin) && $last_chat->admin_id == 0)
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
+                                                                    @elseif(if(isset($shop->admin_id) && $last_chat->admin_id != 0)
+                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                                     @endif
-                                                                </div>
+                                                                </div>company
                                                                 <div class="received_msg">
                                                                     <div class="received_withdraw_msg">
 
@@ -310,7 +316,10 @@
                                                             </svg>
                                                             <input type="file" id="f_p_v_up1" class="h-100 position-absolute w-100 " hidden multiple accept="image/*">
                                                         </label>
-                                                        @if( Request::is('chat/seller') )
+                                                        @if( Request::is('chat/admin') )
+                                                            <input type="text" id="hidden_value_dm" hidden
+                                                                   value="{{$last_chat->admin_id}}" name="admin_id">
+                                                        @elseif( Request::is('chat/seller') )
                                                             <input type="text" id="hidden_value" hidden
                                                                    value="{{$last_chat->shop_id}}" name="shop_id">
                                                             @if($last_chat->shop)
