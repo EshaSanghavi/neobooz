@@ -457,19 +457,20 @@
                     
                    
                     <div class="navbar-tool d-lg-none">
-                        <a class="navbar-tool-icon-box bg-white" href="https://neobooz.com">
+                        <a class="navbar-tool-icon-box bg-white" href="https://neobooz.com" style="display: grid; align-items: center;">
                             <i class="tio-home"></i>
-                            <small>Home</small>
+                            <small style="line-height: 1;">Home</small>
                         </a>
                     </div>
 
 
                     <div class="dropdown" style="align-items: center;">
                         <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"  style="height: auto;">
+                                aria-expanded="false" style="display: grid; align-items: center;">
                             <div class="navbar-tool-icon-box bg-white">
                                 <div class="navbar-tool-icon-box bg-white">
                                     <i class="tio-grid"></i>
+                                    <small style="line-height: 1;">Category</small>
                                 </div>
                             </div>
                         </a>
