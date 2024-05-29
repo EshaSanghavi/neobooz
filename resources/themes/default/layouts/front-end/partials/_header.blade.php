@@ -467,12 +467,8 @@
                     <div class="dropdown" style="align-items: center;">
                         <a class="navbar-tool" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="display: grid; align-items: center;">
-                            <div class="navbar-tool-icon-box bg-white">
-                                <div class="navbar-tool-icon-box bg-white">
                                     <i class="tio-grid"></i>
                                     <small style="line-height: 1;">Category</small>
-                                </div>
-                            </div>
                         </a>
                         <!-- <small style="display: block;">Category</small> -->
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton" style="transform: translateY(-120%); position: fixed; left:50px;">
@@ -525,12 +521,13 @@
                         @if(auth('customer')->check())
                             @php($cart=\App\Utils\CartManager::get_cart())
                             @if($cart->count() > 0)
-                                <a class="navbar-tool-icon-box bg-white mr-3" href="{{route('shop-cart')}}">
-                                        <span class="navbar-tool-label">
-                                            @php($cart=\App\Utils\CartManager::get_cart())
-                                            {{$cart->count()}}
-                                        </span>
+                                <a class="navbar-tool-icon-box bg-white mr-3" href="{{route('shop-cart')}}" style="display: grid; align-items: center;">
+                                    <span class="navbar-tool-label">
+                                        @php($cart=\App\Utils\CartManager::get_cart())
+                                        {{$cart->count()}}
+                                    </span>
                                     <i class="navbar-tool-icon czi-cart"></i>
+                                    <small style="line-height: 1;">Cart</small>
                                 </a>
                             @else 
                                 <a class="navbar-tool-icon-box bg-white mr-3" href="#" onclick="emptyCart()">
