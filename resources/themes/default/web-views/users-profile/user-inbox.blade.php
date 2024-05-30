@@ -326,11 +326,15 @@
                         $('#msgSendBtn').removeAttr('disabled');
                         $('#myForm').trigger('reset');
                         $('#myForm').find('#msgInputValue').val('');
+                        window.location.href = window.location.href;
                     },
                     error: function (error) {
                         if(!error == null)
                             toastr.warning(error.responseJSON)
-                        $('#myForm').trigger('reset');
+                        else{
+                            $('#myForm').trigger('reset');
+                            window.location.href = window.location.href;
+                        }
                     }
                 });
             });
