@@ -30,18 +30,14 @@
 
                 <div class="row no-gutters">
 
-                    <section class="col-lg-9">
+                    <section class="col-lg-11">
                         <div class="bg-white Chat __shadow h-100 rounded-left-0">
                             <div class="messaging ">
                                     <div class="inbox_msg position-relative">
                                         <div class="mesgs">
                                             <a class="msg-user" href="#">
-
-                                                @if($last_chat->admin_id == 1)
-                                                    <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
-                                                @endif
-
                                                 @if(isset($last_chat->admin_id))
+                                                    <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                     <<h5 class="m-0">{{ $last_chat->admin->name }}</h5>
                                                 @endif
                                             </a>
