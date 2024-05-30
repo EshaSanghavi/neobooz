@@ -237,7 +237,7 @@
                                                                     @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                                     @endif
-                                                                </div>company
+                                                                </div>
                                                                 <div class="received_msg">
                                                                     <div class="received_withdraw_msg">
 
