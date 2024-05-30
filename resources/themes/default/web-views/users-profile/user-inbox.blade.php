@@ -9,7 +9,7 @@
         <div class="row">
             @include('web-views.partials._profile-aside')
             <div class="col"></div>
-            <div class="col-lg-8 mx-4">
+            <div class="col-lg-8 mx-4 ">
                 <div class="bg-white Chat __shadow h-100 rounded-left-0">
                     <div class="messaging ">
                             <div class="inbox_msg position-relative">
@@ -324,9 +324,13 @@
                     },
                     complete: function () {
                         $('#msgSendBtn').removeAttr('disabled');
+                        $('#myForm').trigger('reset');
+                        $('#myForm').find('#msgInputValue').val('');
                     },
                     error: function (error) {
-                        toastr.warning(error.responseJSON)
+                        if(!error == null)
+                            toastr.warning(error.responseJSON)
+                        $('#myForm').trigger('reset');
                     }
                 });
             });
