@@ -60,7 +60,7 @@ class ChattingController extends BaseController
     public function getListView(string|array $type):View
     {
         $shop = $this->shopRepo->getFirstWhere(params: ['seller_id' => auth('seller')->id()]);
-        $adminId = 0;
+        $adminId = auth('admin')->id();
         if ($type == 'delivery-man') {
             $allChattingUsers = $this->chattingRepo->getListWhereNotNull(
                 orderBy: ['created_at' => 'DESC'],
@@ -133,7 +133,7 @@ class ChattingController extends BaseController
      */
     public function getMessageByUser(Request $request): JsonResponse
     {
-        $adminId = 0;
+        $adminId = auth('admin')->id();
         $data = [];
         if ($request->has(key: 'delivery_man_id')) {
             $getUser = $this->deliveryManRepo->getFirstWhere(params: ['id' => $request['delivery_man_id']]);
@@ -225,7 +225,7 @@ class ChattingController extends BaseController
      */
     protected function getChatList(string $tableName, string $orderBy, string|int $id = null) :Collection
     {
-        $adminId = 0;
+        $adminId = auth('admin')->id();
         $columnName = $tableName == 'users' ? 'user_id' : 'delivery_man_id';
         $filters = isset($id) ? ['chattings.admin_id' => $adminId, $columnName => $id] : ['chattings.admin_id' => $adminId];
         return $this->chattingRepo->getListBySelectWhere(
