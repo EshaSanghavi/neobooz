@@ -14,7 +14,7 @@
                     <div class="messaging ">
                             <div class="inbox_msg position-relative">
                                 <div class="mesgs">
-                                    <a class="msg-user" href="#">
+                                    <a class="msg-user" href="#" id="reload">
                                         @if(isset($last_chat->admin_id))
                                             <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                             <h5 class="m-0">{{ $last_chat->admin->name }}</h5>
@@ -330,6 +330,12 @@
                     }
                 });
             });
+        });
+
+        const reloadLink = document.getElementById("reload");
+        reloadLink.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default link behavior (navigation)
+            window.location.href = window.location.href; // Reload current URL
         });
     </script>
 
