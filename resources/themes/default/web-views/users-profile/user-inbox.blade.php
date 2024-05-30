@@ -9,7 +9,7 @@
         <div class="row gap-3">
             @include('web-views.partials._profile-aside')
 
-            <section class="col-lg-10">
+            <div class="col-lg-10">
                 <div class="bg-white Chat __shadow h-100 rounded-left-0">
                     <div class="messaging ">
                             <div class="inbox_msg position-relative">
@@ -131,8 +131,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-            </section>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
