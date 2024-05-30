@@ -9,8 +9,8 @@
         <div class="row">
             @include('web-views.partials._profile-aside')
             <div class="col"></div>
-            <div class="col-lg-8 mx-4 ">
-                <div class="bg-white Chat __shadow h-100 rounded-left-0">
+            <div class="col-lg-8 mx-4">
+                <div class="bg-white Chat __shadow h-100 rounded-left-0 ml-4" style="border-top-right-radius: 10px;border-top-left-radius: 10px;border: 1px solid rgba(27, 127, 237, 0.1);">
                     <div class="messaging ">
                             <div class="inbox_msg position-relative">
                                 <div class="mesgs">
