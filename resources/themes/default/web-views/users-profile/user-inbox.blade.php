@@ -1,14 +1,6 @@
 @extends('layouts.front-end.app')
 
-@section('title')
-    @if (Request::is('chat/admin'))
-        translate('chat_with_admin')
-    @elseif (Request::is('chat/seller')) 
-        translate('chat_with_vendor') 
-    @else
-        translate('chat_with_delivery_man')
-    @endif
-@endsection
+@section('title',translate('chatting_Page'))
 
 @section('content')
 <div class="__chat-seller">
