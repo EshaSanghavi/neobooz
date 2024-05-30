@@ -80,14 +80,70 @@ class ChattingController extends Controller
     }
     public function messages(Request $request)
     {
-        
+        $adminId = 1;
 
+        Chatting::where(['user_id'=>auth('customer')->id(), 'admin_id'=> $adminId])->update([
+            'seen_by_customer' => 1
+        ]);
+
+        $shops = Chatting::join('admins', 'admins.id', '=', $adminId)
+            ->select('chattings.*', 'admins.name', 'admins.image')
+            ->where('user_id', auth('customer')->id())
+            ->where('chattings.admin_id', $adminId)
+            ->orderBy('created_at', 'ASC')
+            ->get();
+            
+        return response()->json($shops);
 
     }
 
     public function messages_store(Request $request)
     {
-        
+        $adminId = 1;
+
+        $message_form = User::find(auth('customer')->id());
+        if ($request->image == null && $request->message == '') {
+            return response()->json(translate('type_something').'!', 403);
+        }
+
+        $image = [] ;
+        if ($request->file('image')) {
+            $validator = Validator::make($request->all(), [
+                'image.*' => 'image|mimes:jpeg,png,jpg,gif,webp,bmp,tif,tiff|max:6000'
+            ]);
+            if ($validator->fails()) {
+                return response()->json(translate('The_file_must_be_an_image').'!', 403);
+            }
+            foreach ($request->image as $key=>$value) {
+                $image_name = ImageManager::upload('chatting/', 'webp', $value);
+                $image[] = $image_name;
+            }
+        }
+
+        $message = $request['message'];
+        $chatting = [
+            'user_id'          => auth('customer')->id(),
+            'admin_id'         => $adminId,
+            'message'          => $request['message'],
+            'attachment'       => json_encode($image),
+            'sent_by_customer' => 1,
+            'seen_by_customer' => 1,
+            'seen_by_admin'    => 0,
+            'created_at'       => now(),
+        ];
+
+        $chatting += ['admin_id' => $adminId];
+        Chatting::create($chatting);
+
+        $admin = Admin::find($adminId);
+        ChattingEvent::dispatch('message_from_customer', 'admin', $admin, $message_form);
+
+        $imageArray = [];
+        foreach ($image as $singleImage) {
+            $imageArray[] = getValidImage(path: 'storage/app/public/chatting/'.$singleImage, type: 'product');
+        }
+
+        return response()->json(['message'=>$message,'image'=>$imageArray]);
     }
 
 }

@@ -8,8 +8,8 @@
     <div class="container py-4 rtl text-align-direction">
         <div class="row">
             @include('web-views.partials._profile-aside')
-            <div class="col-2"></div>
-            <div class="col-lg-7">
+            <div class="col"></div>
+            <div class="col-lg-8">
                 <div class="bg-white Chat __shadow h-100 rounded-left-0">
                     <div class="messaging ">
                             <div class="inbox_msg position-relative">
@@ -202,15 +202,7 @@
 
                 let url;
 
-                if ("{{ Request::is('chat/seller') }}" == true){
-                    url = "{{ route('messages') }}" +"?shop_id=" + shop_id;
-                }
-                else if("{{ Request::is('chat/delivery-man') }}" == true) {
-                    url = "{{ route('messages') }}" +"?delivery_man_id=" + shop_id;
-                }
-                else if("{{ Request::is('chat/admin') }}" == true) {
-                    url = "{{ route('messages') }}" +"?admin_id=" + shop_id;
-                }
+                url = "{{ route('messages') }}";
 
 
                 $.ajax({
