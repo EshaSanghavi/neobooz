@@ -12,7 +12,7 @@
         </div>
 
         <div class="row">
-            <div class="col-xl-4 col-lg-4 chatSel">
+            <div class="col-xl-3 col-lg-4 chatSel">
                 <div class="card card-body px-0 h-100">
                     <div class="inbox_people">
                         <form class="search-form mb-4 px-20" id="chat-search-form">
@@ -22,17 +22,11 @@
                                        placeholder="{{ request('type') == 'customer' ? translate('search_customers') : translate('search_delivery_men')}}...">
                             </div>
                         </form>
-                    <ul class="nav nav-tabs border-0 mb-3" id="pills-tab" role="tablist" style="width: -webkit-fill-available; margin: 0; justify-content: space-evenly;">
+                        <ul class="nav nav-tabs gap-3 border-0 mb-3 mx-4" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link bg-transparent p-2 {{ request('type') == 'customer' ? 'active' : '' }}"
                                    href="{{ route('admin.messages.index', ['type' => 'customer']) }}">
                                     {{translate("customer")}}
-                                </a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link bg-transparent p-2 {{ request('type') == 'seller' ? 'active' : '' }}"
-                                   href="{{ route('admin.messages.index', ['type' => 'seller']) }}">
-                                    {{translate("Seller")}}
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -121,7 +115,6 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                                
                                             @endif
                                         @endforeach
                                     @endif
@@ -133,7 +126,7 @@
                 </div>
             </div>
 
-            <section class="col-xl-8 col-lg-8 mt-4 mt-lg-0">
+            <section class="col-xl-9 col-lg-8 mt-4 mt-lg-0">
                 <div class="card card-body card-chat justify-content-center Chat" id="">
                     @if(isset($lastChatUser))
                         <div class="inbox_msg_header d-flex flex-wrap gap-3 justify-content-between align-items-center border px-3 py-2 rounded mb-4">
@@ -207,7 +200,7 @@
             </section>
         </div>
         <span id="chatting-post-url"
-              data-url="{{ Request::is('admin/messages/index/customer') ? route('admin.messages.message').'?user_id=' :  Request::is('admin/messages/index/seller') ? route('admin.messages.message').'?seller_id=' :  route('admin.messages.message').'?delivery_man_id=' }}"></span>
+              data-url="{{ Request::is('admin/messages/index/customer') ? route('admin.messages.message').'?user_id=' : route('admin.messages.message').'?delivery_man_id=' }}"></span>
         <span id="image-url" data-url="{{ asset('storage/app/public/chatting') }}"></span>
     </div>
 @endsection
