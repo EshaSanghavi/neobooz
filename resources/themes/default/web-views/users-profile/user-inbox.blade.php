@@ -38,7 +38,7 @@
                                             <a class="msg-user" href="#">
 
                                                 @if($last_chat->admin_id == 1)
-                                                        <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
+                                                    <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                 @endif
 
                                                 @if(isset($last_chat->admin_id))
