@@ -22,7 +22,7 @@
                                        placeholder="{{ request('type') == 'customer' ? translate('search_customers') : translate('search_delivery_men')}}...">
                             </div>
                         </form>
-                        <ul class="nav nav-tabs gap-3 border-0 mb-3 mx-4" id="pills-tab" role="tablist">
+                        <ul class="nav nav-tabs border-0 mb-3 " id="pills-tab" role="tablist" style="justify-content: space-evenly;">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link bg-transparent p-2 {{ request('type') == 'customer' ? 'active' : '' }}"
                                    href="{{ route('admin.messages.index', ['type' => 'customer']) }}">
