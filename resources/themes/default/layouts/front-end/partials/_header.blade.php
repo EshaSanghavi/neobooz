@@ -469,7 +469,7 @@
                         <br>
 
                         <div class="justify-content-end gap-2 d-flex flex-wrap">
-                            <a href="{{route('chat', ['type' => 'admin'])}}" class="btn btn-soft-primary bg--secondary border">
+                            <a href="{{route('chat')}}" class="btn btn-soft-primary bg--secondary border">
                                 {{translate('go_to_chatbox')}}
                             </a>
                             <button class="btn btn--primary text-white">
