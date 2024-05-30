@@ -6,10 +6,10 @@
 <div class="__chat-seller">
 
     <div class="container py-4 rtl text-align-direction">
-        <div class="row gap-3">
+        <div class="row">
             @include('web-views.partials._profile-aside')
-
-            <div class="col-lg-10">
+            <div class="col-2"></div>
+            <div class="col-lg-7">
                 <div class="bg-white Chat __shadow h-100 rounded-left-0">
                     <div class="messaging ">
                             <div class="inbox_msg position-relative">
