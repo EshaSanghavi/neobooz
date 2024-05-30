@@ -8,8 +8,8 @@
     <div class="container py-4 rtl text-align-direction">
         <div class="row">
             @include('web-views.partials._profile-aside')
-            <div class="col"></div>
-            <div class="col-lg-8">
+            <div class="col-1"></div>
+            <div class="col-lg-7">
                 <div class="bg-white Chat __shadow h-100" style="border-top-right-radius: 10px;border-top-left-radius: 10px;border: 1px solid rgba(27, 127, 237, 0.1);">
                     <div class="messaging">
                             <div class="inbox_msg position-relative">
