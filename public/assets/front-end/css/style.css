@@ -1851,6 +1851,7 @@ a {
     .__account-address .card-header {
         font-size: 14px;
     }
+    
 }
 .__chat-seller .inbox_people {
     background: #ffffff none repeat scroll 0 0;
@@ -1970,11 +1971,11 @@ a {
     color: #747474;
     display: block;
     font-size: 12px;
-    margin: 8px 0 0;
+    margin: 4px 0 0;
 }
 
 .__chat-seller .received_withdraw_msg {
-    width: 57%;
+    width: 47%;
 }
 
 @media (max-width: 575px) {
@@ -2000,7 +2001,7 @@ a {
 
 .__chat-seller .send_msg {
     float: right;
-    width: 46%;
+    width: 43%;
 }
 
 @media (max-width: 575px) {
