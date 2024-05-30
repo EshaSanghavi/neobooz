@@ -463,7 +463,7 @@
                 <div class="modal-body">
                     <form action="{{route('messages_store')}}" method="post" id="shop-view-chat-form">
                         @csrf
-                        <input value="1" name="admin_id" hidden>
+                        <input value="0" name="admin_id" hidden>
 
                         <textarea name="message" class="form-control min-height-100px max-height-200px" required placeholder="{{ translate('Write_here') }}..."></textarea>
                         <br>
