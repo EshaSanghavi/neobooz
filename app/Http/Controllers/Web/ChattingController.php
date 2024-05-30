@@ -106,6 +106,8 @@ class ChattingController extends Controller
             return response()->json(translate('type_something').'!', 403);
         }
 
+        $initialMsg = Chatting::where(['user_id'=>auth('customer')->id(), 'message'=> null])->delete();
+
         $image = [] ;
         if ($request->file('image')) {
             $validator = Validator::make($request->all(), [
