@@ -13,7 +13,7 @@
 
         <div class="row">
 
-                <div class="col-xl-3 col-lg-4 chatSel">
+                <div class="col-xl-4 col-lg-4 chatSel">
                     <div class="card card-body px-0 h-100">
                         <div class="inbox_people">
                             <form class="search-form mb-4 px-20" id="chat-search-form">
@@ -23,7 +23,7 @@
                                            placeholder="{{ request('type') == 'customer' ? translate('search_customers') : translate('search_delivery_men')}}...">
                                 </div>
                             </form>
-                            <ul class="nav nav-tabs gap-3 mb-3 mx-4" id="pills-tab" role="tablist">
+                            <ul class="nav nav-tabs border-0 mb-3 " id="pills-tab" role="tablist" style="justify-content: space-evenly;">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link bg-transparent p-2 {{ request('type') == 'customer' ? 'active' : '' }}"
                                        href="{{ route('vendor.messages.index', ['type' => 'customer']) }}">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
 
-                <section class="col-xl-9 col-lg-8 mt-4 mt-lg-0">
+                <section class="col-xl-8 col-lg-8 mt-4 mt-lg-0">
                     <div class="card card-body card-chat justify-content-center Chat">
 
                         @if(isset($lastChatUser))
