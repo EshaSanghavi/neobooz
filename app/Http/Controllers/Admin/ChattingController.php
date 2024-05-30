@@ -96,22 +96,22 @@ class ChattingController extends BaseController
             $allChattingUsers = $this->chattingRepo->getListWhereNotNull(
                 orderBy: ['created_at' => 'DESC'],
                 filters: ['admin_id' =>$adminId],
-                whereNotNull: ['user_id','admin_id'],
+                whereNotNull: ['seller_id','admin_id'],
                 relations: ['customer'],
                 dataLimit: 'all'
-            )->unique('user_id');
+            )->unique('seller_id');
 
             if (count($allChattingUsers) > 0) {
                 $lastChatUser = $allChattingUsers[0]->customer;
                 $this->chattingRepo->updateAllWhere(
-                    params: ['admin_id' => $adminId, 'user_id' => $lastChatUser['id']],
+                    params: ['admin_id' => $adminId, 'seller_id' => $lastChatUser['id']],
                     data: ['seen_by_admin' => 1]
                 );
 
                 $chattingMessages = $this->chattingRepo->getListWhereNotNull(
                     orderBy: ['created_at' => 'DESC'],
-                    filters: ['admin_id' =>$adminId, 'user_id'=>$lastChatUser->id],
-                    whereNotNull: ['user_id','admin_id'],
+                    filters: ['admin_id' =>$adminId, 'seller_id'=>$lastChatUser->id],
+                    whereNotNull: ['seller_id','admin_id'],
                     relations: ['customer'],
                     dataLimit: 'all'
                 );

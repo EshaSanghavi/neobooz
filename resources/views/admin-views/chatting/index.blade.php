@@ -121,6 +121,7 @@
                                                         @endif
                                                     </div>
                                                 </div>
+                                                
                                             @endif
                                         @endforeach
                                     @endif
@@ -206,7 +207,7 @@
             </section>
         </div>
         <span id="chatting-post-url"
-              data-url="{{ Request::is('admin/messages/index/customer') ? route('admin.messages.message').'?user_id=' : route('admin.messages.message').'?delivery_man_id=' }}"></span>
+              data-url="{{ Request::is('admin/messages/index/customer') ? route('admin.messages.message').'?user_id=' :  Request::is('admin/messages/index/seller') ? route('admin.messages.message').'?seller_id=' :  route('admin.messages.message').'?delivery_man_id=' }}"></span>
         <span id="image-url" data-url="{{ asset('storage/app/public/chatting') }}"></span>
     </div>
 @endsection
