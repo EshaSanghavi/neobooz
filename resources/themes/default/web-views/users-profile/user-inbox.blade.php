@@ -444,6 +444,7 @@
             $(".seller").click(function (e) {
                 e.stopPropagation();
                 shop_id = e.target.id;
+                alert(shop.id);
 
                 $('.chat_list').removeClass('active');
                 $(`#user_${shop_id}`).addClass("active");
