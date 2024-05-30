@@ -70,13 +70,13 @@ class ChattingService
      * @param string $type
      * @return array
      */
-    public function addChattingData(object $request,string $type):array
+    public function addChattingData(object $request,string $type, int $id):array
     {
         $attachment = $this->getAttachment(request: $request);
         return [
             'delivery_man_id' => $type == 'delivery-man' ? $request['delivery_man_id'] : null ,
             'user_id' => $type == 'customer' ? $request['user_id'] : null ,
-            'admin_id' => 0,
+            'admin_id' => $id,
             'message' => $request['message'],
             'attachment' => json_encode($attachment),
             'sent_by_admin' => 1,
