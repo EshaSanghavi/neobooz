@@ -330,10 +330,13 @@
                             <a class="nav-link" href="{{route('blogs')}}">{{ translate('Blogs')}}</a>
                         </li>
 
-                        <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
+                        <!-- <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
                             <a class="nav-link" href="#" data-target="#exampleModal" data-toggle="modal">{{ translate('Chat_with_doctor')}}</a>
+                        </li> -->
+                        
+                        <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
+                            <a class="nav-link" href="{{route('chat')}}">{{ translate('Chat_with_doctor')}}</a>
                         </li>
-
 
                         @php($discount_product = App\Models\Product::with(['reviews'])->active()->where('discount', '!=', 0)->count())
                         @if ($discount_product>0)
