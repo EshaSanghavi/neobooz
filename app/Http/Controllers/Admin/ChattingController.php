@@ -191,7 +191,7 @@ class ChattingController extends BaseController
 
             $chattingMessages = $this->chattingRepo->getListWhereNotNull(
                 orderBy: ['created_at' => 'DESC'],
-                filters: ['admin_id' => 0, 'delivery_man_id' => $request['delivery_man_id']],
+                filters: ['admin_id' => auth('admin')->id(), 'delivery_man_id' => $request['delivery_man_id']],
                 whereNotNull: ['delivery_man_id', 'admin_id'],
                 dataLimit: 'all'
             );
@@ -208,7 +208,7 @@ class ChattingController extends BaseController
 
             $chattingMessages = $this->chattingRepo->getListWhereNotNull(
                 orderBy: ['created_at' => 'DESC'],
-                filters: ['admin_id' => 0, 'user_id' => $request['user_id']],
+                filters: ['admin_id' => auth('admin')->id(), 'user_id' => $request['user_id']],
                 whereNotNull: ['user_id', 'admin_id'],
                 dataLimit: 'all'
             );
