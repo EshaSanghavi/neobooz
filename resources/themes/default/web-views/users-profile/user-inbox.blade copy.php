@@ -64,7 +64,7 @@
                                 @endif
                             </div>
                             <div class="inbox_chat">
-                                <!-- @if (isset($Admins))
+                                @if (isset($Admins))
                                     @foreach($Admins as $key=>$admin)
                                         @php($type = 'admin')
                                         @php($admin_id = $admin->admin_id)
@@ -104,9 +104,8 @@
                                             </div>
                                         </div>
                                     @endForeach
-                                @endif -->
-
-
+                                @endif
+                                
                                 @if(isset($inhouseShop))
                                     <div class="chat_list {{ request()->has('id') && request('id') == 0 ? 'active':'' }} get-view-by-onclick"
                                          data-link="{{route('chat', ['type' => 'seller'])}}/?id={{ '0' }}" id="user_{{'0'}}">
@@ -204,11 +203,11 @@
 
                                                 @if($last_chat->delivery_man_id)
                                                     <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/delivery-man/'.$last_chat->deliveryMan->image, type: 'avatar') }}">
-                                            <!-- @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
-                                                    <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar'"> -->
                                                 @else
                                                     @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
+                                                    @elseif($last_chat->admin_id != 0)
+                                                        <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                     @else
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/shop/'.($last_chat->shop->image), type: 'shop') }}">
                                                     @endif
@@ -216,8 +215,8 @@
 
                                                 @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
                                                     <h5 class="m-0">{{ $web_config['name']->value }}</h5>
-                                                <!-- @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
-                                                    <h5 class="m-0">{{ $last_chat->admin->name }}</h5> -->
+                                                @elseif($last_chat->admin_id != 0)
+                                                    <h5 class="m-0">{{ $last_chat->admin->name }}</h5>
                                                 @else
                                                     <h5 class="m-0">{{ $last_chat->deliveryMan ? $last_chat->deliveryMan->f_name.' '.$last_chat->deliveryMan->l_name : $last_chat->shop->name  }}</h5>
                                                 @endif
@@ -235,10 +234,10 @@
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/shop/'.$last_chat->shop->image, type: 'shop') }}">
                                                                     @elseif(isset($chat->sent_by_admin) && $last_chat->admin_id == 0)
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
-                                                                    <!-- @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
-                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}"> -->
+                                                                    @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
+                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                                     @endif
-                                                                </div>company
+                                                                </div>
                                                                 <div class="received_msg">
                                                                     <div class="received_withdraw_msg">
 
@@ -316,10 +315,10 @@
                                                             </svg>
                                                             <input type="file" id="f_p_v_up1" class="h-100 position-absolute w-100 " hidden multiple accept="image/*">
                                                         </label>
-                                                        <!-- @if( Request::is('chat/admin') )
+                                                        @if( Request::is('chat/admin') )
                                                             <input type="text" id="hidden_value_dm" hidden
-                                                                   value="{{$last_chat->admin_id}}" name="admin_id"> -->
-                                                        @if( Request::is('chat/seller') )
+                                                                   value="{{$last_chat->admin_id}}" name="admin_id">
+                                                        @elseif( Request::is('chat/seller') )
                                                             <input type="text" id="hidden_value" hidden
                                                                    value="{{$last_chat->shop_id}}" name="shop_id">
                                                             @if($last_chat->shop)
@@ -445,6 +444,7 @@
             $(".seller").click(function (e) {
                 e.stopPropagation();
                 shop_id = e.target.id;
+                alert(shop_id);
 
                 $('.chat_list').removeClass('active');
                 $(`#user_${shop_id}`).addClass("active");
@@ -456,6 +456,9 @@
                 }
                 else if("{{ Request::is('chat/delivery-man') }}" == true) {
                     url = "{{ route('messages') }}" +"?delivery_man_id=" + shop_id;
+                }
+                else if("{{ Request::is('chat/admin') }}" == true) {
+                    url = "{{ route('messages') }}" +"?admin_id=" + shop_id;
                 }
 
 

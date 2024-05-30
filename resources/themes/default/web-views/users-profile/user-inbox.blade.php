@@ -27,214 +27,32 @@
                             </svg>
                     </button>
                 </div>
+
                 <div class="row no-gutters">
-                    <div class="col-lg-4 chatSel">
-                        <div class="chat--sidebar-card h-100">
-                            <div class="chat--sidebar-top">
 
-                                <ul class="nav nav-tabs nav--tabs justify-content-center">
-                                    
-                                    <li class="nav-item">
-                                        <a class="nav-link {{Request::is('chat/admin')?'active': '' }}" href="{{route('chat', ['type' => 'admin'])}}">
-                                            {{translate('admin')}}
-                                        </a>
-                                    </li>
-                                    @php($business_mode = getWebConfig(name: 'business_mode'))
-                                    @if($business_mode == 'multi')
-                                        <li class="nav-item">
-                                            <a class="nav-link {{Request::is('chat/seller')?'active': '' }}" href="{{route('chat', ['type' => 'seller'])}}">
-                                                {{translate('vendor')}}
-                                            </a>
-                                        </li>
-                                    @endif
-                                    <li class="nav-item">
-                                        <a class="nav-link {{Request::is('chat/delivery-man')?'active': '' }}" href="{{route('chat', ['type' => 'delivery-man'])}}">
-                                            {{translate('deliveryman')}}
-                                        </a>
-                                    </li>
-                                </ul>
-                                @if(isset($unique_shops) && count($unique_shops) !== 0 || Request::is('chat/admin'))
-                                    <div class="heading_search px-0">
-                                        <form class="rounded bg-white form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
-                                            <input class="form-control form-control-sm border-0 me-3 w-75"
-                                                id="myInput" type="text" placeholder="{{translate('search')}}" aria-label="Search">
-                                            <i class="fa fa-search __color-92C6FF" aria-hidden="true"></i>
-                                        </form>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="inbox_chat">
-                                @if (isset($Admins))
-                                    @foreach($Admins as $key=>$admin)
-                                        @php($type = 'admin')
-                                        @php($admin_id = $admin->admin_id)
-                                        <div class="chat_list {{($last_chat->admin_id==$admin_id) ? 'active' : ''}} get-view-by-onclick"
-                                            data-link="{{route('chat', ['type' => $type])}}/?id={{$admin_id}}" id="user_{{$admin_id}}">
-                                            <div class="chat_people">
-                                                <div class="chat_img">
-                                                    <img alt="" class="__inline-14 __rounded-10 img-profile"
-                                                             src="{{ getValidImage(path: 'storage/app/public/admin/'.$admin->admin->image, type: 'avatar') }}">
-                                                </div>
-                                                <div class="chat_ib">
-                                                    <div>
-                                                        <div class="d-flex flex-wrap align-items-center justify-content-between mb-1">
-                                                            <h5 class="{{$admin->seen_by_customer == 0 ? 'active-text' : ''}}">{{$admin->name}}</h5>
-                                                            <span class="date">
-                                                                {{$admin->created_at->diffForHumans()}}
-                                                            </span>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                                            @if($admin->message)
-                                                                <span class="last-msg">{{ $admin->message }}</span>
-                                                            @elseif(json_decode($admin['attachment'], true) !=null)
-                                                                <span class="last-msg">
-                                                                    <i class="fa fa-paperclip pe-1"></i>
-                                                                    {{ translate('sent_attachments') }}
-                                                                </span>
-                                                            @endif
-
-                                                            @if($admin->unseen_message_count >0)
-                                                            <span class="new-msg badge btn--primary rounded-full">
-                                                                {{ $admin->unseen_message_count }}
-                                                            </span>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endForeach
-                                @endif
-                                
-                                @if(isset($inhouseShop))
-                                    <div class="chat_list {{ request()->has('id') && request('id') == 0 ? 'active':'' }} get-view-by-onclick"
-                                         data-link="{{route('chat', ['type' => 'seller'])}}/?id={{ '0' }}" id="user_{{'0'}}">
-                                        <div class="chat_people">
-                                            <div class="chat_img">
-                                                <img alt="" class="__inline-14 __rounded-10 img-profile"
-                                                     src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
-                                            </div>
-                                            <div class="chat_ib">
-                                                <div>
-                                                    <div class="d-flex flex-wrap align-items-center justify-content-between mb-1">
-                                                        <h5 class="{{ $inhouseShopUnseenMessage == 0 ? 'active-text' : ''}}">{{ $web_config['name']->value }}</h5>
-                                                        <span class="date">
-                                                                {{ $inhouseShop->created_at->diffForHumans() }}
-                                                            </span>
-                                                    </div>
-                                                    <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                                        @if($inhouseShop->message)
-                                                            <span class="last-msg">{{ $inhouseShop->message }}</span>
-                                                        @elseif(json_decode($inhouseShop['attachment'], true) !=null)
-                                                            <span class="last-msg">
-                                                                <i class="fa fa-paperclip pe-1"></i>
-                                                                {{ translate('sent_attachments') }}
-                                                            </span>
-                                                        @endif
-                                                        @if( $inhouseShopUnseenMessage >0)
-                                                            <span class="new-msg badge btn--primary rounded-full">
-                                                                {{ $inhouseShopUnseenMessage }}
-                                                            </span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-
-                                @if (isset($unique_shops))
-                                    @foreach($unique_shops as $key=>$shop)
-                                        @php($type = $shop->delivery_man_id ? 'delivery-man' : 'seller')
-                                        @php($unique_id = $shop->delivery_man_id ?? $shop->shop_id)
-                                        <div class="chat_list {{($last_chat->delivery_man_id==$unique_id || $last_chat->shop_id==$unique_id) ? 'active' : ''}} get-view-by-onclick"
-                                            data-link="{{route('chat', ['type' => $type])}}/?id={{$unique_id}}" id="user_{{$unique_id}}">
-                                            <div class="chat_people">
-                                                <div class="chat_img">
-                                                    @if($shop->delivery_man_id)
-                                                        <img alt="" class="__inline-14 __rounded-10 img-profile"
-                                                             src="{{ getValidImage(path: 'storage/app/public/delivery-man/'.$shop->deliveryMan->image, type: 'avatar') }}">
-                                                    @else
-                                                        <img alt="" class="__inline-14 __rounded-10 img-profile"
-                                                             src="{{ getValidImage(path: 'storage/app/public/shop/'.$shop->image, type: 'shop') }}">
-                                                    @endif
-                                                </div>
-                                                <div class="chat_ib">
-                                                    <div>
-                                                        <div class="d-flex flex-wrap align-items-center justify-content-between mb-1">
-                                                            <h5 class="{{$shop->seen_by_customer == 0 ? 'active-text' : ''}}">{{$shop->f_name? $shop->f_name. ' ' . $shop->l_name: $shop->name}}</h5>
-                                                            <span class="date">
-                                                                {{$shop->created_at->diffForHumans()}}
-                                                            </span>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                                            @if($shop->message)
-                                                                <span class="last-msg">{{ $shop->message }}</span>
-                                                            @elseif(json_decode($shop['attachment'], true) !=null)
-                                                                <span class="last-msg">
-                                                                    <i class="fa fa-paperclip pe-1"></i>
-                                                                    {{ translate('sent_attachments') }}
-                                                                </span>
-                                                            @endif
-
-                                                            @if($shop->unseen_message_count >0)
-                                                            <span class="new-msg badge btn--primary rounded-full">
-                                                                {{ $shop->unseen_message_count }}
-                                                            </span>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endForeach
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <section class="col-lg-8">
-                        @if(isset($chattings) && count($chattings) > 0)
-                            <div class="bg-white Chat __shadow h-100 rounded-left-0">
-                                <div class="messaging ">
+                    <section class="col-lg-9">
+                        <div class="bg-white Chat __shadow h-100 rounded-left-0">
+                            <div class="messaging ">
                                     <div class="inbox_msg position-relative">
                                         <div class="mesgs">
                                             <a class="msg-user" href="#">
 
-                                                @if($last_chat->delivery_man_id)
-                                                    <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/delivery-man/'.$last_chat->deliveryMan->image, type: 'avatar') }}">
-                                                @else
-                                                    @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
-                                                        <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
-                                                    @elseif($last_chat->admin_id != 0)
+                                                @if($last_chat->admin_id == 1)
                                                         <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
-                                                    @else
-                                                        <img alt="" class="img" src="{{ getValidImage(path: 'storage/app/public/shop/'.($last_chat->shop->image), type: 'shop') }}">
-                                                    @endif
                                                 @endif
 
-                                                @if(isset($last_chat->admin_id) && $last_chat->admin_id == 0)
-                                                    <h5 class="m-0">{{ $web_config['name']->value }}</h5>
-                                                @elseif($last_chat->admin_id != 0)
-                                                    <h5 class="m-0">{{ $last_chat->admin->name }}</h5>
-                                                @else
-                                                    <h5 class="m-0">{{ $last_chat->deliveryMan ? $last_chat->deliveryMan->f_name.' '.$last_chat->deliveryMan->l_name : $last_chat->shop->name  }}</h5>
+                                                @if(isset($last_chat->admin_id))
+                                                    <<h5 class="m-0">{{ $last_chat->admin->name }}</h5>
                                                 @endif
                                             </a>
 
                                             <div class=" msg_history d-flex flex-column-reverse" id="show_msg">
                                                 @if (isset($chattings))
                                                     @foreach($chattings as $key => $chat)
-                                                        @if ($chat->sent_by_seller || $chat->sent_by_admin || $chat->sent_by_delivery_man)
+                                                        @if ( $chat->sent_by_admin)
                                                             <div class="incoming_msg d-flex">
                                                                 <div class="incoming_msg_img">
-                                                                    @if(isset($shop->delivery_man_id))
-                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/delivery-man/'.$last_chat->deliveryMan->image, type: 'avatar') }}">
-                                                                    @elseif(isset($last_chat->shop))
-                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/shop/'.$last_chat->shop->image, type: 'shop') }}">
-                                                                    @elseif(isset($chat->sent_by_admin) && $last_chat->admin_id == 0)
-                                                                        <img alt="" src="{{ getValidImage(path: 'storage/app/public/company/'.($web_config['fav_icon']->value), type: 'shop') }}">
-                                                                    @elseif(isset($last_chat->admin_id) && $last_chat->admin_id != 0)
+                                                                    @if(isset($chat->sent_by_admin))
                                                                         <img alt="" src="{{ getValidImage(path: 'storage/app/public/admin/'.$last_chat->admin->image, type: 'avatar') }}">
                                                                     @endif
                                                                 </div>
@@ -315,19 +133,9 @@
                                                             </svg>
                                                             <input type="file" id="f_p_v_up1" class="h-100 position-absolute w-100 " hidden multiple accept="image/*">
                                                         </label>
-                                                        @if( Request::is('chat/admin') )
+                                                        @if( Request::is('chat/') )
                                                             <input type="text" id="hidden_value_dm" hidden
-                                                                   value="{{$last_chat->admin_id}}" name="admin_id">
-                                                        @elseif( Request::is('chat/seller') )
-                                                            <input type="text" id="hidden_value" hidden
-                                                                   value="{{$last_chat->shop_id}}" name="shop_id">
-                                                            @if($last_chat->shop)
-                                                                <input type="text" id="seller_value" hidden
-                                                                       value="{{$last_chat->shop->seller_id}}" name="seller_id">
-                                                            @endif
-                                                        @elseif( Request::is('chat/delivery-man') )
-                                                            <input type="text" id="hidden_value_dm" hidden
-                                                                   value="{{$last_chat->delivery_man_id}}" name="delivery_man_id">
+                                                                   value="{{$last_chat->admin_id}}" name="admin_id"> 
                                                         @endif
                                                         <div class="w-0 flex-grow-1">
                                                             <textarea class="form-control ticket-view-control px-0 py-3" name="message" rows="8" id="msgInputValue" placeholder="{{translate('write_your_message_here')}}..." ></textarea>
@@ -346,39 +154,9 @@
                                             </div>
 
                                         </div>
-
-                                        @if($last_chat->shop && $last_chat->shop->temporary_close || (isset($last_chat->admin_id) && $last_chat->admin_id == 0 && getWebConfig(name: 'temporary_close')['status']))
-                                            <div class="temporarily-closed-sticky-alert">
-                                                <div class="alert-box">
-                                                    <div><img src="{{ theme_asset('public/assets/front-end/img/icons/warning.svg') }}" alt=""></div>
-                                                    <div>
-                                                        {{ translate('sorry') }} !
-                                                        {{ translate('currently_we_are_not_available.') }}
-                                                        {{ translate('but_you_can_ask_or_still_message_us.') }}
-                                                        {{ translate('We_will_get_back_to_you_soon.') }}
-                                                        {{ translate('Thank_you_for_your_patience.') }}.
-                                                    </div>
-                                                    <div class="d-flex align-items-center">
-                                                        <button type="button" class="close close-element-onclick-by-data" aria-label="Close" data-selector=".temporarily-closed-sticky-alert">
-                                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
-                        @else
-                            <div class="card Chat __shadow h-100 d-flex flex-column justify-content-center rounded-left-0">
-                                <div class="text-center">
-                                    <img src="{{theme_asset(path: 'public/assets/front-end/img/empt-msg.png')}}" alt="">
-                                    <p class="text-body mt-4">
-                                        {{translate('you_haven’t_any_conversation_yet')}}
-                                    </p>
-                                </div>
-                            </div>
-                        @endif
                     </section>
                 </div>
             </div>

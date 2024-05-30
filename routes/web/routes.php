@@ -159,7 +159,8 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     Route::get('refer-earn', 'UserProfileController@refer_earn')->name('refer-earn')->middleware('customer');
     Route::get('user-coupons', 'UserProfileController@user_coupons')->name('user-coupons')->middleware('customer');
     // Chatting start
-    Route::get('chat/{type}', 'ChattingController@chat_list')->name('chat')->middleware('customer');
+    // Route::get('chat/{type}', 'ChattingController@chat_list')->name('chat')->middleware('customer');
+    Route::get('chat/', 'ChattingController@chat_list')->name('chat')->middleware('customer');
     Route::get('messages', 'ChattingController@messages')->name('messages');
     Route::post('messages-store', 'ChattingController@messages_store')->name('messages_store');
     // chatting end
